@@ -32,6 +32,7 @@ body, html {
     justify-content: space-between; /* Espaça as colunas igualmente */
     width: 80%; /* Ajuste a largura conforme necessário */
     gap: 20px; /* Adiciona espaço entre as colunas */
+    padding: 35px;
 }
 
 .coluna {
@@ -56,6 +57,24 @@ body, html {
 .Relatorios:hover {
     background-color: #4200FF; /* Cor ao passar o mouse */
 }
+
+input[type="date"] {
+    padding: 10px;                     /* Espaçamento interno */
+    font-size: 16px;                   /* Tamanho da fonte */
+    border: 1px solid #ccc;            /* Borda padrão */
+    border-radius: 4px;                /* Bordas arredondadas */
+    background-color: #fff;            /* Cor de fundo */
+    color: #333;                       /* Cor do texto */
+    transition: border-color 0.3s;     /* Efeito de transição na borda */
+    width: 140px;
+    height: 20px;                      /* Largura do campo */
+}
+
+input[type="date"]:focus {
+    border-color: #007bff;             /* Cor da borda ao focar */
+    outline: none;                     /* Remove a borda de foco padrão */
+}
+
 .Opcoes {
     display: flex;
     flex-direction: column;
