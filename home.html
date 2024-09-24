@@ -9,32 +9,33 @@
 <body>
     <div class="Fundo">
         <div class="Conteudo">
+           <div class="Usuario">
+                <img src="Imagens/Usuario.png" alt="Perfil" class="perfil-imagem" style="width: 75px; height: 70px; margin-right: -283px; margin-top: 15px;">
+           </div>
             <!-- Seletor de data adicionado aqui -->
-            <div style="margin-left: -140px;">
-                <input type="date" id="datePicker" text="Selecione uma Data" />
-            </div>
-            <div class="container">
-                <div class="coluna">
-                    <button class="Relatorios" onclick="window.location.href='relatorio.html'" style="height: 80px; width: 125px;">Relatórios</button>
-                    <button class="Relatorios" onclick="window.location.href='entrada.html'" style="height: 80px; width: 125px;">Entrada Produtos</button>
-                    <button class="Relatorios" onclick="window.location.href='cadastro-destino.html'" style="height: 80px; width: 125px;">Cadastro Local de Destino</button>
-                    <button class="Relatorios" onclick="window.location.href='cadastro-cliente.html'" style="height: 80px; width: 125px;">Cadastro Usuario</button>
+                <div style="position: center;">
+                    <input type="date" id="datePicker" text="Selecione uma Data" />
                 </div>
-                <div class="coluna">
-                    <button class="Relatorios" onclick="window.location.href='compras.html'" style="height: 80px; width: 125px;">Compras</button>
-                    <button class="Relatorios" onclick="window.location.href='saida.html'" style="height: 80px; width: 125px;">Saída Produtos</button>
-                    <button class="Relatorios" onclick="window.location.href='cadastro-produtos.html'" style="height: 80px; width: 125px;">Cadastro Produtos</button>
-                    <button class="Relatorios" onclick="window.location.href='cadastro-fornecedores.html'" style="height: 80px; width: 125px;">Cadastros Fornecedores</button>
-                </div>
+                    <div class="container">
+                        <div class="coluna">
+                            <button class="Relatorios" onclick="window.location.href='relatorio.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Relatórios</button>
+                            <button class="Relatorios" onclick="window.location.href='entrada.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Entrada Produtos</button>
+                            <button class="Relatorios" onclick="window.location.href='cadastro-destino.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Cadastro Local de Destino</button>
+                            <button class="Relatorios" onclick="window.location.href='cadastro-cliente.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Cadastro Usuario</button>
+                        </div>
+                        <div class="coluna">
+                            <button class="Relatorios" onclick="window.location.href='compras.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Compras</button>
+                            <button class="Relatorios" onclick="window.location.href='saida.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Saída Produtos</button>
+                            <button class="Relatorios" onclick="window.location.href='cadastro-produtos.html'" style="height: 90px; width: 155px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Cadastro Produtos</button>
+                            <button class="Relatorios" onclick="window.location.href='cadastro-fornecedores.html'" style="height: 90px; width: 155px; border-radius: 25px;">Cadastros Fornecedores</button>
+                        </div>
+                    </div>
+            <div class="Emporio">
+                <img src="Imagens/Emporio maxx s-fundo.png" alt="">
             </div>
         </div>
     </div>
-    <footer class="RodaPe">
-        <div class="Emporio">
-            <img src="Imagens/Emporio maxx s-fundo.png" alt="">
-        </div>
-    </footer>
-
+ 
     <script>
         // Definir a data atual no seletor de data
         const dateInput = document.getElementById('datePicker');
