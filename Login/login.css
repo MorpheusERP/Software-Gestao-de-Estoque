@@ -1,0 +1,29 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.FundoLogin {
+    width: 100%;
+    height: 100vh; /* Faz a div ocupar 100% da altura da tela */
+    background: linear-gradient(182deg, #4200FF 9.1%, #004099 98.07%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    box-sizing: border-box; /* Para garantir que padding e border sejam incluídos na largura e altura */
+}
+
+.perfil {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.EmporioMax{
+    width: 231px;
+    height: 126px;
+    flex-shrink: 0;
+}
