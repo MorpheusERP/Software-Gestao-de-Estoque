@@ -34,17 +34,46 @@ body, html {
 
 }
 
+.Redefinir{
+    display: flex;
+    width: 284px;
+    height: 291px;
+    padding: 20px 15px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    flex-shrink: 0;
+    border-radius: 37px;
+    border: 2px solid #000;
+    background: #3600D0;
+    backdrop-filter: blur(2px);
+}
+
+.Texto1{
+    color: #FFF;
+    width: 248px;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Body-Large-Line-Height, 24px); /* 120% */
+    letter-spacing: var(--Body-Large-Tracking, 0.5px);
+    mix-blend-mode: lighten;
+    margin-right: 16px;
+}
+
 .bordalogin {
     padding: 10px;
     display: flex;
-    width: 275px;
-    height: 45px;
+    width: 265px;
+    height: 39px;
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;
     border-radius: 24px;
     background: var(--Schemes-Surface-Container-Highest, #E6E0E9);
-    margin-bottom: 20px;
+    margin-bottom: -3px;
 
 }
 
@@ -58,14 +87,15 @@ body, html {
     letter-spacing: var(--Body-Large-Tracking, 0.5px);
     margin-top: 8px;
     margin-left: 20px;
+
 }
 
 .bordasenha {
-    margin-bottom: 20px;
+    margin-bottom: 38px;
     padding: 10px;
     display: flex;
-    width: 275px;
-    height: 45px;
+    width: 265px;
+    height: 39px;
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;
@@ -87,35 +117,9 @@ body, html {
     margin-left: 20px;
 }
 
-.Cadeado img{
-    width: 27px;
-    height: 20px;
-    padding: 6px;
-}
-
-.EsqueciSenha{
-    display: inline-flex;
-    padding: var(--sds-size-space-200);
-    justify-content: center;
-    align-items: center;
-    gap: var(--sds-size-space-200);
-    margin-bottom: 13px;
-}
-
-.textoesquecisenha{
-    color: #FFEF0D;
-    /* Single Line/Body Base */
-    font-family: var(--sds-typography-body-font-family);
-    font-size: var(--sds-typography-body-size-medium);
-    font-style: normal;
-    font-weight: var(--sds-typography-body-font-weight-regular);
-    line-height: 100%; /* 16px */
-
-}
-
-.botaoDiv {
+.botaoDiv1 {
     display: flex;
-    width: 246px;
+    width: 95px;
     height: 40px;
     flex-direction: column;
     justify-content: center;
@@ -123,20 +127,61 @@ body, html {
     gap: var(--Space-200, 8px);
     flex-shrink: 0;
     border-radius: 100px;
-    background: #FFEF0D; /* Fundo amarelo */
+    background: #FFF;
     margin-bottom: 100px;
+    margin-right: 170px;
+    margin-top: -25px;
 }
 
-.botao {
+.botao1 {
     width: 100%;
     height: 100%;
     background-color: transparent; /* Fundo transparente */
     border: none; /* Sem borda */
     color: #000; /* Cor do texto */
-    font-size: 16px; /* Tamanho da fonte */
+    font-size: 19px; /* Tamanho da fonte */
     font-weight: bold;
     cursor: pointer; /* Muda o cursor para indicar um botão */
+
 }
+
+.botao:focus {
+    outline: none; /* Remove a borda de foco ao clicar */
+}
+
+.botao:hover {
+    opacity: 0.8; /* Efeito de hover para mudar a opacidade */
+}
+
+
+.botaoDiv2 {
+    display: flex;
+    width: 95px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Space-200, 8px);
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: #FFF;
+    margin-bottom: 100px;
+    margin-top: -160px;
+    margin-right: 25px;
+}
+
+.botao2 {
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    color: #000; /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer; /* Muda o cursor para indicar um botão */
+  
+}
+
 
 .botao:focus {
     outline: none; /* Remove a borda de foco ao clicar */
