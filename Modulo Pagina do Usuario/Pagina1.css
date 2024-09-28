@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 93%;
+    font-family: Arial, sans-serif;
+}
+.Fundo {
+    width: 100%;
+    height: 100vh; /* Faz a div ocupar 100% da altura da tela */
+    background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    box-sizing: border-box; /* Para garantir que padding e border sejam incluídos na largura e altura */
+    overflow: hidden;
+}
+  
+  .avatar {
+    width: 125px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background-image: url('Imagens/Usuario.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .edit-button {
+    background-color: #ffeb3b;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: black;
+    font-size: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .edit-button img {
+    width: 12px;
+    margin-right: 5px;
+  }
+  
+  .input-field {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .input-field[disabled] {
+    opacity: 0.7;
+  }
+  
+  .logout-button {
+    background-color: #ffeb3b;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .logout-button img {
+    width: 12px;
+    margin-right: 5px;
+  }
+  
+  .label {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .m-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4081;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
