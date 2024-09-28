@@ -1,0 +1,152 @@
+body {
+    fill: linear-gradient(180deg, #D9D9D9 16.5%, #737373 100%); /* Cor de fundo do site com um gradiente */
+    margin: 50px; /* Define uma margem de 50px em todos os lados da tela */
+    border: 2px solid black; /* Define uma borda preta */
+    display: flex; /* Usa o layout flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    min-height: calc(100vh - 100px); /* Define a altura mínima como a altura da tela menos a margem */
+    flex-direction: column; /* Alinha os itens em uma coluna */
+    box-shadow: 0 0 0 50px #004099; /* Adiciona uma sombra para simular a margem cinza */
+}
+
+h1 {
+    width: 1150px; /* Define a largura do elemento */
+    height: 60px; /* Define a altura do elemento */
+    color: #ffffff; /* Define a cor do texto */
+    margin: 50px; /* Define a margem em todos os lados */
+    border: 1px solid black; /* Define uma borda preta */
+    font-size: 24px; /* Define o tamanho da fonte */
+    font-weight: 400; /* Define o peso da fonte */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    background-color: #0253cef1; /* Define a cor de fundo */
+}
+
+h2 {
+    width: 1150px; /* Define a largura do elemento */
+    height: 60px; /* Define a altura do elemento */
+    color: #ffffff; /* Define a cor do texto */
+    margin: 50px; /* Define a margem em todos os lados */
+    border: 1px solid black; /* Define uma borda preta */
+    font-size: 24px; /* Define o tamanho da fonte */
+    font-weight: 400; /* Define o peso da fonte */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    background-color: #0253cef1; /* Define a cor de fundo */
+}
+
+.center-container {
+    display: flex; /* Utiliza o layout flexbox */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
+}
+
+.center-form, .center-table {
+    width: 80%; /* Largura dos formulários e tabelas */
+    max-width: 600px; /* Largura máxima dos formulários e tabelas */
+    margin: 10px 0; /* Adiciona uma margem vertical para espaçamento */
+    padding: 20px; /* Adiciona padding para espaçamento interno */
+    background-color: rgb(190, 188, 188); /* Cor de fundo para destacar o formulário */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar o formulário */
+    border: 1px solid #000000; /* Define a borda preta */
+}
+
+.table {
+    width: 95%; /* Define a largura da tabela como 95% do contêiner pai */
+    background-color: rgb(190, 188, 188); /* Define a cor de fundo da tabela */
+    border-radius: 20px; /* Adiciona bordas arredondadas */
+    overflow: hidden; /* Garante que o conteúdo da tabela não ultrapasse as bordas arredondadas */
+    border: 1px solid #000000; /* Define a borda preta */
+}
+
+label {
+    width: 100%; /* Define a largura do rótulo */
+    color: rgb(0, 0, 0); /* Define a cor do texto */
+    font-size: 18px; /* Define o tamanho da fonte */
+    font-weight: 400; /* Define o peso da fonte */
+    margin-bottom: 10px; /* Adiciona uma margem inferior para espaçamento */
+}
+
+.form-container {
+    background-color: rgb(0, 0, 0); /* Define a cor de fundo do formulário como cinza */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border-radius: 15px; /* Adiciona bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destaque */
+    width: 400px; /* Define a largura do formulário */
+    max-width: 90%; /* Garante que o formulário não ultrapasse 90% da largura da tela */
+}
+
+.form-container label, .form-container input {
+    display: block; /* Define o display como bloco */
+    width: 100%; /* Define a largura dos elementos */
+    margin-bottom: 10px; /* Adiciona uma margem inferior para espaçamento */
+}
+
+.btn-primary {
+    background-color: yellow; /* Define a cor de fundo */
+    border-color: yellow; /* Define a cor da borda */
+    color: black; /* Define a cor do texto */
+}
+
+.btn {
+    display: inline-block; /* Define o display como bloco inline */
+    padding: 5px 10px; /* Define o espaçamento interno */
+    background-color: yellow; /* Define a cor de fundo */
+    color: black; /* Define a cor do texto */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove a decoração do texto */
+    border: 1px solid yellow; /* Define a borda */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    font-size: 16px; /* Define o tamanho da fonte */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar sobre o botão */
+    margin: 5px; /* Define a margem */
+}
+
+.btn:hover {
+    background-color: #ffd700; /* Muda a cor de fundo ao passar o mouse */
+    border-color: #FFF; /* Muda a cor da borda ao passar o mouse */
+}
+
+.delete-form {
+    display: flex; /* Define um layout flexível */
+    flex-direction: column; /* Alinha os itens em uma coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    max-width: 400px; /* Define a largura máxima do formulário */
+    margin: auto; /* Centraliza o formulário na página */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border: 1px solid #000000; /* Define a borda preta */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    background-color: rgb(190, 188, 188); /* Define a cor de fundo */
+}
+
+.delete-form label {
+    margin-bottom: 10px; /* Adiciona espaçamento abaixo do rótulo */
+    font-weight: bold; /* Define o texto em negrito */
+    color: #000000; /* Define a cor do texto */
+}
+
+.delete-form input[type="text"] {
+    width: 100%; /* Define a largura do campo de texto */
+    padding: 10px; /* Adiciona espaçamento interno */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do campo de texto */
+    border: 1px solid #585858; /* Define a borda cinza */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    color: #000000; /* Define a cor do texto */
+}
+
+.delete-form input[type="submit"] {
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    background-color: #ff4d4d; /* Define a cor de fundo */
+    color: #000000; /* Define a cor do texto */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar sobre o botão */
+}
+
+.delete-form input[type="submit"]:hover {
+    background-color: #ff1a1a; /* Muda a cor de fundo ao passar o mouse */
+}
