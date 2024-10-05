@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída de Produtos</title>
+    <link rel="stylesheet" href="saidaproduto.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Saída de Produtos</h1>
+        </div>
+
+        <div class="form-container">
+            <div class="image-placeholder">
+                <img src="Imagens/Icone.png" alt="Imagem do Produto">
+            </div>
+            <div class="form">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" placeholder="Código">
+
+                <label for="produto">Produto:</label>
+                <input type="text" id="produto" placeholder="Produto" required>
+
+                <label for="local">Local de Destino:</label>
+                <input type="text" id="local" placeholder="Local de destino">
+
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" placeholder="Quantidade" required>
+
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" placeholder="Observações"></textarea>
+            </div>
+
+            <div class="buttons">
+                <button class="new">Novo</button>
+                <button class="search">Buscar</button>
+                <button class="edit">Alterar</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Média</th>
+                        <th>Produto</th>
+                        <th>Local Destino</th>
+                        <th>QTD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <!-- Adicionar mais linhas conforme necessário -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <button class="exit">Sair</button>
+            <div class="logo">
+                <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

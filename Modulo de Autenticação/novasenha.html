@@ -9,23 +9,27 @@
 <body>
     <div class="FundoLogin">
         <div class="Conteudo">
-            <div class="perfil" style="margin-top: 0px; padding: 42px;">
-                <img src="Imagens/Usuario.png" alt="perfil">
+            <div class="perfil" style="margin-top: 0; padding: 42px;">
+                <img src="Imagens/Usuario.png" alt="Perfil do Usuário">
             </div>
-           <div class="Redefinir">
-                <div class="bordalogin"><div class="textologin" contenteditable="true">Login</div></div>
-                <div class="NovaSenha">Digite a Nova Senha: </div> 
-                <div class="label"></div>
-                <input type="text" class="input-field" value="Nome" 
-                onfocus="if(this.value=='Nome') this.value='';" 
-                onblur="if(this.value=='') this.value='Nome';" />
-                <div class="ConfirmaSenha">Confirme a Nova Senha: </div> 
-                <div class="label"></div>
-                <input type="password" class="input-field" value="Senha" 
-                onfocus="if(this.value=='Senha') this.value='';" 
-                onblur="if(this.value=='') this.value='Senha';" />
-                <div class="botaoDiv1"><button class="botao1"><div class="textoentrar">Sair</div> </button></div>  <div class="botaoDiv2"><button class="botao2"><div class="textoentrar">Salvar</div> </button></div>
-           </div>
+            <div class="Redefinir">
+                <div class="label">Login:</div>
+                <input type="text" class="input-field" value="" />
+    
+                <div class="label">Digite a Nova Senha:</div>
+                <input type="password" class="input-field" placeholder="Máx. 6 dígitos" />
+                
+                <div class="label">Confirme a Nova Senha:</div>
+                <input type="password" class="input-field" placeholder="Máx. 6 dígitos" />
+
+                <div class="botaoDiv1">
+                    <button class="botao1"><div class="textoentrar">Sair</div></button>
+                </div>
+
+                <div class="botaoDiv2">
+                    <button class="botao2"><div class="textoentrar">Salvar</div></button>
+                </div>
+            </div>
             <div class="Emporio">
                 <img src="Imagens/Emporio maxx s-fundo.png" alt="Emporio">
             </div>

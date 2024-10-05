@@ -29,12 +29,12 @@ body, html {
 }
 
 .container {
-    display: flex;
+    display: block;
     justify-content: space-between; /* Espaça as colunas igualmente */
-    width: 80%; /* Ajuste a largura conforme necessário */
+    width: 303px; /* Ajuste a largura conforme necessário */
     gap: 45px; /* Adiciona espaço entre as colunas */
     padding: 35px;
-    margin-left: 25px;
+    
     
 }
 
