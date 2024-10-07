@@ -6,15 +6,13 @@
 
 body {
     width: 100%;
-    height: 100vh; /* Faz a div ocupar 100% da altura da tela */
     background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; /* Centraliza os itens horizontalmente */
-    box-sizing: border-box; /* Para garantir que padding e border sejam incluídos na largura e altura */
-    overflow: hidden;
     font-family: var(--Body-Large-Font, Roboto);
+    overflow-x: hidden;
 }
 
 .container {
@@ -24,6 +22,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding: 20px;
 }
 
 .header {
@@ -68,6 +67,37 @@ textarea {
     height: 60px;
 }
 
+/* Estilo para o container da quantidade */
+.quantidade-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+#quantidade {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#tipoQuantidade {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#tipoQuantidade:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+#tipoQuantidade option[disabled] {
+    color: #888;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
@@ -78,10 +108,12 @@ textarea {
     background-color: #ffcc00;
     color: black;
     border: none;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    flex-grow: 1;
+    margin: 0 5px;
 }
 
 .buttons button:hover {
@@ -90,6 +122,7 @@ textarea {
 
 .table-container {
     padding: 20px;
+    overflow-x: auto;
 }
 
 table {
@@ -106,11 +139,10 @@ table th, table td {
 
 .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espaço entre o botão e o logo */
     align-items: center;
     padding: 10px;
-    background-color: #000080;
-    color: white;
+    margin-top: 20px;
 }
 
 .footer .exit {
@@ -121,6 +153,7 @@ table th, table td {
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
+    margin-right: 75px; /* Espaço entre o botão e o logo */
 }
 
 .footer .exit:hover {
@@ -132,4 +165,24 @@ table th, table td {
     height: 126px;
     flex-shrink: 0;
     margin-top: -20px;
+    margin-left: auto; /* Move o logo para a direita */
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .footer .logo img {
+        width: 100px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buttons button {
+        width: 100%;
+    }
 }

@@ -1,8 +1,17 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 93%;
+    height: 100%; /* Ajustado para ocupar 100% da altura */
     font-family: Arial, sans-serif;
+}
+
+.FundoLogin {
+    width: 100%;
+    height: 100vh; /* Faz a div ocupar 100% da altura da tela */
+    background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
 }
 
 .Conteudo {
@@ -10,130 +19,82 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%; /* Certifica que ocupe 100% da altura */
-    text-align: center;
+    width: 90%; /* Aumente a largura para ocupar mais espaço em telas grandes */
+    max-width: 400px; /* Limita a largura máxima */
+    height: 90vh; /* Limita a altura máxima */
+    padding: 20px; /* Adiciona um pouco de espaçamento */
+    border-radius: 15px; /* Bordas arredondadas */
+    overflow-y: auto; /* Permite rolagem vertical */
 }
 
-
-.FundoLogin {
-    width: 100%;
-    height: 100vh; /* Faz a div ocupar 100% da altura da tela */
-    background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centraliza os itens horizontalmente */
-    box-sizing: border-box; /* Para garantir que padding e border sejam incluídos na largura e altura */
-    overflow: hidden;
-}
-
-.perfil img{
+.perfil img {
     width: 150px;
     margin-bottom: 10px;
-
 }
 
-.Redefinir{
+.Redefinir {
     display: flex;
-    width: 284px;
-    height: 291px;
+    height: auto; /* Permite que a altura se ajuste conforme o conteúdo */
     padding: 20px 15px;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center; /* Centraliza os itens horizontalmente */
     gap: 20px;
     flex-shrink: 0;
     border-radius: 37px;
     border: 2px solid #000;
-    background: #3600D0;
     backdrop-filter: blur(2px);
 }
 
-.Texto1{
+.Texto1 {
     color: #FFF;
-    width: 248px;
+    width: 100%;
     text-align: center;
     font-family: Roboto;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: var(--Body-Large-Line-Height, 24px); /* 120% */
-    letter-spacing: var(--Body-Large-Tracking, 0.5px);
-    mix-blend-mode: lighten;
-    margin-right: 16px;
+    line-height: 24px; /* 120% */
 }
 
-.bordalogin {
-    padding: 10px;
+.bordalogin, .bordasenha {
     display: flex;
-    width: 265px;
-    height: 39px;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
+    width: 100%; /* Ajustado para ocupar toda a largura disponível */
     border-radius: 24px;
-    background: var(--Schemes-Surface-Container-Highest, #E6E0E9);
-    margin-bottom: -3px;
-
+    background: #E6E0E9;
 }
 
-.textologin{
-    color: var(--Schemes-On-Surface-Variant, #49454F);
-    font-family: var(--Body-Large-Font, Roboto);
-    font-size: var(--Body-Large-Size, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Body-Large-Line-Height, 24px); /* 150% */
-    letter-spacing: var(--Body-Large-Tracking, 0.5px);
-    margin-top: 8px;
-    margin-left: 20px;
-
+.inputField {
+    width: 100%; /* Ocupar toda a largura disponível */
+    height: 39px; /* Altura do campo */
+    padding: 10px; /* Adiciona um pouco de padding */
+    border: none; /* Remove a borda padrão */
+    border-radius: 24px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    color: #49454F; /* Cor do texto */
 }
 
-.bordasenha {
-    margin-bottom: 38px;
-    padding: 10px;
-    display: flex;
-    width: 265px;
-    height: 39px;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-radius: 24px;
-    background: var(--Schemes-Surface-Container-Highest, #E6E0E9);
-
+/* Remove o contorno padrão quando o input está em foco */
+.inputField:focus {
+    outline: none; /* Remove a borda de foco padrão */
 }
 
-.textosenha{
-    margin-bottom: 10px;
-    color: var(--Schemes-On-Surface-Variant, #49454F);
-    font-family: var(--Body-Large-Font, Roboto);
-    font-size: var(--Body-Large-Size, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Body-Large-Line-Height, 24px); /* 150% */
-    letter-spacing: var(--Body-Large-Tracking, 0.5px);
-    margin-top: 8px;
-    margin-left: 20px;
+.botaoDivs {
+    display: flex; /* Permite que as divs fiquem lado a lado */
+    justify-content: center; /* Centraliza os botões */
+    gap: 20px; /* Espaço entre os botões */
+    width: 100%; /* Permite que a div ocupe toda a largura */
 }
 
-.botaoDiv1 {
+.botaoDiv1, .botaoDiv2 {
     display: flex;
     width: 95px;
     height: 40px;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--Space-200, 8px);
-    flex-shrink: 0;
     border-radius: 100px;
     background: #FFF;
-    margin-bottom: 100px;
-    margin-right: 170px;
-    margin-top: -25px;
 }
 
-.botao1 {
+.botao1, .botao2 {
     width: 100%;
     height: 100%;
     background-color: transparent; /* Fundo transparente */
@@ -142,57 +103,15 @@ body, html {
     font-size: 19px; /* Tamanho da fonte */
     font-weight: bold;
     cursor: pointer; /* Muda o cursor para indicar um botão */
-
 }
 
-.botao:focus {
-    outline: none; /* Remove a borda de foco ao clicar */
-}
-
-.botao:hover {
+.botao1:hover, .botao2:hover {
     opacity: 0.8; /* Efeito de hover para mudar a opacidade */
 }
 
-
-.botaoDiv2 {
-    display: flex;
-    width: 95px;
-    height: 40px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--Space-200, 8px);
-    flex-shrink: 0;
-    border-radius: 100px;
-    background: #FFF;
-    margin-bottom: 100px;
-    margin-top: -160px;
-    margin-right: 25px;
-}
-
-.botao2 {
-    width: 100%;
-    height: 100%;
-    background-color: transparent; /* Fundo transparente */
-    border: none; /* Sem borda */
-    color: #000; /* Cor do texto */
-    font-size: 18px; /* Tamanho da fonte */
-    font-weight: bold;
-    cursor: pointer; /* Muda o cursor para indicar um botão */
-  
-}
-
-
-.botao:focus {
-    outline: none; /* Remove a borda de foco ao clicar */
-}
-
-.botao:hover {
-    opacity: 0.8; /* Efeito de hover para mudar a opacidade */
-}
-
-.Emporio img{
-    width: 238px;
-    height: 175px;
-    flex-shrink: 0;
+.Emporio img {
+    width: 100%; /* A imagem ocupa 100% da largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 238px; /* Limita a largura máxima */
+    margin-top: 20px; /* Espaço acima da imagem */
 }

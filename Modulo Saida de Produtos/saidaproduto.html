@@ -18,16 +18,25 @@
             </div>
             <div class="form">
                 <label for="codigo">Código:</label>
-                <input type="text" id="codigo" placeholder="Código">
+                <input type="number" id="codigo" placeholder="Código">
 
                 <label for="produto">Produto:</label>
                 <input type="text" id="produto" placeholder="Produto" required>
 
                 <label for="local">Local de Destino:</label>
                 <input type="text" id="local" placeholder="Local de destino">
-
+               
                 <label for="quantidade">Quantidade:</label>
-                <input type="number" id="quantidade" placeholder="Quantidade" required>
+                <div class="quantidade-container">
+                  <input type="number" id="quantidade" placeholder="Quantidade" required>
+                  <select id="tipoQuantidade" required>
+                    <option value="" disabled selected>Selecione o tipo</option>
+                    <option value="Kilos">Kilos</option>
+                    <option value="Caixas">Caixas</option>
+                    <option value="Unidades">Unidades</option>
+                    <option value="Sacos">Sacos</option>
+                  </select>
+                </div>
 
                 <label for="observacoes">Observações:</label>
                 <textarea id="observacoes" placeholder="Observações"></textarea>
@@ -60,13 +69,12 @@
                     <!-- Adicionar mais linhas conforme necessário -->
                 </tbody>
             </table>
-        </div>
-
-        <div class="footer">
-            <button class="exit">Sair</button>
-            <div class="logo">
-                <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
-            </div>
+        </div> 
+    </div>
+    <div class="footer">
+        <button class="exit">Sair</button>
+        <div class="logo">
+            <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
         </div>
     </div>
 </body>
