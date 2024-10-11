@@ -27,23 +27,25 @@
             </div>
             <div class="form">
                 <div class="input-with-button">
+                     
+                    <label for="produto">Fornecedor:</label>
+                    <input type="text" id="fornecedor" placeholder="Fornecedor" required>
+
                     <label for="produto">Produto:</label>
                     <input type="text" id="produto" placeholder="Produto" required>
-                    <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
                 </div>
                 
                 <!-- Grupo e SubGrupo com botões de pesquisa -->
-                <div class="GrupoSubGrupo">
-                    <div class="input-with-button">
-                        <label for="grupo">Grupo:</label>
-                        <input type="text" id="grupo" name="grupo" placeholder="Grupo" required>
-                        <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
-                    </div>
-                
-                    <div class="input-with-button">
-                        <label for="subgrupo">SubGrupo:</label>
-                        <input type="text" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
-                        <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
+                    <div class="GrupoSubGrupo">
+                        <div class="input-group">
+                            <label for="grupo">Grupo:</label>
+                            <input type="number" id="grupo" name="grupo" placeholder="Grupo" required>
+                        </div>
+                    
+                        <div class="input-group">
+                            <label for="subgrupo">SubGrupo:</label>
+                            <input type="number" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
+                        </div>
                     </div>
                 </div>
                 
@@ -74,7 +76,9 @@
         </div> 
     </div>
     <div class="footer">
-        <button class="exit">Sair</button>
+        <a href="saidaproduto.html" class="search-link">
+            <button class="exit">Voltar</button>
+        </a>
         <div class="logo">
             <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
         </div>
