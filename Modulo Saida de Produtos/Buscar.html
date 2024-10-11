@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída</title>
+    <link rel="stylesheet" href="Buscar.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Saída</h1>
+        </div>
+
+        <div class="form-container">
+            <label for="periodo">Período</label>
+            <div class="Calendario">
+                <div class="input-group">
+                    <label for="start-date">De:</label>
+                    <input type="date" id="start-date" name="start-date">
+                </div>
+            
+                <div class="input-group">
+                    <label for="end-date">Até:</label>
+                    <input type="date" id="end-date" name="end-date">
+                </div>
+            </div>
+            <div class="form">
+                <div class="input-with-button">
+                    <label for="produto">Produto:</label>
+                    <input type="text" id="produto" placeholder="Produto" required>
+                    <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
+                </div>
+                
+                <!-- Grupo e SubGrupo com botões de pesquisa -->
+                <div class="GrupoSubGrupo">
+                    <div class="input-with-button">
+                        <label for="grupo">Grupo:</label>
+                        <input type="text" id="grupo" name="grupo" placeholder="Grupo" required>
+                        <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
+                    </div>
+                
+                    <div class="input-with-button">
+                        <label for="subgrupo">SubGrupo:</label>
+                        <input type="text" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
+                        <button class="search-button" onclick="abrirJanelaDePesquisa()">🔍</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="buttons" style="width: 40%; margin-left: 30%;">
+                <button class="search">Buscar</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>QDT. Produtos</th>
+                        <th>Período</th>
+                        <th>Valor</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <!-- Adicionar mais linhas conforme necessário -->
+                </tbody>
+            </table>
+        </div> 
+    </div>
+    <div class="footer">
+        <button class="exit">Sair</button>
+        <div class="logo">
+            <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        </div>
+    </div>
+</body>
+</html>
