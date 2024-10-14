@@ -1,8 +1,24 @@
 body, html {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     height: 93%;
-    font-family: Arial, sans-serif;
+    width: 100%;
+    background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2.36px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .Conteudo {
@@ -49,15 +65,6 @@ body, html {
     backdrop-filter: blur(2px);
 }
 
-.input-field {
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 10px;
-    padding: 13px;
-    width: 91%;
-    font-size: 14px;
-    text-align: center;
-  }
 
   .input-field[disabled] {
     opacity: 0.7;
@@ -160,4 +167,36 @@ body, html {
     width: 238px;
     height: 175px;
     flex-shrink: 0;
+}
+
+.input-container {
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    width: 80%;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 40px; /* Adiciona espaço para o ícone à direita */
+}
+
+.toggle-visibility {
+    position: absolute;
+    right: 10px; /* Posiciona o ícone à direita dentro do input */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

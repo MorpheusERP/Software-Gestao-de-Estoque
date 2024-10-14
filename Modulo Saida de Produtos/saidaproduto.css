@@ -10,23 +10,26 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centraliza os itens horizontalmente */
-    font-family: var(--Body-Large-Font, Roboto);
+    align-items: center;
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 2.36px;
     overflow-x: hidden;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
     max-width: 400px;
     margin: 20px auto;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
 }
 
 .header {
-    background-color: #0000ff;
     color: white;
     text-align: center;
     padding: 15px;
@@ -52,14 +55,17 @@ body {
 .form label {
     font-weight: bold;
     margin-top: 10px;
+    color: white;
 }
 
 .form input, .form textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 16px;
+    margin-top: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    font-size: 13px;
 }
 
 textarea {
@@ -75,17 +81,22 @@ textarea {
 }
 
 #quantidade {
-    width: 50%;
-    padding: 8px;
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    font-size: 13px;
 }
 
 #tipoQuantidade {
-    width: 50%;
-    padding: 8px;
+    width: 63%;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    height: 49px;
+    margin-top: 9px;
 }
 
 #tipoQuantidade:focus {
@@ -132,14 +143,15 @@ table {
 }
 
 table th, table td {
-    border: 1px solid #ccc;
+    border: 2px solid black;
     padding: 10px;
     text-align: center;
+    background-color: #ccc;
 }
 
 .footer {
     display: flex;
-    justify-content: space-between; /* Espaço entre o botão e o logo */
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     margin-top: 20px;
@@ -153,7 +165,7 @@ table th, table td {
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
-    margin-right: 75px; /* Espaço entre o botão e o logo */
+    margin-right: 75px;
 }
 
 .footer .exit:hover {
@@ -165,9 +177,10 @@ table th, table td {
     height: 126px;
     flex-shrink: 0;
     margin-top: -20px;
-    margin-left: auto; /* Move o logo para a direita */
+    margin-left: auto;
 }
 
+/* Mobile adjustments */
 @media (max-width: 600px) {
     .container {
         padding: 15px;
@@ -175,14 +188,42 @@ table th, table td {
 
     .footer .logo img {
         width: 100px;
+        height: 80px;
     }
 
     .buttons {
         flex-direction: column;
-        gap: 10px;
+        gap: 6px;
     }
 
     .buttons button {
-        width: 100%;
+        width: 95%;
     }
 }
+
+/* Input search icon */
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 16px;
+    padding-right: 40px; /* Espaço para o ícone de pesquisa */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+}
+

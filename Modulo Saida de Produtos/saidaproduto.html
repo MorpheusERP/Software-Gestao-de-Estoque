@@ -17,15 +17,29 @@
                 <img src="Imagens/Icone.png" alt="Imagem do Produto">
             </div>
             <div class="form">
+
+                <!-- Campo Código com ícone de pesquisa -->
                 <label for="codigo">Código:</label>
-                <input type="number" id="codigo" placeholder="Código">
+                <div class="input-container">
+                    <input type="number" id="codigo" class="input-field" placeholder="Código">
+                    <button class="search-icon" onclick="searchCodigo()">🔍</button>
+                </div>
 
+                <!-- Campo Produto com ícone de pesquisa -->
                 <label for="produto">Produto:</label>
-                <input type="text" id="produto" placeholder="Produto" required>
+                <div class="input-container">
+                    <input type="text" id="produto" class="input-field" placeholder="Produto" required>
+                    <button class="search-icon" onclick="searchProduto()">🔍</button>
+                </div>
 
+                <!-- Campo Local de Destino com ícone de pesquisa -->
+                 
                 <label for="local">Local de Destino:</label>
-                <input type="text" id="local" placeholder="Local de destino">
-               
+                <div class="input-container">
+                    <input type="text" id="local" class="input-field" placeholder="Local de destino">
+                    <button class="search-icon" onclick="searchLocal()">🔍</button>
+                </div>
+
                 <label for="quantidade">Quantidade:</label>
                 <div class="quantidade-container">
                   <input type="number" id="quantidade" placeholder="Quantidade" required>
@@ -68,7 +82,6 @@
                         <td>-</td>
                         <td>-</td>
                     </tr>
-                    <!-- Adicionar mais linhas conforme necessário -->
                 </tbody>
             </table>
         </div> 
@@ -81,5 +94,22 @@
             <img src="Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
         </div>
     </div>
+
+    <script>
+       function searchCodigo() {
+    // Redireciona para a página de pesquisa de código
+            window.location.href = "Produto.html";
+}
+
+        function searchProduto() {
+            // Lógica de pesquisa para o campo Produto
+            window.location.href = "Produto.html"
+        }
+
+        function searchLocal() {
+            // Lógica de pesquisa para o campo Local de Destino
+            window.location.href = "Local.html"
+        }
+    </script>
 </body>
 </html>

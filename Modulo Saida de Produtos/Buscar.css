@@ -5,18 +5,23 @@
     box-sizing: border-box;
 }
 
-/* Estilos Globais */
 body {
-    width: 100%;
-    background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centraliza os itens horizontalmente */
-    font-family: var(--Body-Large-Font, Roboto);
-    overflow-x: hidden;
-    min-height: 100vh;
-    padding: 20px;
+        width: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #FFF;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 2.36px;
+        overflow-x: hidden;
+        min-height: 100vh;
+        padding: 20px;
 }
 
 .container {
@@ -24,18 +29,15 @@ body {
     width: 100%; /* Garante que o container ocupe 100% da largura em telas menores */
     margin: 20px auto;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
     border-color: black;
-    background-color: #2a00a3;
 }
 
 .header {
     color: white;
     text-align: center;
     padding: 15px;
-    background-color: #4200FF;
 }
 
 /* Formulários */
@@ -48,7 +50,6 @@ body {
 .form label {
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: -5px;
 }
 
 .form input, .form textarea {

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saída - Fornecedor</title>
-    <link rel="stylesheet" href="fornecedor.css">
+    <title>Saída - Produto</title>
+    <link rel="stylesheet" href="Produto.css">
 </head>
 <body>
     <div class="header">
-        <h1>Fornecedor</h1>
+        <h1>Produto</h1>
     </div>
     <div class="container">
         <div class="form">
-            <input type="text" id="codigo" placeholder="Razão Social">
+            <input type="number" id="codigo" placeholder="Código do Produto">
 
-            <input type="text" id="produto" placeholder="Nome Fantasia" required>
-
-            <input type="text" id="local" placeholder="Apelido">
+            <input type="text" id="produto" placeholder="Nome" required>
 
             <input type="text" id="local" placeholder="Grupo">
+
+            <input type="text" id="local" placeholder="Sub Grupo">
         </div>
     </div>
 
@@ -29,27 +29,24 @@
         <table>
             <thead>
                 <tr>
-                    <th>Razão Social</th>
-                    <th>Apelido</th>
+                    <th>COD</th>
+                    <th>Nome</th>
+                    <th>P.Custo</th>
+                    <th>P.Venda</th>
                     <th>Grupo</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>-</td>
                     <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -58,27 +55,10 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
+                
                 <!-- Adicionar mais linhas conforme necessário -->
             </tbody>
         </table>
