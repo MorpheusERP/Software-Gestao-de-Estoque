@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morphues Erp</title>
+    <link rel="stylesheet" href="../CSS/homepadrao.css">
+</head>
+<body>
+    <div class="Fundo">
+        <div class="Conteudo">
+           <div class="Usuario">
+                <img src="../Imagens/Usuario.png" alt="Perfil" class="perfil-imagem" style="width: 75px; height: 70px; margin-right: -283px; margin-top: 15px;">
+           </div>
+            <!-- Seletor de data adicionado aqui -->
+                <div style="position: center;">
+                    <input type="date" id="datePicker" text="Selecione uma Data" />
+                </div>
+                    <div class="container">
+                        <div class="coluna">
+                            <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Saida de Produtos\saidaproduto.html" class="search-link">
+                                <button class="Relatorios"style="height: 125px; width: 315px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Saida de Produto</button>
+                            </a>
+                            <button class="Relatorios" onclick="window.location.href='entrada.html'" style="height: 125px; width: 315px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Entrada Produtos</button>
+                            <button class="Relatorios" onclick="window.location.href='cadastro-destino.html'" style="height: 125px; width: 315px; border-radius: 25px; background: linear-gradient(to top, #cccccc, #666666);">Cadastro Local de Destino</button>
+                        </div>
+                    </div>
+            <div class="Emporio">
+                <img src="../Imagens/Emporio maxx s-fundo.png" alt="">
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        // Definir a data atual no seletor de data
+        const dateInput = document.getElementById('datePicker');
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // Mês de 0 a 11
+        const dd = String(today.getDate()).padStart(2, '0'); // Dia de 1 a 31
+        dateInput.value = `${yyyy}-${mm}-${dd}`; // Formato YYYY-MM-DD
+    </script>
+</body>
+</html>

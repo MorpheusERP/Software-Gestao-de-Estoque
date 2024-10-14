@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRP-Login</title>
+    <link rel="stylesheet" href="../CSS/novasenha.css">
+    <script>
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="FundoLogin">
+        <div class="Conteudo">
+            <div class="perfil" style="margin-top: 0; padding: 42px;">
+                <img src="../Imagens/Usuario.png" alt="Perfil do Usuário">
+            </div>
+            <div class="Redefinir">
+                <div class="label">Login:</div>
+                <input type="text" class="input-field" value="" />
+
+                <div class="label">Digite a Nova Senha:</div>
+                <div class="input-container">
+                    <input type="password" id="novaSenha" class="input-field" placeholder="Máx. 6 dígitos" />
+                    <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('novaSenha')">👁</button>
+                </div>
+                
+                <div class="label">Confirme a Nova Senha:</div>
+                <div class="input-container">
+                    <input type="password" id="confirmarSenha" class="input-field" placeholder="Máx. 6 dígitos" />
+                    <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('confirmarSenha')">👁</button>
+                </div>
+
+                <div class="botaoDiv1">
+                    <a href="Redefinir.html" class="search-link" style="text-decoration: none;">
+                        <button class="botao1"><div class="textoentrar">Sair</div></button>
+                    </a>
+                </div>
+
+                <div class="botaoDiv2">
+                    <button class="botao2"><div class="textoentrar">Salvar</div></button>
+                </div>
+            </div>
+            <div class="Emporio">
+                <img src="../Imagens/Emporio maxx s-fundo.png" alt="Emporio">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

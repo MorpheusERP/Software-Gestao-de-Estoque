@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída de Produtos</title>
+    <link rel="stylesheet" href="../CSS/saidaproduto.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Saída de Produtos</h1>
+        </div>
+
+        <div class="form-container">
+            <div class="image-placeholder">
+                <img src="../Imagens/Icone.png" alt="Imagem do Produto">
+            </div>
+            <div class="form">
+
+                <!-- Campo Código com ícone de pesquisa -->
+                <label for="codigo">Código:</label>
+                <div class="input-container">
+                    <input type="number" id="codigo" class="input-field" placeholder="Código">
+                    <button class="search-icon" onclick="searchCodigo()">🔍</button>
+                </div>
+
+                <!-- Campo Produto com ícone de pesquisa -->
+                <label for="produto">Produto:</label>
+                <div class="input-container">
+                    <input type="text" id="produto" class="input-field" placeholder="Produto" required>
+                    <button class="search-icon" onclick="searchProduto()">🔍</button>
+                </div>
+
+                <!-- Campo Local de Destino com ícone de pesquisa -->
+                 
+                <label for="local">Local de Destino:</label>
+                <div class="input-container">
+                    <input type="text" id="local" class="input-field" placeholder="Local de destino">
+                    <button class="search-icon" onclick="searchLocal()">🔍</button>
+                </div>
+
+                <label for="quantidade">Quantidade:</label>
+                <div class="quantidade-container">
+                  <input type="number" id="quantidade" placeholder="Quantidade" required>
+                  <select id="tipoQuantidade" required>
+                    <option value="" disabled selected>Selecione o tipo</option>
+                    <option value="Kilos">Kilos</option>
+                    <option value="Caixas">Caixas</option>
+                    <option value="Unidades">Unidades</option>
+                    <option value="Sacos">Sacos</option>
+                  </select>
+                </div>
+
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" placeholder="Observações"></textarea>
+            </div>
+
+            <div class="buttons">
+                <button class="new">Novo</button>
+                <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Saida de Produtos\Buscar.html" class="search-link">
+                    <button class="search">Buscar</button>
+                </a>
+                <button class="edit">Alterar</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Média</th>
+                        <th>Produto</th>
+                        <th>Local Destino</th>
+                        <th>QTD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+    <div class="footer">
+        <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Home Page\home.html" class="search-link">
+            <button class="exit">Sair</button>
+        </a>
+        <div class="logo">
+            <img src="../Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        </div>
+    </div>
+
+    <script>
+       function searchCodigo() {
+    // Redireciona para a página de pesquisa de código
+            window.location.href = "Produto.html";
+}
+
+        function searchProduto() {
+            // Lógica de pesquisa para o campo Produto
+            window.location.href = "Produto.html"
+        }
+
+        function searchLocal() {
+            // Lógica de pesquisa para o campo Local de Destino
+            window.location.href = "Local.html"
+        }
+    </script>
+</body>
+</html>
