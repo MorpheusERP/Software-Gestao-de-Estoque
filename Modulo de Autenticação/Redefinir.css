@@ -18,7 +18,7 @@ body, html {
     letter-spacing: 2.36px;
     overflow-x: hidden;
     min-height: 100vh;
-    padding: 20px;
+    
 }
 .FundoLogin {
     width: 100%;
@@ -35,9 +35,6 @@ body, html {
     justify-content: center;
     align-items: center;
     width: 90%; /* Aumente a largura para ocupar mais espaço em telas grandes */
-    max-width: 400px; /* Limita a largura máxima */
-    height: 90vh; /* Limita a altura máxima */
-    padding: 20px; /* Adiciona um pouco de espaçamento */
     border-radius: 15px; /* Bordas arredondadas */
     overflow-y: auto; /* Permite rolagem vertical */
 }
