@@ -16,7 +16,7 @@ body, html {
     font-style: normal;
     line-height: normal;
     letter-spacing: 2.36px;
-    overflow-x: hidden;
+    overflow: hidden;
     min-height: 100vh;
     
 }
@@ -41,8 +41,10 @@ body, html {
 
 .perfil img {
     width: 150px;
-    margin-bottom: 10px;
+    margin-top: 100px;
 }
+
+
 
 .Redefinir {
     display: flex;
@@ -126,5 +128,5 @@ body, html {
     width: 100%; /* A imagem ocupa 100% da largura disponível */
     height: auto; /* Mantém a proporção da imagem */
     max-width: 238px; /* Limita a largura máxima */
-    margin-top: 20px; /* Espaço acima da imagem */
+    margin-bottom: 100px; /* Espaço acima da imagem */
 }
