@@ -1,0 +1,245 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+        width: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #FFF;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 2.36px;
+        overflow-x: hidden;
+        min-height: 100vh;
+        padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    width: 100%; /* Garante que o container ocupe 100% da largura em telas menores */
+    margin: 20px auto;
+    border-radius: 2px;
+    overflow: hidden;
+    padding: 20px;
+    border-color: black;
+}
+
+.header {
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Formulários */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.form input, .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    border-color: black;
+}
+
+input[type="date"],
+input[type="number"] {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    width: 100%; /* Ajusta a largura para dispositivos menores */
+    display: block;
+}
+
+/* Layout de datas (Calendario) */
+.Calendario {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar em telas menores */
+    gap: 20px;
+    margin-bottom: -11px;
+}
+
+label {
+    margin-left: 0;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    color: #f2f2f2;
+}
+
+/* Layout de grupo/subgrupo */
+.GrupoSubGrupo {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px; /* Espaçamento entre os grupos */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Coloca o label em cima do input */
+    flex: 1; /* Faz com que cada grupo ocupe o mesmo espaço */
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold; /* Opcional */
+}
+
+.input-group input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    border-color: black;
+}
+
+/* Botões */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.buttons button {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+.buttons button:hover {
+    background-color: #e6b800;
+}
+
+/* Tabelas */
+.table-container {
+    padding: 5px;
+    overflow-x: auto; /* Permite rolar horizontalmente se a tabela for grande */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    
+}
+
+table th, table td {
+    border: 3px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-color: #ccc;
+    border-color: black;
+    border-radius: 5px;
+}
+
+/* Rodapé */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.footer .exit {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 75px;
+}
+
+.footer .exit:hover {
+    background-color: #e6b800;
+}
+
+.footer .logo img {
+    width: 156px;
+    height: 126px;
+    flex-shrink: 0;
+    margin-top: -20px;
+    margin-left: auto; /* Move o logo para a direita */
+}
+
+/* Estilizando os campos de input com a lupa dentro */
+.input-container {
+    position: relative; /* Para permitir posicionamento absoluto do ícone */
+    width: 100%;
+}
+
+.input-container input {
+    width: 100%;
+    height: 50px;
+    padding-right: 35px; /* Espaço suficiente para o ícone */
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666; /* Cor da lupa */
+}
+
+.search-icon:hover {
+    color: #000; /* Mudança de cor ao passar o mouse */
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .footer .logo img {
+        width: 100px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buttons button {
+        width: 100%;
+    }
+}
