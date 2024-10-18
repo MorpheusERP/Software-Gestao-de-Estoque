@@ -21,7 +21,7 @@ body {
     letter-spacing: 2.36px;
     overflow-x: hidden;
     min-height: 100vh;
-    padding: 20px;
+
 }
 
 .Conteudo {
@@ -103,17 +103,18 @@ body {
 
 .botaoDiv {
     display: flex;
-    width: 246px;
+    justify-content: center; /* Centraliza o botão horizontalmente */
+    align-items: center;     /* Centraliza o botão verticalmente */
+    /* width: 246px; */
+    margin: 60px;
     height: 40px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--Space-200, 8px);
     flex-shrink: 0;
     border-radius: 100px;
     background: #FFEF0D; /* Fundo amarelo */
-    margin-bottom: 100px;
+    margin-top: 20px;    /* Espaçamento superior */
+    margin-bottom: 20px; /* Espaçamento inferior */
 }
+
 
 .botao {
     width: 100%;
@@ -124,6 +125,7 @@ body {
     font-size: 16px; /* Tamanho da fonte */
     font-weight: bold;
     cursor: pointer; /* Muda o cursor para indicar um botão */
+    
 }
 
 .botao:focus {

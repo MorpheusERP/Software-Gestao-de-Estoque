@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrada de Produtos</title>
-<<<<<<<< HEAD:module/Entrada de Produtos/HTML/Compras.html
-    <link rel="stylesheet" href="../CSS/Compras.css">
-========
-    <link rel="stylesheet" href="Entrada.css">
->>>>>>>> 38aad0901965c9af5ad719cacc8951f632997180:module/Entrada de Produtos/Entrada.html
-</head>
+    <link rel="stylesheet" href="../CSS/Entrada.css">
 <body>
     <div class="container">
         <div class="header">
@@ -24,7 +19,7 @@
                 <div class="input-container">
                     <input type="text" id="fornecedor" class="input-field" placeholder="Fornecedor" required>
                     <button class="plus-icon" onclick="add()">&#43;</button>
-                </div>
+            </div>
 
                 <!-- Campo Produto com ícone de pesquisa -->
                 <label for="produto"></label>
@@ -60,7 +55,7 @@
             <!-- Botões -->
             <div class="buttons">
                 <button class="new" onclick="habilitarCampos()">Novo</button>
-                <a href="" class="search-link">
+                <a href="Busca.html" class="search-link">
                     <button class="search">Buscar</button>
                 </a>
                 <button class="edit">Alterar</button>
@@ -96,7 +91,7 @@
 
     <!-- Rodapé -->
     <div class="footer">
-        <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Home Page\home.html" class="search-link">
+        <a href="../../Home Page/HTML/home.html" class="search-link">
             <button class="exit">Sair</button>
         </a>
         <div class="logo">
@@ -111,21 +106,6 @@
             document.getElementById('quantidade').disabled = false;
             document.getElementById('custo').disabled = false;
             document.getElementById('venda').disabled = false;
-        }
-
-        function searchCodigo() {
-            // Redireciona para a página de pesquisa de código
-            window.location.href = "Produto.html";
-        }
-
-        function searchProduto() {
-            // Lógica de pesquisa para o campo Produto
-            window.location.href = "Produto.html";
-        }
-
-        function searchLocal() {
-            // Lógica de pesquisa para o campo Local de Destino
-            window.location.href = "Local.html";
         }
     </script>
 </body>

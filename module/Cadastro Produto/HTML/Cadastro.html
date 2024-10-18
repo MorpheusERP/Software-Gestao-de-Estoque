@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada de Produtos - Busca/Entrada</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro</h1>
+    </div>
+    <div class="container">
+    
+        <div class="form">
+                <div class="buttons">
+                    <button class="new" onclick="habilitarCampos()">Novo</button>
+
+                    <button class="search">Buscar</button>
+                
+                    <button class="edit">Alterar</button>
+                </div>
+
+            <div class="image-placeholder">
+                <img src="../../Entrada de Produtos/Fotos/Icone.png" alt="Imagem do Produto">
+            </div>
+            <!-- Campo Código com ícone de pesquisa -->
+            <label for="codigo"></label>
+            <div class="input-container">
+                <input type="number" id="codigo" class="input-field" placeholder="Código" required disabled>
+            </div>
+            <div class="input-container" style="margin-bottom: 25px;">
+                <input type="text" id="produto" class="input-field" placeholder="Produto" required disabled>
+            </div>
+            <div class="container2">
+                    <div class="coluna1">
+                        <select id="tipoQuantidade" required disabled>
+                        <option value="" disabled selected>Selecione o tipo</option>
+                        <option value="Kilos">Kilos</option>
+                        <option value="Caixas">Caixas</option>
+                        <option value="Unidades">Unidades</option>
+                        <option value="Sacos">Sacos</option>
+                        </select>
+        
+                        <input type="number" id="Custo" placeholder="Custo" required disabled>
+                        <input type="text" id="Grupo" placeholder="Grupo" required disabled>
+                    </div>
+                    <div class="coluna2">
+                        <input type="number" id="Barras" placeholder="Cod. de Barras" required disabled>
+                        <input type="number" id="Venda" placeholder="Preço de Venda" required disabled>
+                        <input type="text" id="SubGrupo" placeholder="SubGrupo" required disabled>
+                    </div>
+            </div>
+            <div class="observacoes">
+                <textarea id="observacoes" placeholder="Observações" disabled></textarea>
+            </div>    
+
+            <footer>
+                <div class="buttons-folder">
+                    
+                    <a href="../../Home Page/HTML/home.html">
+                        <button class="search">Sair</button>
+                    </a>
+                
+                
+                    <button class="edit">Alterar</button>
+                </div>
+            </footer>
+           
+
+        <script>
+              // Função para habilitar os campos bloqueados
+        function habilitarCampos() {
+            document.getElementById("codigo").disabled = false;
+            document.getElementById("produto").disabled = false;
+            document.getElementById("tipoQuantidade").disabled = false;
+            document.getElementById("Custo").disabled = false;
+            document.getElementById("Grupo").disabled = false;
+            document.getElementById("Barras").disabled = false;
+            document.getElementById("Venda").disabled = false;
+            document.getElementById("SubGrupo").disabled = false;
+            document.getElementById("observacoes").disabled = false;
+        }
+        </script>
+
+</body>
+</html>
