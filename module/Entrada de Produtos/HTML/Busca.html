@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada de Produtos - Busca/Entrada</title>
+    <link rel="stylesheet" href="../CSS/Busca.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Busca/Entrada</h1>
+        </div>
+
+        <div class="form-container">
+            <label for="periodo">Período</label>
+            <div class="Calendario">
+                <div class="input-group">
+                    <label for="start-date"></label>
+                    <input type="date" id="start-date" name="start-date">
+                </div>
+            
+                <div class="input-group">
+                    <label for="end-date"></label>
+                    <input type="date" id="end-date" name="end-date">
+                </div>
+            </div>
+            <div class="form">
+                <div class="input-with-button">
+                    <!-- Fornecedor -->
+                    <label for="fornecedor">Fornecedor:</label>
+                    <div class="input-container">
+                        <input type="text" id="fornecedor" placeholder="Fornecedor" required>
+                        <a href="fornecedor.html" class="search-link" style="text-decoration: none;">
+                            <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                        </a>
+                    </div>
+
+                    <!-- Produto -->
+                    <label for="produto">Produto:</label>
+                    <div class="input-container">
+                        <input type="text" id="produto" placeholder="Produto" required>
+                        <a href="Produto.html" class="search-link" style="text-decoration: none;">
+                            <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Grupo e SubGrupo com botões de pesquisa -->
+                <div class="GrupoSubGrupo">
+                    <div class="input-group">
+                        <label for="grupo">Grupo:</label>
+                        <div class="input-container">
+                            <input type="number" id="grupo" name="grupo" placeholder="Grupo" required>
+                            <a href="SubGrupo.html" class="search-link" style="text-decoration: none;">
+                                <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="subgrupo">SubGrupo:</label>
+                        <div class="input-container">
+                            <input type="number" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
+                            <a href="SubGrupo.html" class="search-link" style="text-decoration: none;">
+                                <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons" style="width: 40%; margin-left: 30%;">
+                <button class="search">Buscar</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Período</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <!-- Adicionar mais linhas conforme necessário -->
+                </tbody>
+            </table>
+        </div> 
+    </div>
+    <div class="footer">
+        <a href="Entrada.html"search-link">
+            <button class="exit">Voltar</button>
+        </a>
+        <div class="logo">
+            <img src="../Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        </div>
+    </div>
+    <script>
+        function searchCodigo() {
+                // Redireciona para a página de pesquisa de código
+                window.location.href = "";
+            }
+
+            function searchProduto() {
+                // Lógica de pesquisa para o campo Produto
+                window.location.href = "";
+            }
+
+            function searchLocal() {
+                // Lógica de pesquisa para o campo Local de Destino
+                window.location.href = "";
+            }
+    </script>
+   
+</body>
+</html>

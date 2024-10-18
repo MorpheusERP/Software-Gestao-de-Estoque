@@ -42,8 +42,8 @@
 
                 <label for="quantidade">Quantidade:</label>
                 <div class="quantidade-container">
-                  <input type="number" id="quantidade" placeholder="Quantidade" required>
-                  <select id="tipoQuantidade" required>
+                  <input type="number" id="quantidade" placeholder="Quantidade" required disabled>
+                  <select id="tipoQuantidade" required disabled>
                     <option value="" disabled selected>Selecione o tipo</option>
                     <option value="Kilos">Kilos</option>
                     <option value="Caixas">Caixas</option>
@@ -51,14 +51,14 @@
                     <option value="Sacos">Sacos</option>
                   </select>
                 </div>
-
+                
                 <label for="observacoes">Observações:</label>
-                <textarea id="observacoes" placeholder="Observações"></textarea>
+                <textarea id="observacoes" placeholder="Observações" disabled></textarea>
             </div>
 
             <div class="buttons">
-                <button class="new">Novo</button>
-                <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Saida de Produtos\Buscar.html" class="search-link">
+                <button class="new" onclick="habilitarCampos()">Novo</button>
+                <a href="../HTML/Buscar.html" class="search-link">
                     <button class="search">Buscar</button>
                 </a>
                 <button class="edit">Alterar</button>
@@ -87,7 +87,7 @@
         </div> 
     </div>
     <div class="footer">
-        <a href="C:\Users\pablo.lopes\Desktop\Morphues\Software-Gestao-de-Estoque\Modulo Home Page\home.html" class="search-link">
+        <a href="../../Home Page/HTML/home.html" class="search-link">
             <button class="exit">Sair</button>
         </a>
         <div class="logo">
@@ -96,19 +96,26 @@
     </div>
 
     <script>
-       function searchCodigo() {
-    // Redireciona para a página de pesquisa de código
+        // Função para habilitar os campos bloqueados
+        function habilitarCampos() {
+            document.getElementById("quantidade").disabled = false;
+            document.getElementById("tipoQuantidade").disabled = false;
+            document.getElementById("observacoes").disabled = false;
+        }
+
+        function searchCodigo() {
+            // Redireciona para a página de pesquisa de código
             window.location.href = "Produto.html";
-}
+        }
 
         function searchProduto() {
             // Lógica de pesquisa para o campo Produto
-            window.location.href = "Produto.html"
+            window.location.href = "Produto.html";
         }
 
         function searchLocal() {
             // Lógica de pesquisa para o campo Local de Destino
-            window.location.href = "Local.html"
+            window.location.href = "Local.html";
         }
     </script>
 </body>
