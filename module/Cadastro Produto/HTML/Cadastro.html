@@ -16,9 +16,9 @@
                 <div class="buttons">
                     <button class="new" onclick="habilitarCampos()">Novo</button>
 
-                    <button class="search">Buscar</button>
-                
-                    <button class="edit">Alterar</button>
+                    <button class="search" onclick="window.location.href='Produto.html'">Buscar</button>
+
+                    <button class="edit" onclick="salvarInformacoes()">Alterar</button>
                 </div>
 
             <div class="image-placeholder">
@@ -42,7 +42,7 @@
                         <option value="Sacos">Sacos</option>
                         </select>
         
-                        <input type="number" id="Custo" placeholder="Custo" required disabled>
+                        <input type="number" id="Custo" placeholder="Preço de Custo" required disabled>
                         <input type="text" id="Grupo" placeholder="Grupo" required disabled>
                     </div>
                     <div class="coluna2">
@@ -54,20 +54,26 @@
             <div class="observacoes">
                 <textarea id="observacoes" placeholder="Observações" disabled></textarea>
             </div>    
+        </div>
+        
+    </div>
+    <footer>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="../../Home Page/HTML/home.html">
+                    <button class="search">Sair</button>
+                </a>
+            </div>
 
-            <footer>
-                <div class="buttons-folder">
-                    
-                    <a href="../../Home Page/HTML/home.html">
-                        <button class="search">Sair</button>
-                    </a>
-                
-                
-                    <button class="edit">Alterar</button>
-                </div>
-            </footer>
-           
-
+            <div class="buttons-edit">
+                <button class="edit">Salvar</button>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="logo">
+        <img src="../Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+    </div>
         <script>
               // Função para habilitar os campos bloqueados
         function habilitarCampos() {

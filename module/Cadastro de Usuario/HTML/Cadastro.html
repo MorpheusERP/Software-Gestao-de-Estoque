@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuario</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro</h1>
+    </div>
+    <div class="container">
+        <div class="form">
+            <div class="buttons" id="default-buttons">
+                <button class="new" onclick="novo()">Novo</button>
+                <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
+                <button class="edit" onclick="alter">Alterar</button>
+            </div>
+            <div class="buttons" id="new-button" style="display: none;">
+                <button class="back" onclick="voltar()">Voltar</button>
+            </div>
+            <div class="Conteudo">
+                <select id="nivel" required disabled>
+                    <option value="" disabled selected>* Nível de Usuário</option>
+                    <option value="Padrao">Padrão</option>
+                    <option value="Adm">Administrador</option>
+                </select>
+                <input type="text" id="nome" class="input-field" placeholder="* Nome" required disabled>
+                <input type="text" id="sobrenome" class="input-field" placeholder="* Sobrenome" required disabled>
+                <input type="text" id="funcao" class="input-field" placeholder="* Função" required disabled>
+                <input type="text" id="login" class="input-field" placeholder="* Login" required disabled>
+                <input type="text" id="senha" class="input-field" placeholder="* Senha" required disabled>
+            </div>
+        </div>
+    </div>
+    <footer>
+            <div class="BotoesFooter">
+                <div class="buttons-search">
+                    <a href="../../Home Page/HTML/home.html">
+                        <button class="search">Sair</button>
+                    </a>
+                </div>
+
+                <div class="buttons-edit" id="edit-buttons" style="display: none;">
+                    <button class="edit">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="logo">
+        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+    </div>
+    <script>
+        function novo() {
+        document.getElementById('default-buttons').style.display = 'none';
+        document.getElementById('new-button').style.display = 'flex'; // Usa flex para manter o layout
+        document.getElementById('edit-buttons').style.display = 'flex';
+        habilitarCampos(); // Função existente para habilitar campos do formulário
+    }
+
+        function voltar() {
+            document.getElementById('new-button').style.display = 'none';
+            document.getElementById('default-buttons').style.display = 'flex'; // Volta os botões para o layout original
+            document.getElementById('edit-buttons').style.display = 'none';
+            desabilitarCampos(); // Função existente para desabilitar campos do formulário
+        }
+        function habilitarCampos() {
+            document.getElementById('nivel').disabled = false;
+            document.getElementById('nome').disabled = false;
+            document.getElementById('sobrenome').disabled = false;
+            document.getElementById('funcao').disabled = false;
+            document.getElementById('login').disabled = false;
+            document.getElementById('senha').disabled = false;
+        }
+
+        function desabilitarCampos() {
+            document.getElementById('nivel').disabled = true;
+            document.getElementById('nome').disabled = true;
+            document.getElementById('sobrenome').disabled = true;
+            document.getElementById('funcao').disabled = true;
+            document.getElementById('login').disabled = true;
+            document.getElementById('senha').disabled = true;
+        }
+    </script>
+</body>
+</html>

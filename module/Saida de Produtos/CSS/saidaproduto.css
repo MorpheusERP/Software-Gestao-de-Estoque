@@ -125,11 +125,13 @@ textarea {
     font-weight: bold;
     flex-grow: 1;
     margin: 0 5px;
+    width: 100px;
 }
 
 .buttons button:hover {
     background-color: #e6b800;
 }
+
 
 .table-container {
     padding: 20px;
