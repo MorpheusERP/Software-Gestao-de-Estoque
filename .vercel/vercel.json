@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "module/Autenticação/HTML/login.html" }
+  ]
+}
