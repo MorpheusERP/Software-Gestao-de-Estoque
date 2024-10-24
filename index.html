@@ -6,42 +6,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRP-Login</title>
-    <link rel="shortcut icon" href="Imagens/logo.png" />
-    <link rel="stylesheet" href="login.css">
+    <link rel="shortcut icon" href="Frontend/Imagens/logo.png" />
+    <link rel="stylesheet" href="Frontend/Autenticação/CSS/login.css">
+    <script>
+        async function fazerLogin(event) {
+            event.preventDefault(); // Evita o envio do formulário padrão
+
+            // Obtém os valores de login e senha
+            const login = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+
+            // Cria um objeto com os dados do login
+            const dadosLogin = {
+                login: login,
+                senha: senha
+            };
+
+            try {
+                // Faz uma requisição POST ao servidor PHP
+                const response = await fetch('login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosLogin) // Envia os dados como JSON
+                });
+
+                // Aguarda a resposta do servidor
+                const result = await response.json();
+
+                // Verifica o status da resposta
+                if (result.success) {
+                    if (result.userType === 'administrador') {
+                        // Redireciona para a página de administrador
+                        window.location.href = "home.html";
+                    } else if (result.userType === 'padrao') {
+                        // Redireciona para a página de usuário padrão
+                        window.location.href = "homepadrao.html";
+                    }
+                } else {
+                    alert("Login ou senha incorretos!");
+                }
+            } catch (error) {
+                console.error("Erro ao fazer login:", error);
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="FundoLogin">
         <div class="Conteudo">
             <div class="perfil" style="margin-top: 0px; padding: 42px;">
-                <img src="module/Autenticação/Imagens/Usuario.png" alt="perfil">
+                <img src="Frontend/Autenticação/Imagens/Usuario.png" alt="perfil">
             </div>
             
-            <form action="processar_login.php" method="post">
+            <form onsubmit="fazerLogin(event)">
                 <div class="label"></div>
-                <input type="text" name="nome" class="input-field" placeholder="Nome" required />
+                <input type="text" id="login" name="nome" class="input-field" placeholder="Nome" required />
                 
                 <div class="label"></div>
-                <input type="password" name="senha" class="input-field" placeholder="Senha" required />
+                <input type="password" id="senha" name="senha" class="input-field" placeholder="Senha" required />
 
                 <div class="EsqueciSenha">
                     <div class="Cadeado">
-                        <img src="module/Autenticação/Imagens/cadeado.png" alt="cadeado">
+                        <img src="Frontend/Autenticação/Imagens/cadeado.png" alt="cadeado">
                     </div>
                     <div class="EsqueciSenha">
-                        <a href="module/Autenticação/HTML/Redefinir.html" class="link">Esqueci minha senha</a>
+                        <a href="Frontend/Autenticação/HTML/Redefinir.html" class="link">Esqueci minha senha</a>
                     </div>
                 </div>
 
                 <div class="botaoDiv">
-                    <button type="submit" class="botao"> <div class="textoentrar">Entrar</div> </button>
+                        <!--envia o formulario de login -->
+                        <button type="submit" class="botao">Entrar</button>
+                    </a>
                 </div>
             </form>
 
-            <?php include 'sql/db_connect.php'; ?>
-            
-
             <div class="Emporio">
-                <img src="module/Autenticação/Imagens/Emporio maxx s-fundo.png" alt="Emporio">
+                <img src="Frontend/Autenticação/Imagens/Emporio maxx s-fundo.png" alt="Emporio">
             </div>
         </div>
     </div>
