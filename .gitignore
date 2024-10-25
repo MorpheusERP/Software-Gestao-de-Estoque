@@ -1,0 +1,5 @@
+#Conexão vercel
+.vercel/
+
+#Conexão local vscode
+.vscode/
