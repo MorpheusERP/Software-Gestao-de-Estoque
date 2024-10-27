@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Alinha os elementos na vertical */
+}
+
+.date-inputs {
+    margin-bottom: 10px; /* Ajusta a margem para o espaço entre as caixas e o calendário */
+}
+
+.date-inputs input {
+    width: 150px;
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #65558F;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: none; /* Inicialmente escondido */
+}
+
+.month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #3b295e;
+}
+
+.month-year-container {
+    display: flex;
+    align-items: center;
+    color: #49454F;
+}
+
+#month-year {
+    font-size: 18px;
+}
+
+.year-dropdown {
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #49454F;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.navigation-arrows button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #49454F;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 20px;
+}
+
+.calendar-grid .day-name {
+    font-weight: bold;
+    color: #1D1B20;
+}
+
+.calendar-grid div {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    color: #1D1B20;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-grid div:hover {
+    background-color: #dedede;
+}
+
+/* Estilo para a data inicial (círculo com borda roxa) */
+.calendar-grid .start-date {
+    border: 2px solid #65558F;
+    color: black;
+}
+
+/* Estilo para a data final (círculo preenchido com roxo) */
+.calendar-grid .end-date {
+    background-color: #65558F;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* Adiciona espaçamento acima dos botões */
+}
+
+.buttons-right {
+    display: flex;
+    align-items: center;
+}
+
+.buttons-right button {
+    background: none;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.buttons-right button:hover {
+    color: #65558F;
+}
+
+#delete {
+    background: none;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+#delete:hover {
+    color: #65558F;
+}
+
+#cancel {
+    margin-right: 30px; /* Adiciona margem à direita do botão "Cancelar" */
+}
+
+.year-selector {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 5px;
+    width: 80px;
+    max-height: 200px; /* Limita a altura do seletor */
+    overflow-y: auto;  /* Permite rolagem vertical */
+}
+
+.year-option {
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    color: #49454F;
+}
+
+.year-option:hover {
+    background-color: #dedede;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .calendar-container {
+        width: 95%;
+    }
+
+    #month-year {
+        font-size: 16px;
+    }
+}

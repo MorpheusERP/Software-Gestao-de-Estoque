@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calenda.css">
+    <title>Calendário de Seleção de Período</title>
+</head>
+<body>
+    <div class="date-inputs">
+        <input type="text" id="start-date" readonly placeholder="Data Início">
+        <input type="text" id="end-date" readonly placeholder="Data Fim">
+    </div>
+    
+    <div class="calendar-container" style="display: none;">
+        <div class="month-nav">
+            <div class="month-year-container">
+                <span id="month-year">Agosto 2023</span>
+                <span class="year-dropdown" id="year-dropdown">&#x25BC;</span>
+            </div>
+            <div class="navigation-arrows">
+                <button id="prev-month">&lt;</button>
+                <button id="next-month">&gt;</button>
+            </div>
+        </div>
+        <div class="year-selector" id="year-selector">
+            <!-- Anos serão adicionados dinamicamente via JavaScript -->
+        </div>
+        <div class="calendar-grid">
+            <div class="day-name">Seg</div>
+            <div class="day-name">Ter</div>
+            <div class="day-name">Qua</div>
+            <div class="day-name">Qui</div>
+            <div class="day-name">Sex</div>
+            <div class="day-name">Sáb</div>
+            <div class="day-name">Dom</div>
+            <!-- Os dias do mês serão adicionados aqui via JavaScript -->
+        </div>
+        <div class="buttons">
+            <button id="delete">Excluir</button>
+            <div class="buttons-right">
+                <button id="cancel">Cancelar</button>
+                <button id="ok">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="calenda.js"></script>
+</body>
+</html>
