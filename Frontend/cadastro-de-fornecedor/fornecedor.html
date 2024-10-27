@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuario</title>
+    <link rel="stylesheet" href="fornecedor.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro de Fornecedor</h1>
+    </div>
+    <div class="container">
+        <div class="form">
+            <div class="buttons" id="default-buttons">
+                <button class="new default-buttons-btn" onclick="novo()">
+                    <img src="assets/+.svg" alt="Ícone Novo" class="icon">
+                    Novo
+                </button>
+            
+                <button class="search default-buttons-btn" onclick="window.location.href='Buscaforn.html'">
+                    <img src="assets/lupa.svg" alt="Ícone Buscar" class="icon">
+                    Buscar
+                </button>
+            
+                <button class="edit default-buttons-btn" onclick="alter()">
+                    <img src="assets/lapis.svg" alt="Ícone Alterar" class="icon">
+                    Alterar
+                </button>
+            </div>
+            
+            <div class="buttons" id="new-button" style="display: none;">
+                <button class="back" onclick="voltar()">Voltar</button>
+            </div>
+            <div class="Conteudo">
+                <input type="text" id="razaosocial" class="input-field" placeholder="* Razão Social" required disabled>
+                <input type="text" id="nomefantasia" class="input-field" placeholder="* Nome Fantasia" required disabled>
+                <input type="text" id="apelido" class="input-field" placeholder="* Apelido" required disabled>
+                <input type="text" id="grupo" class="input-field" placeholder="* Grupo" required disabled>
+                
+                <!-- Alterado de input para textarea com limite de 1200 caracteres -->
+                <textarea id="observações" class="input-field" placeholder="* Observações" maxlength="100" required disabled></textarea>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="../../Home Page/HTML/home.html">
+                    <button class="search">Sair</button>
+                </a>
+            </div>
+
+            <div class="buttons-edit" id="edit-buttons" style="display: none;">
+                <button class="edit">Salvar</button>
+            </div>
+        </div>
+    </footer>
+    <div class="logo">
+        <img src="assets/Emporio maxx s-fundo 1.svg" alt="Empório Maxx Logo">
+    </div>
+    
+    <script>
+        function novo() {
+            document.getElementById('default-buttons').style.display = 'none';
+            document.getElementById('new-button').style.display = 'flex'; // Usa flex para manter o layout
+            document.getElementById('edit-buttons').style.display = 'flex';
+            habilitarCampos(); // Função existente para habilitar campos do formulário
+        }
+
+        function voltar() {
+            document.getElementById('new-button').style.display = 'none';
+            document.getElementById('default-buttons').style.display = 'flex'; // Volta os botões para o layout original
+            document.getElementById('edit-buttons').style.display = 'none';
+            desabilitarCampos(); // Função existente para desabilitar campos do formulário
+        }
+
+        function habilitarCampos() {
+            document.getElementById('razaosocial').disabled = false;
+            document.getElementById('nomefantasia').disabled = false;
+            document.getElementById('apelido').disabled = false;
+            document.getElementById('grupo').disabled = false;
+            document.getElementById('observações').disabled = false;
+        }
+
+        function desabilitarCampos() {
+            document.getElementById('razaosocial').disabled = true;
+            document.getElementById('nomefantasia').disabled = true;
+            document.getElementById('apelido').disabled = true;
+            document.getElementById('grupo').disabled = true;
+            document.getElementById('observações').disabled = true;
+        }
+
+        // Exibe no console os caracteres restantes (opcional)
+        document.getElementById('observações').addEventListener('input', function () {
+            const remaining = 1200 - this.value.length;
+            console.log("Caracteres restantes: " + remaining);
+        });
+    </script>
+</body>
+</html>
