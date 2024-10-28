@@ -69,6 +69,13 @@ button:hover {
     background-color: #e6b800;
 }
 
+.input-container{
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
+}
+
 .buttons, .buttons-search, .buttons-edit {
     display: flex;
     justify-content: center;

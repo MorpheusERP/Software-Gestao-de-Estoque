@@ -100,6 +100,29 @@ body {
     line-height: 100%; /* 16px */
 
 }
+.bordalogin, .bordasenha {
+    display: flex;
+    width: 100%; /* Ajustado para ocupar toda a largura disponível */
+    border-radius: 24px;
+    background: #E6E0E9;
+}
+
+.inputField {
+    width: 100%; /* Ocupar toda a largura disponível */
+    height: 45px; /* Altura do campo */
+    padding: 20px; /* Adiciona um pouco de padding */
+    border: none; /* Remove a borda padrão */
+    border-radius: 24px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    color: #49454F; /* Cor do texto */
+    text-align: center; /* Texto no centro */
+}
+
+/* Remove o contorno padrão quando o input está em foco */
+.inputField:focus {
+    outline: none; /* Remove a borda de foco padrão */
+}
+
 
 .botaoDiv {
     display: flex;
@@ -140,4 +163,36 @@ body {
     width: 238px;
     height: 175px;
     flex-shrink: 0;
+}
+
+.input-container {
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 40px; /* Adiciona espaço para o ícone à direita */
+}
+
+.toggle-visibility {
+    position: absolute;
+    right: 10px; /* Posiciona o ícone à direita dentro do input */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
