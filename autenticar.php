@@ -1,4 +1,5 @@
 <?php
+//Para executar esse arquivo é necessário alterar as credencais de conexão com o banco de dados
 header('Content-Type: application/json'); // Define o cabeçalho para JSON
 
 error_reporting(E_ALL); // Relatar todos os erros
