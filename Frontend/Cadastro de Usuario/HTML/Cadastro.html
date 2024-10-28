@@ -4,58 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuario</title>
-    <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <link rel="stylesheet" href="/Frontend/Cadastro de Usuario/CSS/Cadastro.css">
+    <script>
+        async function cadastrarUsuario(event) {
+            // Obtem os valores dos campos
+            const nivel_Usuario = document.getElementById('nivel').value;
+            const nome_Usuario = document.getElementById('nome').value;
+            const sobrenome = document.getElementById('sobrenome').value;
+            const funcao = document.getElementById('funcao').value;
+            const login = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+
+            
+            // Cria um objeto com os dados do usuario
+            const dadosCadastro = {
+                nivel_Usuario: nivel_Usuario,
+                nome_Usuario: nome_Usuario,
+                sobrenome: sobrenome,
+                funcao: funcao,
+                login: login,
+                senha: senha
+            };
+
+            // Envia os dados usando fetch
+            try {
+                const response = await fetch('processaCadastro.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({dadosCadastro})
+                });
+
+                // Aguarda e recebe a resposta do servidor
+                const resultado = await response.json();
+                
+                // Mostra a resposta no HTML
+                document.getElementById('resultado').innerText = resultado.message;
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+            }
+        }
+    </script>
+
+    <script>
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "number";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="header">
         <h1>Cadastro</h1>
     </div>
-    <div class="container">
-        <div class="form">
-            <div class="buttons" id="default-buttons">
-                <button class="new" onclick="novo()">Novo</button>
-                <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
-                <button class="edit" onclick="alter">Alterar</button>
-            </div>
-            <div class="buttons" id="new-button" style="display: none;">
-                <button class="back" onclick="voltar()">Voltar</button>
-            </div>
-            <div class="Conteudo">
-                <select id="nivel" required disabled>
-                    <option value="" disabled selected>* Nível de Usuário</option>
-                    <option value="Padrao">Padrão</option>
-                    <option value="Adm">Administrador</option>
-                </select>
-                <input type="text" id="nome" class="input-field" placeholder="* Nome" required disabled>
-                <input type="text" id="sobrenome" class="input-field" placeholder="* Sobrenome" required disabled>
-                <input type="text" id="funcao" class="input-field" placeholder="* Função" required disabled>
-                <input type="text" id="login" class="input-field" placeholder="* Login" required disabled>
-                <input type="text" id="senha" class="input-field" placeholder="* Senha" required disabled>
+    <form onsubmit="cadastarUsuario(event)">
+        <div class="container">
+            <div class="form">
+                <div class="buttons" id="default-buttons">
+                    <button class="new" onclick="novo()">Novo</button>
+                    <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
+                    <button class="edit" onclick="alter">Alterar</button>
+                </div>
+                <div class="Conteudo">
+                    <div class="buttons" id="new-button" style="display: none;">
+                        <button class="back" onclick="voltar()">Voltar</button>
+                    </div>
+
+                    <select id="nivel" required disabled>
+                        <option value="" disabled selected>* Nível de Usuário</option>
+                        <option value="Padrao">Padrão</option>
+                        <option value="Adm">Administrador</option>
+                    </select>
+                    <input type="text" id="nome" class="input-field" placeholder="* Nome" required disabled>
+                    <input type="text" id="sobrenome" class="input-field" placeholder="Sobrenome" required disabled>
+                    <input type="text" id="funcao" class="input-field" placeholder="* Função" required disabled>
+                    <input type="text" id="login" class="input-field" placeholder="* Login" required disabled>
+                    <div class="input-container" id="show-password" style="display: none;">
+                        <input type="password" id="senha" class="input-field" placeholder="* Senha" required disabled>
+                        <button type="menu" id="show-password" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
+                    </div>
+
+                    <div class="buttons-edit"  type="submit" id="edit-buttons" style="display: none;">
+                        <button class="edit">Salvar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <footer>
-            <div class="BotoesFooter">
-                <div class="buttons-search">
-                    <a href="../../Home Page/HTML/home.html">
-                        <button class="search">Sair</button>
-                    </a>
-                </div>
-
-                <div class="buttons-edit" id="edit-buttons" style="display: none;">
-                    <button class="edit">Salvar</button>
-                </div>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="/home.html">
+                   <button class="search">Sair</button>
+                </a>
             </div>
+
+           <div class="buttons-edit" id="edit-buttons" style="display: none;">
+                <button class="edit">Salvar</button>
+           </div>
         </div>
     </footer>
     <div class="logo">
-        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        <img src="/Frontend/Cadastro de Usuario/Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
     </div>
     <script>
         function novo() {
         document.getElementById('default-buttons').style.display = 'none';
         document.getElementById('new-button').style.display = 'flex'; // Usa flex para manter o layout
         document.getElementById('edit-buttons').style.display = 'flex';
+        document.getElementById('show-password').style.display = 'flex';
         habilitarCampos(); // Função existente para habilitar campos do formulário
     }
 
@@ -63,6 +125,7 @@
             document.getElementById('new-button').style.display = 'none';
             document.getElementById('default-buttons').style.display = 'flex'; // Volta os botões para o layout original
             document.getElementById('edit-buttons').style.display = 'none';
+            document.getElementById('show-password').style.display = 'none';
             desabilitarCampos(); // Função existente para desabilitar campos do formulário
         }
         function habilitarCampos() {
