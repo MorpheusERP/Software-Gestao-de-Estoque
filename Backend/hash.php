@@ -16,12 +16,12 @@ if ($mysqli->connect_error) {
 // echo "Conexão bem-sucedida!";
 
 // Dados do usuário (esses dados geralmente viriam de um formulário)
-$nivel_Usuario = "padrao";
-$nome_Usuario = "Pablo";
+$nivel_Usuario = "admin";
+$nome_Usuario = "Vitor";
 $sobrenome = "Henrique";
 $funcao = "Repositor";
-$login = "Pablo";
-$senha = "4321";
+$login = "VT";
+$senha = "12345";
 
 $mysqli = new mysqli($host, $user, $password, $database);
 
