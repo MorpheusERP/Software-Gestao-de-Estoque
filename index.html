@@ -33,7 +33,7 @@
                 </div> 
                 <br>
                 <div class="input-container">
-                    <input type="password" pattern="[0-9]*" id="senha" placeholder="Senha" class="inputField">
+                    <input type="password" maxlength="4" pattern="[0-9]*" id="senha" placeholder="Senha" class="inputField" required>
                     <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
                 </div>
                 
@@ -69,7 +69,7 @@
             const senha = document.getElementById('senha').value;
 
             // Envia os dados de login e senha para o arquivo PHP
-            fetch('autenticar.php', {
+            fetch('Backend/Autenticação/autenticar.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

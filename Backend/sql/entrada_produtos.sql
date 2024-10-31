@@ -9,7 +9,7 @@ CREATE TABLE entradas (
     id_Estoque INT(11) NOT NULL,
     qtd_Entrada FLOAT NOT NULL,
     preco_Custo DOUBLE NOT NULL,
-    sub_Grupo VARCHAR(120) NOT NULL,
+    sub_Grupo VARCHAR (120) NOT NULL,
     valor_Total DOUBLE NOT NULL,
     data_Entrada DATE NOT NULL
 );
