@@ -11,25 +11,19 @@ ini_set('display_errors', 1); // Exibir erros
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$nivel_Usuario = $data['nivel'];
-$nome_Usuario = $data['nome'];
-$sobrenome = $data['sobrenome'];
-$funcao = $data['funcao'];
-$login = $data['login'];
-$senha = $data['senha'];
+$tipo_Local = $data['tipo_Local'];
+$nome_Local = $data['nome_Local'];
+$observacao = $data['observacao'];
 
-// Criptografa a senha usando password_hash
-$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-// Verifica se o usuário já existe
-$sqlCheck = "SELECT * FROM usuario WHERE login = ?";
+// Verifica se o local já existe
+$sqlCheck = "SELECT * FROM local_destino WHERE nome_Local = ?";
 $stmtCheck = $mysqli->prepare($sqlCheck);
-$stmtCheck->bind_param("s", $login);
+$stmtCheck->bind_param("s", $nome_Local);
 $stmtCheck->execute();
 $resultCheck = $stmtCheck->get_result();
 
 if ($resultCheck->num_rows > 0) {
-    echo json_encode(["status" => "erro", "mensagem" => "Erro: Usuário já cadastrado."]);
+    echo json_encode(["status" => "erro", "mensagem" => "Erro: Local já cadastrado."]);
     $stmtCheck->close();
     $mysqli->close();
     exit();
@@ -37,7 +31,7 @@ if ($resultCheck->num_rows > 0) {
 $stmtCheck->close(); // Fecha o statement do SELECT para liberar a próxima operação
 
 // Consulta SQL para inserir o usuário
-    $sql = "INSERT INTO usuario (nivel_Usuario, nome_Usuario, sobrenome, funcao, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO local_destino (tipo_Local, nome_Local, observacao) VALUES (?, ?, ?)";
 
     // Prepara a declaração para evitar injeção de SQL
     $stmt = $mysqli->prepare($sql);
@@ -47,9 +41,9 @@ $stmtCheck->close(); // Fecha o statement do SELECT para liberar a próxima oper
     }
 
     // Associa os parâmetros e executa a declaração
-    $stmt->bind_param("ssssss", $nivel_Usuario, $nome_Usuario, $sobrenome, $funcao, $login, $senhaHash);
+    $stmt->bind_param("sss", $tipo_Local, $nome_Local, $observacao);
     $stmt->execute();
-    echo json_encode(["status" => "sucesso", "mensagem" => "Usuário adicionado com sucesso!".$stmt->error]);
+    echo json_encode(["status" => "sucesso", "mensagem" => "Local adicionado com sucesso!".$stmt->error]);
 
 // Fecha a conexão com o banco de dados
 $stmt->close();

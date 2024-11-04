@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Fornecedor</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <script>
+        //Função para verificar se o usuário está logado
+    function verificarLogin() {
+            fetch('../../../Backend/verificalogin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.logado) {
+                        // Redireciona para a página de login se não estiver logado
+                        window.location.href = '../../../index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar autenticação:", error);
+                });
+            }
+
+        // Executa a função quando a página é carregada
+        document.addEventListener("DOMContentLoaded", verificarLogin);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro de Fornecedor</h1>
+    </div>
+        <div class="container">
+            <div class="form">
+                <div class="buttons" id="default-buttons">
+                    <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
+                </div>
+                <div class="Conteudo">
+                    <div class="buttons" id="new-button">
+                        <button class="back" onclick="window.location.href='Cadastro.html'">Voltar</button>
+                    </div>
+                    <form id="cadastroForm">
+                        <input type="text" id="razao" class="input-field" maxlength="150" placeholder="* Razão Social:">
+                        <input type="text" id="fantasia" class="input-field" maxlength="50" placeholder="Nome Fantasia: ">
+                        <input type="text" id="apelido" class="input-field" maxlength="50" placeholder="Apelido: ">
+                        <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: ">
+                        <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: ">
+                        <input type="text" id="observacao" class="input-field" maxlength="150" placeholder="Observações: ">
+        
+                        <div class="buttons-edit" id="edit-buttons">
+                            <button class="edit" type="submit">Salvar</button>
+                        </div>
+                    </form>
+                        <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
+                        <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>
+                </div>
+            </div>
+        </div>
+
+
+    <footer>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="../../../home.html">
+                   <button class="search">Sair</button>
+                </a>
+            </div>
+    </footer>
+    <div class="logo">
+        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+    </div>
+
+    <script>
+  // Obtem o ID do usuário da URL
+  const params = new URLSearchParams(window.location.search);
+  const id_Fornecedor = params.get('id_Fornecedor');
+
+  // Preenche o formulário com os dados do usuário
+  fetch(`../../../Backend/CadastroFornecedor/buscarfornecedor.php?id_Fornecedor=${id_Fornecedor}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          document.getElementById('razao').value = data.razao_Social;
+          document.getElementById('fantasia').value = data.nome_Fantasia;
+          document.getElementById('apelido').value = data.apelido;
+          document.getElementById('grupo').value = data.grupo;
+          document.getElementById('subgrupo').value = data.sub_Grupo;
+          document.getElementById('observacao').value = data.observacao;
+      })
+      .catch(error => console.error('Erro ao carregar dados do Fornecedor:', error));
+
+  // Evento para enviar as alterações
+    document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+      const formData = {
+          id_Fornecedor,
+          razao_Social: document.getElementById('razao').value,
+          nome_Fantasia: document.getElementById('fantasia').value,
+          apelido: document.getElementById('apelido').value,
+          grupo: document.getElementById('grupo').value,
+          sub_Grupo: document.getElementById('subgrupo').value,
+          observacao: document.getElementById('observacao').value,
+      };
+
+      fetch('../../../Backend/CadastroFornecedor/atualizarfornecedor.php', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'sucesso') {
+            document.getElementById('mensagemSucesso').innerText = data.mensagem;
+          }
+          else if (data.status === 'erro'){
+            // Exibe mensagem de erro se houver falha
+            document.getElementById('mensagemErro').innerText = data.mensagem;
+        }
+      });
+    })
+    </script>
+
+</body>
+</html>

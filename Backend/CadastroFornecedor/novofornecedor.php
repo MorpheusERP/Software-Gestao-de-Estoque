@@ -1,6 +1,6 @@
 <?php
 
-//Este arquivo serve para inserir novos usuarios com base nos dados informados pelo arquivo Cadastro.html
+//Este arquivo serve para inserir novos fornecedores com base nos dados informados pelo arquivo Cadastro.html
 
 include '../conexao.php';
 
@@ -11,25 +11,22 @@ ini_set('display_errors', 1); // Exibir erros
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$nivel_Usuario = $data['nivel'];
-$nome_Usuario = $data['nome'];
-$sobrenome = $data['sobrenome'];
-$funcao = $data['funcao'];
-$login = $data['login'];
-$senha = $data['senha'];
+$razao_Social = $data['razao_Social'];
+$nome_Fantasia = $data['nome_Fantasia'];
+$apelido = $data['apelido'];
+$grupo = $data['grupo'];
+$sub_Grupo = $data['sub_Grupo'];
+$observacao = $data['observacao'];
 
-// Criptografa a senha usando password_hash
-$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-// Verifica se o usuário já existe
-$sqlCheck = "SELECT * FROM usuario WHERE login = ?";
+// Verifica se o fornecedor já existe
+$sqlCheck = "SELECT * FROM fornecedor WHERE razao_Social = ?";
 $stmtCheck = $mysqli->prepare($sqlCheck);
-$stmtCheck->bind_param("s", $login);
+$stmtCheck->bind_param("s", $razao_Social);
 $stmtCheck->execute();
 $resultCheck = $stmtCheck->get_result();
 
 if ($resultCheck->num_rows > 0) {
-    echo json_encode(["status" => "erro", "mensagem" => "Erro: Usuário já cadastrado."]);
+    echo json_encode(["status" => "erro", "mensagem" => "Erro: Fornecedor já cadastrado."]);
     $stmtCheck->close();
     $mysqli->close();
     exit();
@@ -37,7 +34,7 @@ if ($resultCheck->num_rows > 0) {
 $stmtCheck->close(); // Fecha o statement do SELECT para liberar a próxima operação
 
 // Consulta SQL para inserir o usuário
-    $sql = "INSERT INTO usuario (nivel_Usuario, nome_Usuario, sobrenome, funcao, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO fornecedor (razao_Social, nome_Fantasia, apelido, grupo, sub_Grupo, observacao) VALUES (?, ?, ?, ?, ?, ?)";
 
     // Prepara a declaração para evitar injeção de SQL
     $stmt = $mysqli->prepare($sql);
@@ -47,9 +44,9 @@ $stmtCheck->close(); // Fecha o statement do SELECT para liberar a próxima oper
     }
 
     // Associa os parâmetros e executa a declaração
-    $stmt->bind_param("ssssss", $nivel_Usuario, $nome_Usuario, $sobrenome, $funcao, $login, $senhaHash);
+    $stmt->bind_param("ssssss", $razao_Social, $nome_Fantasia, $apelido, $grupo, $sub_grupo, $observacao);
     $stmt->execute();
-    echo json_encode(["status" => "sucesso", "mensagem" => "Usuário adicionado com sucesso!".$stmt->error]);
+    echo json_encode(["status" => "sucesso", "mensagem" => "Fornecedor adicionado com sucesso!".$stmt->error]);
 
 // Fecha a conexão com o banco de dados
 $stmt->close();

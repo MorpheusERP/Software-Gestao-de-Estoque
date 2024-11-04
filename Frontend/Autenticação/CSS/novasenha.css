@@ -74,7 +74,7 @@ body, html {
 
   .label {
     text-align: left;
-    margin-bottom: -15px;
+    margin-bottom: 5px;
     font-weight: bold;
     color: #FFF;
     margin-top: 2px;
@@ -83,7 +83,7 @@ body, html {
 
 .ConfirmaSenha{
     margin-right: 66px;
-    margin-bottom: -11px;
+    margin-bottom: 30px;
     font-size: 18px;
     width: 205px;
     color: whitesmoke;
@@ -117,6 +117,7 @@ body, html {
 
 }
 
+
 .botao:focus {
     outline: none; /* Remove a borda de foco ao clicar */
 }
@@ -138,8 +139,8 @@ body, html {
     border-radius: 100px;
     background: #FFF;
     margin-bottom: 100px;
-    margin-top: -160px;
-    margin-left: 185px;
+    margin-top: -141px;
+    margin-left: 180px;
 }
 
 .botao2 {
@@ -177,7 +178,8 @@ body, html {
 }
 
 .input-field {
-    background-color: #e0e0e0;
+    display: block;
+    margin-bottom: 5px;
     border: none;
     border-radius: 10px;
     padding: 13px;
@@ -189,6 +191,7 @@ body, html {
 
 .toggle-visibility {
     position: absolute;
+    top: 10px;
     right: 10px; /* Posiciona o ícone à direita dentro do input */
     background: none;
     border: none;

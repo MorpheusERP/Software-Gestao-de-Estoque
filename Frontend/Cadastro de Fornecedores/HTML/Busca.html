@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca por Usuario</title>
+    <title>Busca por Fornecedor</title>
     <link rel="stylesheet" href="../CSS/Busca.css">
     <script>
         //Função para verificar se o usuário está logado
@@ -27,15 +27,16 @@
 </head>
 <body>
     <div class="header">
-        <h1>Busca Usuario</h1>
+        <h1>Busca Fornecedor</h1>
     </div>
     <div class="container">
         <div class="form">
             <form id="consultaForm">
-                <input type="number" id="cod" placeholder="Código do Usuário">
-                <input type="text" id="nome" placeholder="Nome">
-                <input type="text" id="sobrenome" placeholder="Sobrenome">
-                <input type="text" id="funcao" placeholder="Função">
+                <input type="text" id="razao" class="input-field" maxlength="150" placeholder="* Razão Social:">
+                <input type="text" id="fantasia" class="input-field" maxlength="50" placeholder="Nome Fantasia: ">
+                <input type="text" id="apelido" class="input-field" maxlength="50" placeholder="Apelido: ">
+                <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: ">
+                <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: ">
 
                 <div class="buttons">
                     <button type="button" class="buttons" onclick="consultarUsuario()">Buscar</button>
@@ -51,32 +52,34 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Função</th>
+            <th>Razao Social</th>
+            <th>Grupo</th>
+            <th>Sub Grupo</th>
         </tr>
     </thead>
     <tbody id="resultadoCorpo"></tbody>
 </table>
 
 <script>
-    // Função para consultar o usuário
+    // Função para consultar o Fornecedor
     function consultarUsuario() {
-        const id_Usuario = document.getElementById('cod').value;
-        const nome_Usuario = document.getElementById('nome').value;
-        const sobrenome = document.getElementById('sobrenome').value;
-        const funcao = document.getElementById('funcao').value;
+        const razao = document.getElementById('razao').value;
+        const fantasia = document.getElementById('fantasia').value;
+        const apelido = document.getElementById('apelido').value;
+        const grupo = document.getElementById('grupo').value;
+        const subgrupo = document.getElementById('subgrupo').value;
 
         // Cria um objeto com os dados do usuário
         const dados = {
-            id_Usuario: id_Usuario,
-            nome_Usuario: nome_Usuario,
-            sobrenome: sobrenome,
-            funcao: funcao,
+            razao_Social: razao,
+            nome_Fantasia: fantasia,
+            apelido: apelido,
+            grupo: grupo,
+            sub_Grupo: subgrupo,
         };
 
         // Envia os dados para o arquivo PHP usando fetch
-        fetch('../../../Backend/CadastroUsuario/consultausuario.php', {
+        fetch('../../../Backend/CadastroFornecedor/consultafornecedor.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,19 +106,19 @@
         corpoTabela.innerHTML = '';
     
         // Adiciona as novas linhas com os resultados
-        resultados.forEach(usuario => {
+        resultados.forEach(fornecedor => {
             const linha = document.createElement('tr');
             
             // Configura a linha para redirecionar ao clicar
             linha.onclick = function() {
-                window.location.href = `alterarUsuario.html?id_Usuario=${usuario.id_Usuario}`;
+                window.location.href = `alterarFornecedor.html?id_Fornecedor=${fornecedor.id_Fornecedor}`;
             };
             
             linha.innerHTML = `
-                <td>${usuario.id_Usuario}</td>
-                <td>${usuario.nome_Usuario}</td>
-                <td>${usuario.sobrenome}</td>
-                <td>${usuario.funcao}</td>
+                <td>${fornecedor.id_Fornecedor}</td>
+                <td>${fornecedor.razao_Social}</td>
+                <td>${fornecedor.grupo}</td>
+                <td>${fornecedor.sub_Grupo}</td>
             `;
             
             corpoTabela.appendChild(linha);

@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuario</title>
-    <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <title>Cadastro Local de Destino</title>
+    <link rel="stylesheet" href="CSS/Cadastro.css">
     <script>
-        //Função para verificar se o usuário está logado
-    function verificarLogin() {
-            fetch('../../../Backend/verificalogin.php')
+            //Função para verificar se o usuário está logado
+        function verificarLogin() {
+            fetch('../../Backend/verificalogin.php')
                 .then(response => response.json())
                 .then(data => {
                     if (!data.logado) {
                         // Redireciona para a página de login se não estiver logado
-                        window.location.href = '../../../index.html';
+                        window.location.href = '../../index.html';
                     }
                 })
                 .catch(error => {
@@ -27,7 +27,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Cadastro de Usuários</h1>
+        <h1>Cadastro de Local de Destino</h1>
     </div>
         <div class="container">
             <div class="form">
@@ -40,20 +40,13 @@
                         <button class="back" onclick="voltar(); recarregarPagina()">Voltar</button>
                     </div>
                     <form id="cadastroForm">
-                        <select id="nivel" required disabled>
-                            <option value="" disabled selected>* Nível de Usuário</option>
-                            <option value="padrao">Padrão</option>
-                            <option value="admin">Administrador</option>
+                        <select id="tipo" required disabled>
+                            <option value="" disabled selected>* Tipo de Local</option>
+                            <option value="descarte">Descarte</option>
+                            <option value="reaproveitamento">Reaproveitamento</option>
                         </select>
-                        <input type="text" id="nome" class="input-field" maxlength="20" placeholder="* Nome" required disabled>
-                        <input type="text" id="sobrenome" class="input-field" maxlength="20" placeholder="Sobrenome" required disabled>
-                        <input type="text" id="funcao" class="input-field" maxlength="20" placeholder="* Função" required disabled>
-                        <input type="text" id="login" class="input-field" maxlength="10" placeholder="* Login" required disabled>
-                        <div class="input-container" id="show-password" style="display: none;">
-                            <input type="password" id="senha" class="input-field" maxlength="4" placeholder="* Senha" required disabled>
-                            <button type="button" id="show-password" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
-                        </div>
-
+                        <input type="text" id="nome" class="input-field" maxlength="20" placeholder="* Nome do local: " required disabled>
+                        <input type="text" id="observacao" class="input-field" maxlength="100" placeholder="Observações: " disabled>
                         <div class="buttons-edit" id="edit-buttons" style="display: none;">
                             <button class="edit" type="submit">Salvar</button>
                         </div>
@@ -70,25 +63,19 @@
             event.preventDefault(); // Impede o envio padrão do formulário
 
                 // Pega os valores dos campos do formulário
-                const nivel = document.getElementById('nivel').value;
-                const nome = document.getElementById('nome').value;
-                const sobrenome = document.getElementById('sobrenome').value;
-                const funcao = document.getElementById('funcao').value;
-                const login = document.getElementById('login').value;
-                const senha = document.getElementById('senha').value;
+                const tipo_Local = document.getElementById('tipo').value;
+                const nome_Local = document.getElementById('nome').value;
+                const observacao = document.getElementById('observacao').value;
     
-                // Cria um objeto com os dados do usuário
+                // Cria um objeto com os dados do Local de Destino
                 const dados = {
-                    nivel: nivel,
-                    nome: nome,
-                    sobrenome: sobrenome,
-                    funcao: funcao,
-                    login: login,
-                    senha: senha
+                    tipo_Local: tipo_Local,
+                    nome_Local: nome_Local,
+                    observacao: observacao,
                 };
     
                 // Envia os dados para o arquivo PHP usando fetch
-                fetch('../../../Backend/CadastroUsuario/novousuario.php', {
+                fetch('../../Backend/CadastroLocal/novolocal.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -116,20 +103,19 @@
     <footer>
         <div class="BotoesFooter">
             <div class="buttons-search">
-                <a href="../../../home.html">
+                <a href="../../home.html">
                    <button class="search">Sair</button>
                 </a>
             </div>
     </footer>
     <div class="logo">
-        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        <img src="assets/Emporio maxx s-fundo 1 (1).svg" alt="Empório Maxx Logo">
     </div>
     <script> 
         function novo() {
         document.getElementById('default-buttons').style.display = 'none';
         document.getElementById('new-button').style.display = 'flex'; // Usa flex para manter o layout
         document.getElementById('edit-buttons').style.display = 'flex';
-        document.getElementById('show-password').style.display = 'flex';
         habilitarCampos(); // Função existente para habilitar campos do formulário
     }
 
@@ -141,33 +127,15 @@
             desabilitarCampos(); // Função existente para desabilitar campos do formulário
         }
         function habilitarCampos() {
-            document.getElementById('nivel').disabled = false;
+            document.getElementById('tipo').disabled = false;
             document.getElementById('nome').disabled = false;
-            document.getElementById('sobrenome').disabled = false;
-            document.getElementById('funcao').disabled = false;
-            document.getElementById('login').disabled = false;
-            document.getElementById('senha').disabled = false;
+            document.getElementById('observacao').disabled = false;
         }
 
         function desabilitarCampos() {
-            document.getElementById('nivel').disabled = true;
+            document.getElementById('tipo').disabled = true;
             document.getElementById('nome').disabled = true;
-            document.getElementById('sobrenome').disabled = true;
-            document.getElementById('funcao').disabled = true;
-            document.getElementById('login').disabled = true;
-            document.getElementById('senha').disabled = true;
-        }
-    </script>
-
-    <!--Script para exibir e ocultar a senha-->
-    <script>
-        function togglePasswordVisibility(id) {
-            var passwordField = document.getElementById(id);
-            if (passwordField.type === "password") {
-                passwordField.type = "number";
-            } else {
-                passwordField.type = "password";
-            }
+            document.getElementById('observacao').disabled = true;
         }
     </script>
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Usuario</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <script>
+        //Função para verificar se o usuário está logado
+    function verificarLogin() {
+            fetch('../../../Backend/verificalogin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.logado) {
+                        // Redireciona para a página de login se não estiver logado
+                        window.location.href = '../../../index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar autenticação:", error);
+                });
+            }
+
+        // Executa a função quando a página é carregada
+        document.addEventListener("DOMContentLoaded", verificarLogin);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro</h1>
+    </div>
+        <div class="container">
+            <div class="form">
+                <div class="buttons" id="default-buttons">
+                    <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
+                </div>
+                <div class="Conteudo">
+                    <div class="buttons" id="new-button">
+                        <button class="back" onclick="window.location.href='Cadastro.html'">Voltar</button>
+                    </div>
+                    <form id="cadastroForm">
+                        <select id="nivel">
+                            <option value="" disabled selected>* Nível de Usuário</option>
+                            <option value="padrao">Padrão</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                        <input type="text" id="nome" class="input-field" maxlength="20" placeholder="* Nome">
+                        <input type="text" id="sobrenome" class="input-field" maxlength="20">
+                        <input type="text" id="funcao" class="input-field" maxlength="20" placeholder="* Função">
+                        <input type="text" id="login" class="input-field" maxlength="10" placeholder="* Login">
+                        <div class="input-container" id="show-password">
+                            <input type="password" id="senha" class="input-field" maxlength="4" placeholder="* Senha">
+                            <button type="button" id="show-password" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
+                        </div>
+
+                        <div class="buttons-edit" id="edit-buttons">
+                            <button class="edit" type="submit">Salvar</button>
+                        </div>
+                    </form>
+                        <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
+                        <p id="mensagemErro" style="font-size: 18px0; background-color: red;color: whitesmoke"></p>
+                </div>
+            </div>
+        </div>
+
+
+    <footer>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="../../../home.html">
+                   <button class="search">Sair</button>
+                </a>
+            </div>
+    </footer>
+    <div class="logo">
+        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+    </div>
+
+    <script>
+  // Obtem o ID do usuário da URL
+  const params = new URLSearchParams(window.location.search);
+  const id_Usuario = params.get('id_Usuario');
+
+  // Preenche o formulário com os dados do usuário
+  fetch(`../../../Backend/CadastroUsuario/buscarusuario.php?id_Usuario=${id_Usuario}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          document.getElementById('nivel').value = data.nivel_Usuario || 'Nivel não encontrado';
+          document.getElementById('nome').value = data.nome_Usuario || 'Nome não encontrado';
+          document.getElementById('sobrenome').value = data.sobrenome || 'Sobrenome não encontrado';
+          document.getElementById('funcao').value = data.funcao || 'Função não encontrado';
+          document.getElementById('login').value = data.login || 'Login não encontrado';
+      })
+      .catch(error => console.error('Erro ao carregar dados do usuário:', error));
+
+  // Evento para enviar as alterações
+    document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+      const formData = {
+          id_Usuario,
+          nivel: document.getElementById('nivel').value,
+          nome: document.getElementById('nome').value,
+          sobrenome: document.getElementById('sobrenome').value,
+          funcao: document.getElementById('funcao').value,
+          login: document.getElementById('login').value,
+          senha: document.getElementById('senha').value,
+      };
+
+      fetch('../../../Backend/CadastroUsuario/atualizarusuario.php', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'sucesso') {
+            document.getElementById('mensagemSucesso').innerText = data.mensagem;
+          }
+          else if (data.status === 'erro'){
+            // Exibe mensagem de erro se houver falha
+            document.getElementById('mensagemErro').innerText = data.mensagem;
+        }
+      });
+    })
+    </script>
+
+    <!--Script para exibir e ocultar a senha-->
+    <script>
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "number";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

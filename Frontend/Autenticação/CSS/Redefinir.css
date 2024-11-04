@@ -21,7 +21,7 @@ body, html {
     
 }
 .FundoLogin {
-    width: 100%;
+    width: 100px;
     height: 100vh; /* Faz a div ocupar 100% da altura da tela */
     background: radial-gradient(50% 50% at 50% 50%, #4200FF 0%, #280099 100%);
     display: flex;
@@ -34,7 +34,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%; /* Aumente a largura para ocupar mais espaço em telas grandes */
+    width: 100%; /* Aumente a largura para ocupar mais espaço em telas grandes */
     border-radius: 15px; /* Bordas arredondadas */
     overflow-y: auto; /* Permite rolagem vertical */
 }

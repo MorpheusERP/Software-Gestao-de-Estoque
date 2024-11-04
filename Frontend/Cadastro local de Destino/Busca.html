@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca por Usuario</title>
-    <link rel="stylesheet" href="../CSS/Busca.css">
+    <title>Busca por Local de Destino</title>
+    <link rel="stylesheet" href="CSS/Busca.css">
     <script>
         //Função para verificar se o usuário está logado
     function verificarLogin() {
-            fetch('../../../Backend/verificalogin.php')
+            fetch('../../Backend/verificalogin.php')
                 .then(response => response.json())
                 .then(data => {
                     if (!data.logado) {
                         // Redireciona para a página de login se não estiver logado
-                        window.location.href = '../../../index.html';
+                        window.location.href = '../../index.html';
                     }
                 })
                 .catch(error => {
@@ -27,18 +27,16 @@
 </head>
 <body>
     <div class="header">
-        <h1>Busca Usuario</h1>
+        <h1>Busca Local de Destino</h1>
     </div>
     <div class="container">
         <div class="form">
             <form id="consultaForm">
-                <input type="number" id="cod" placeholder="Código do Usuário">
-                <input type="text" id="nome" placeholder="Nome">
-                <input type="text" id="sobrenome" placeholder="Sobrenome">
-                <input type="text" id="funcao" placeholder="Função">
+                <input type="text" id="nome" placeholder="Nome do local: ">
+                <input type="text" id="tipo" placeholder="Tipo do local: ">
 
                 <div class="buttons">
-                    <button type="button" class="buttons" onclick="consultarUsuario()">Buscar</button>
+                    <button type="button" class="buttons" onclick="consultarLocal()">Buscar</button>
                 </div>
                 <div class="table-container"></div>
             </form>
@@ -47,36 +45,31 @@
     </div>
 
 <!-- Tabela para exibir os resultados -->
-<table id="resultadoTabela" border="1" style="display:none; font-size: 11px;">
+<table id="resultadoTabela" border="1" style="display:none;">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Função</th>
+            <th>Tipo do Local</th>
         </tr>
     </thead>
     <tbody id="resultadoCorpo"></tbody>
 </table>
 
 <script>
-    // Função para consultar o usuário
-    function consultarUsuario() {
-        const id_Usuario = document.getElementById('cod').value;
-        const nome_Usuario = document.getElementById('nome').value;
-        const sobrenome = document.getElementById('sobrenome').value;
-        const funcao = document.getElementById('funcao').value;
+    // Função para consultar o Local de Destino
+    function consultarLocal() {
+        const nome_Local = document.getElementById('nome').value;
+        const tipo_Local = document.getElementById('tipo').value;
 
-        // Cria um objeto com os dados do usuário
+        // Cria um objeto com os dados do Local de Destino
         const dados = {
-            id_Usuario: id_Usuario,
-            nome_Usuario: nome_Usuario,
-            sobrenome: sobrenome,
-            funcao: funcao,
+            nome_Local: nome_Local,
+            tipo_Local: tipo_Local,
         };
 
         // Envia os dados para o arquivo PHP usando fetch
-        fetch('../../../Backend/CadastroUsuario/consultausuario.php', {
+        fetch('../../Backend/CadastroLocal/consultalocal.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,19 +96,18 @@
         corpoTabela.innerHTML = '';
     
         // Adiciona as novas linhas com os resultados
-        resultados.forEach(usuario => {
+        resultados.forEach(locais => {
             const linha = document.createElement('tr');
             
             // Configura a linha para redirecionar ao clicar
             linha.onclick = function() {
-                window.location.href = `alterarUsuario.html?id_Usuario=${usuario.id_Usuario}`;
+                window.location.href = `alterarLocal.html?id_Local=${locais.id_Local}`;
             };
             
             linha.innerHTML = `
-                <td>${usuario.id_Usuario}</td>
-                <td>${usuario.nome_Usuario}</td>
-                <td>${usuario.sobrenome}</td>
-                <td>${usuario.funcao}</td>
+                <td>${locais.id_Local}</td>
+                <td>${locais.nome_Local}</td>
+                <td>${locais.tipo_Local}</td>
             `;
             
             corpoTabela.appendChild(linha);
@@ -127,13 +119,13 @@
     </script>
 
     <div class="buttons-footer">
-        <a href="../HTML/Cadastro.html" class="search-link">
+        <a href="Cadastro.html" class="search-link">
             <button class="exit">Voltar</button>
         </a>
     </div>
 
     <div class="logo">
-        <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+        <img src="assets/Emporio maxx s-fundo 1 (1).svg" alt="Empório Maxx Logo">
     </div>
 
 </body>

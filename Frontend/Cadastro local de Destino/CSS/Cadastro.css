@@ -33,6 +33,53 @@ body {
     letter-spacing: 2px;
 }
 
+/* Configura o grupo de checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para os rótulos dos checkboxes */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilo para o texto dentro dos checkboxes */
+.checkbox-text {
+    background-color: #1D1B20;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    display: flex;
+    width: 286px;
+    height: 56px;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--Space-200, 8px);
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: var(--sds-size-stroke-border) solid #000;
+    background: var(--Schemes-Surface-Container-Low, #F3F3F3);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    color: #6E6363;
+    font-family: Kodchasan;
+    font-size: 24px;
+    font-style: normal;
+    letter-spacing: 3.36px;
+}
+
+/* Estilo para checkboxes */
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #737373;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -42,13 +89,6 @@ body {
     width: 90%;
     background: linear-gradient(180deg, #D9D9D9 0%, #737373 100%);
     border-radius: 8px;
-}
-
-.form {
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 70px;
 }
 
 button {
@@ -67,6 +107,13 @@ button {
 
 button:hover {
     background-color: #e6b800;
+}
+
+.input-container{
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
 }
 
 .buttons, .buttons-search, .buttons-edit {
