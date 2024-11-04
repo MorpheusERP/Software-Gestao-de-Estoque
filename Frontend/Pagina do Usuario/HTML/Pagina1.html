@@ -10,31 +10,41 @@
     <div class="Fundo">
         
         <div class="container">
-            <div class="avatar"></div>
-
-            <button class="edit-button">
+    
+            <button class="edit-button" onclick="habilitarCampos()">
             <img src="../Imagens/Lapis.png" alt="Editar" /> Alterar
             </button>
 
-            <div class="label">Nome:</div>
-            <input type="text" class="input-field" value="" />
+                <div class="label">Nome:</div>
+                    <input type="text" class="input-field" value="" />
 
-            <div class="label">Sobrenome:</div>
-            <input type="text" class="input-field" value="" />
+                    <div class="label">Sobrenome:</div>
+                    <input type="text" class="input-field" value="" />
 
-            <div class="label">Login:</div>
-            <input type="text" class="input-field" value="******" disabled />
-
-            <div class="label">Senha:</div>
-            <input type="password" class="input-field" value="*****" disabled />
-
+                    <div class="label">Login:</div>
+                    <input type="text" id="login" class="input-field"  required disabled />
+                    
+                    <div class="label">Senha:</div>
+                    <div class="input-container">
+                        <input type="password" id="senha" class="input-field" required>
+                        <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
+                    </div>
+            
             <button class="logout-button">
-            <img src="../Imagens/seta-esquerda.png" alt="Sair" /> Sair
+            <a href="../../../home.html" class="search-link" style="text-decoration: none;">
+                <img src="../Imagens/seta-esquerda.png" alt="Sair" /> Sair
+            </a>
             </button>
 
         </div>
     </div>
         
+    <script>
+        function habilitarCampos() {
+            document.getElementById("login").disabled = false;
+            document.getElementById("senha").disabled = false;
+        }
+    </script>
 
 </body>
 </html
