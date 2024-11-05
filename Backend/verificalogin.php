@@ -5,7 +5,7 @@
 session_start();
 
 if (isset($_SESSION['logado']) && $_SESSION['logado'] === true) {
-    echo json_encode(["logado" => true, "usuario" => $_SESSION['usuario']]);
+    echo json_encode(["logado" => true, "usuario" => $_SESSION['usuario'], "id_Usuario" => $_SESSION["id_Usuario"]]);
 } else {
     echo json_encode(["logado" => false]);
 }

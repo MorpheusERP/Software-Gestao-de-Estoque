@@ -99,18 +99,28 @@ select:focus, input:focus {
     gap: 20px;
 }
 
-.logo {
+.logo{
     display: flex;
     justify-content: center;
 }
-
 .logo img {
-    width: 156px;
-    height: 126px;
-    flex-shrink: 0;
-    margin-top: -20px;
+    width: 100%; /* A imagem ocupa 100% da largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 238px; /* Limita a largura máxima */
+    margin-bottom: 50px; /* Espaço menor para telas pequenas */
 }
 
+@media (min-width: 600px) {
+    .logo img {
+        margin-bottom: 75px; /* Ajusta o espaçamento para telas médias */
+    }
+}
+
+@media (min-width: 1024px) {
+    .logo img {
+        margin-bottom: 100px; /* Mantém o espaçamento original em telas grandes */
+    }
+}
 @media (max-width: 600px) {
     .container {
         padding: 15px;

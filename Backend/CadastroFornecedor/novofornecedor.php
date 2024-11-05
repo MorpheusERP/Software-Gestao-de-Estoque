@@ -46,7 +46,7 @@ $stmtCheck->close(); // Fecha o statement do SELECT para liberar a próxima oper
     // Associa os parâmetros e executa a declaração
     $stmt->bind_param("ssssss", $razao_Social, $nome_Fantasia, $apelido, $grupo, $sub_grupo, $observacao);
     $stmt->execute();
-    echo json_encode(["status" => "sucesso", "mensagem" => "Fornecedor adicionado com sucesso!".$stmt->error]);
+    echo json_encode(["status" => "sucesso", "mensagem" => "Fornecedor adicionado com sucesso!"]);
 
 // Fecha a conexão com o banco de dados
 $stmt->close();

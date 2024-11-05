@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Usuario</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <script>
+        //Função para verificar se o usuário está logado
+    function verificarLogin() {
+            fetch('../../../Backend/verificalogin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.logado) {
+                        // Redireciona para a página de login se não estiver logado
+                        window.location.href = '../../../index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar autenticação:", error);
+                });
+            }
+
+        // Executa a função quando a página é carregada
+        document.addEventListener("DOMContentLoaded", verificarLogin);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Cadastro de Produtos</h1>
+    </div>
+        <div class="container">
+            <div class="form">
+                <div class="buttons" id="default-buttons">
+                    <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
+
+                    <form id="produtoForm" enctype="multipart/form-data">
+                        <!--Aqui a imagem é inserida-->
+                        <div class="image-placeholder">
+                                <input type="file" id="imagem" accept="image/*" style="display: none;" onchange="exibirImagem(this)">
+                                <br><br>
+                                <img src="../Imagens/defaultimg.png" class="image-disabled" id="preview"> <!--A imagem por padrão é desabilitada-->
+                                <label for="imagem" class="botao-upload">Selecionar Imagem</label>
+                        </div>
+        
+                        <!-- Campo Código com ícone de pesquisa -->
+                        <label for="codigo"></label>
+                        <div class="input-container">
+                            <input type="number" id="codigo" class="input-field" maxlength="5" placeholder="* Código" required>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="produto" class="input-field" maxlength="50" placeholder="Nome do Produto" required>
+                        </div>
+                            <div class="container2">
+                                <div class="coluna1">
+                                    <select id="tipoQuantidade" required>
+                                    <option value="" disabled selected>Selecione o tipo</option>
+                                    <option value="Quilo">Quilos(KG)</option>
+                                    <option value="Caixa">Caixas(CX)</option>
+                                    <option value="Unidade">Unidades(UN)</option>
+                                    <option value="Saco">Sacos(SC)</option>
+                                    </select>
+                    
+                                    <input type="number" id="pcusto" maxlength="4" step="0.01" placeholder="Preço de Custo" required>
+                                    <input type="text" id="grupo" maxlength="15" placeholder="Grupo" required>
+                                </div>
+                                <div class="coluna2">
+                                    <input type="number" id="barras" maxlength="15" placeholder="Cod. de Barras">
+                                    <input type="number" id="pvenda" maxlength="4" step="0.01" placeholder="Preço de Venda">
+                                    <input type="text" id="subgrupo" maxlength="15" placeholder="Sub. Grupo">
+                                </div>
+                            </div>
+                            <div class="observacoes">
+                                <textarea id="observacao" maxlength="150" placeholder="Observações"></textarea>
+                            </div>
+                        
+                            <div class="buttons-edit" id="edit-buttons">
+                                <button type="submit" class="edit">Salvar</button>
+                            </div>
+                    </form>
+                        <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
+                        <p id="mensagemErro" style="font-size: 18px0; background-color: red;color: whitesmoke"></p>
+                </div>
+            </div>
+        </div>
+
+    <footer>
+        <div class="BotoesFooter">
+            <div class="buttons-search">
+                <a href="../../../home.html">
+                   <button class="search">Sair</button>
+                </a>
+            </div>
+    </footer>
+    <div class="logo">
+        <img src="../Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
+    </div>
+
+    <script>
+  // Obtem o ID do Local de Destino da URL
+  const params = new URLSearchParams(window.location.search);
+  const cod_Produto = params.get('cod_Produto');
+  const caminhoBase = "../../../Backend/CadastroProdutos/";
+    
+  // Preenche o formulário com os dados do Produto
+  fetch(`../../../Backend/CadastroProdutos/buscarproduto.php?cod_Produto=${cod_Produto}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          document.getElementById('preview').classList.toggle('image-enabled');
+          document.getElementById('preview').src = caminhoBase + data.imagem;
+          document.getElementById('codigo').value = cod_Produto;
+          document.getElementById('produto').value = data.nome_Produto;
+          document.getElementById('tipoQuantidade').value = data.tipo_Produto;
+          document.getElementById('pcusto').value = data.preco_Custo;
+          document.getElementById('grupo').value = data.grupo;
+          document.getElementById('barras').value = data.cod_Barras;
+          document.getElementById('pvenda').value = data.preco_Venda;
+          document.getElementById('subgrupo').value = data.sub_Grupo;
+          document.getElementById('observacao').value = data.observacao;
+
+      })
+      .catch(error => console.error('Erro ao carregar dados do Produto:', error));
+
+  // Evento para enviar as alterações
+    document.getElementById('produtoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+      const formData = {
+          cod_Produto,
+          imagem: document.getElementById('imagem').files[0],
+          cod_Produto: document.getElementById('codigo').value,
+          nome_Produto: document.getElementById('produto').value,
+          tipo_Produto: document.getElementById('tipoQuantidade').value,
+          preco_Custo: document.getElementById('pcusto').value,
+          grupo: document.getElementById('grupo').value,
+          cod_Barras: document.getElementById('barras').value,
+          preco_Venda: document.getElementById('pvenda').value,
+          sub_Grupo: document.getElementById('subgrupo').value,
+          observacao: document.getElementById('observacao').value
+      };
+
+      fetch('../../../Backend/CadastroProdutos/atualizarproduto.php', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'sucesso') {
+            event.preventDefault(); // Impede o recarregamento da página
+            document.getElementById('mensagemSucesso').innerText = data.mensagem;
+          }
+          else if (data.status === 'erro'){
+            // Exibe mensagem de erro se houver falha
+            document.getElementById('mensagemErro').innerText = data.mensagem;
+        }
+      });
+    })
+    </script>
+</body>
+</html>

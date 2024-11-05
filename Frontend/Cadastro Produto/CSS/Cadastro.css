@@ -72,20 +72,52 @@ body {
 }
 
 .buttons button:hover {
-    background-color: #e6b800;
+    background-color: #ffcc00;
 }
 
+  .botao-upload {
+    display: inline-block;
+    padding: 10px 10px;
+    color: black;
+    background-color: #ffcc00;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .botao-upload:hover {
+    background-color: #ffcc00;
+  }
 
-.image-placeholder {
+
+.image-placeholder{
     text-align: center;
     margin-bottom: 20px;
 }
 
-.image-placeholder img {
-    width: 156px;
-    height: 126px;
+/* Estilo padrão sem borda */
+.image-disabled {
+    width: 100%;
+    max-width: 300px; /* Limita o tamanho máximo a 300px */
+    height: auto; /* Mantém a proporção da imagem */
     flex-shrink: 0;
+    border: none;
+    opacity: 0.7; /* Visualmente diferente para indicar desabilitado */
 }
+
+.image-enabled{
+    width: 100%;
+    max-width: 300px; /* Limita o tamanho máximo a 300px */
+    height: auto; /* Mantém a proporção da imagem */
+    flex-shrink: 0;
+    border: 5px solid #333; /* Adiciona uma borda de 2px com cor cinza escura */
+    border-radius: 8px; /* Arredonda os cantos da borda */
+    opacity: 1;
+}
+
 
 .coluna1, .coluna2 {
     flex: 1; /* Cada coluna ocupa a mesma largura */

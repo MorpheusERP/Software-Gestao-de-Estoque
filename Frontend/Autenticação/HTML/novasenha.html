@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRP-Login</title>
     <link rel="stylesheet" href="../CSS/novasenha.css">
+    <script>
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</head>
 <body>
     <div class="FundoLogin">
         <div class="Conteudo">
@@ -40,9 +51,10 @@
                             <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
                         </form>
                 </div>
-            <div class="Emporio">
-                <img src="../Imagens/Emporio maxx s-fundo.png" alt="Emporio">
-            </div>
+            
+        </div>
+        <div class="Emporio">
+            <img src="../Imagens/Emporio maxx s-fundo.png" alt="Emporio">
         </div>
     </div>
 
@@ -95,6 +107,5 @@
             return false; // Evita o recarregamento da página
         }
     </script>
-</head>
 </body>
 </html>
