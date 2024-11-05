@@ -50,9 +50,15 @@
 
 
     <div class="buttons-footer">
-        <a href="Busca.html" class="search-link">
+        <a href="javascript:void(0);" class="search-link" onclick="voltarPaginaAnterior()">
             <button class="exit">Voltar</button>
         </a>
     </div>
+
+    <script>
+        function voltarPaginaAnterior() {
+            history.back();
+        }
+    </script>
 </body>
 </html>
