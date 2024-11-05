@@ -61,7 +61,32 @@ body {
     text-align: center;
   }
 
+  /* Estilo do botão de visibilidade */
+  .toggle-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    padding: 0;
+    margin-top: -8px;
+  }
+
+  .toggle-visibility:focus {
+    outline: none;
+  }
   
+  .input-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 5px;
+}
+
 
   
   .input-field[disabled] {

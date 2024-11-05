@@ -28,33 +28,54 @@
             <div class="form">
                 <div class="input-with-button">
                      
-                    <label for="produto">Fornecedor:</label>
-                    <input type="text" id="fornecedor" placeholder="Fornecedor" required>
+                  <!-- Fornecedor -->
+                  <label for="fornecedor">Fornecedor:</label>
+                  <div class="input-container">
+                      <input type="text" id="fornecedor" placeholder="Fornecedor" required>
+                      <a href="fornecedor.html" class="search-link" style="text-decoration: none;">
+                          <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                      </a>
+                  </div>
 
-                    <label for="produto">Produto:</label>
-                    <input type="text" id="produto" placeholder="Produto" required>
-                </div>
-                
-                <!-- Grupo e SubGrupo com botões de pesquisa -->
-                    <div class="GrupoSubGrupo">
-                        <div class="input-group">
-                            <label for="grupo">Grupo:</label>
-                            <input type="number" id="grupo" name="grupo" placeholder="Grupo" required>
-                        </div>
-                    
-                        <div class="input-group">
-                            <label for="subgrupo">SubGrupo:</label>
-                            <input type="number" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="buttons" style="width: 40%; margin-left: 30%;">
-                <button class="search">Buscar</button>
-            </div>
-        </div>
+                  <!-- Produto -->
+                  <label for="produto">Produto:</label>
+                  <div class="input-container">
+                      <input type="text" id="produto" placeholder="Produto" required>
+                      <a href="Produto.html" class="search-link" style="text-decoration: none;">
+                          <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                      </a>
+                  </div>
+              </div>
+              
+              <!-- Grupo e SubGrupo com botões de pesquisa -->
+              <div class="GrupoSubGrupo">
+                  <div class="input-group">
+                      <label for="grupo">Grupo:</label>
+                      <div class="input-container">
+                          <input type="number" id="grupo" name="grupo" placeholder="Grupo" required>
+                          <a href="SubGrupo.html" class="search-link" style="text-decoration: none;">
+                              <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                          </a>
+                      </div>
+                  </div>
+                  
+                  <div class="input-group">
+                      <label for="subgrupo">SubGrupo:</label>
+                      <div class="input-container">
+                          <input type="number" id="subgrupo" name="subgrupo" placeholder="SubGrupo" required>
+                          <a href="SubGrupo.html" class="search-link" style="text-decoration: none;">
+                              <button class="search-icon" onclick="searchSubgrupo()">&#128269;</button>
+                          </a>
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="buttons" style="width: 40%; margin-left: 30%;">
+              <button class="search">Buscar</button>
+          </div>
+      </div>
 
         <div class="table-container">
             <table>
@@ -83,5 +104,23 @@
             <img src="../Imagens/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
         </div>
     </div>
+
+</div>
+<script>
+    function searchCodigo() {
+            // Redireciona para a página de pesquisa de código
+            window.location.href = "";
+        }
+
+        function searchProduto() {
+            // Lógica de pesquisa para o campo Produto
+            window.location.href = "";
+        }
+
+        function searchLocal() {
+            // Lógica de pesquisa para o campo Local de Destino
+            window.location.href = "";
+        }
+</script>
 </body>
 </html>

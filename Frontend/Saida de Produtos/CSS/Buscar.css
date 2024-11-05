@@ -191,6 +191,35 @@ table th, table td {
     margin-left: auto; /* Move o logo para a direita */
 }
 
+/* Estilizando os campos de input com a lupa dentro */
+.input-container {
+    position: relative; /* Para permitir posicionamento absoluto do ícone */
+    width: 100%;
+}
+
+.input-container input {
+    width: 100%;
+    height: 50px;
+    padding-right: 35px; /* Espaço suficiente para o ícone */
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666; /* Cor da lupa */
+}
+
+.search-icon:hover {
+    color: #000; /* Mudança de cor ao passar o mouse */
+}
+
 /* Ajustes para telas pequenas */
 @media (max-width: 600px) {
     body {

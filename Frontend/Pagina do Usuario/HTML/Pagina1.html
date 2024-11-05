@@ -25,9 +25,10 @@
                     <input type="text" id="login" class="input-field"  required disabled />
                     
                     <div class="label">Senha:</div>
-                    <div class="input-container">
-                        <input type="password" id="senha" class="input-field" required>
-                        <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
+                        <div class="input-container">
+                            <input type="password" id="senha" class="input-field" required maxlength="4" disabled />
+                            <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('senha')" disabled>👁</button>
+                        </div>
                     </div>
             
             <button class="logout-button">
@@ -43,7 +44,26 @@
         function habilitarCampos() {
             document.getElementById("login").disabled = false;
             document.getElementById("senha").disabled = false;
+            const senhaInput = document.getElementById('senha');
+            const toggleButton = document.querySelector('.toggle-visibility');
+    
+            senhaInput.disabled = false;
+            toggleButton.disabled = false;
         }
+
+        function togglePasswordVisibility(senhaId) {
+            const senhaInput = document.getElementById(senhaId);
+            const button = document.querySelector('.toggle-visibility');
+            
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+                button.textContent = "👁"; // Ícone para ocultar
+            } else {
+                senhaInput.type = "password";
+                button.textContent = "👁"; // Ícone para exibir
+            }
+        }
+            
     </script>
 
 </body>

@@ -227,5 +227,6 @@ table th, table td {
     cursor: pointer;
     font-size: 18px;
     color: #000;
+    margin-top: -8px;
 }
 
