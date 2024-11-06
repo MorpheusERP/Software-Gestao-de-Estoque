@@ -2,7 +2,7 @@
     $servidor = "localhost";
     $usuario = "root";
     $senha = "";
-    $dbname = "cadastro";
+    $dbname = "projetoalfa";
 
    
     $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);

@@ -14,7 +14,7 @@
     include("conexao.php");
 
     // Seleciona as informações atuais do fornecedor
-    $sql = "SELECT id_Fornecedor, razao_Social, nome_Fornecedor, apelido, grupo, sub_Grupo, observacao FROM fornecedor";
+    $sql = "SELECT id_Fornecedor, razao_social, apelido, grupo, sub_Grupo, observacao FROM fornecedor";
     $resultado = mysqli_query($conexao, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
@@ -36,7 +36,6 @@
             echo "<tr>
                     <td>".$row['id_Fornecedor']."</td>
                     <td>".$row['razao_Social']."</td>
-                    <td>".$row['nome_Fornecedor']."</td>
                     <td>".$row['apelido']."</td>
                     <td>".$row['grupo']."</td>
                     <td>".$row['sub_Grupo']."</td>
@@ -58,11 +57,9 @@
     <label for="id_Fornecedor">ID Fornecedor:</label>
     <input type="text" name="id_Fornecedor" id="id_Fornecedor" class="form-control" required>
     <br>
-    <label for="NOVOrazao_Social">Nova Razão Social</label>
-    <input type="text" name="NOVOrazao_Social" id="NOVOrazao_Social" class="form-control">
     <br>
-    <label for="NOVOnome_Fornecedor">Novo Nome do Fornecedor:</label>
-    <input type="text" name="NOVOnome_Fornecedor" id="NOVOnome_Fornecedor" class="form-control">
+    <label for="NOVOrazao_social">Novo Nome do Fornecedor:</label>
+    <input type="text" name="NOVOrazao_social" id="NOVOrazao_social" class="form-control">
     <br>
     <label for="NOVOapelido">Novo Apelido: </label>
     <input type="text" name="NOVOapelido" id="NOVOapelido" class="form-control">

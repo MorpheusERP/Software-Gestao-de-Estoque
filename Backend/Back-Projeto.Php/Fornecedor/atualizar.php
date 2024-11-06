@@ -14,15 +14,14 @@
     // Captura os dados do formulário
     $id_Fornecedor = mysqli_real_escape_string($conexao, $_POST['id_Fornecedor']);
     $razao_Social = mysqli_real_escape_string($conexao, $_POST['NOVOrazao_Social']);
-    $nome_Fornecedor = mysqli_real_escape_string($conexao, $_POST['NOVOnome_Fornecedor']);
     $apelido = mysqli_real_escape_string($conexao, $_POST['NOVOapelido']);
     $grupo = mysqli_real_escape_string($conexao, $_POST['NOVOgrupo']);
     $sub_Grupo = mysqli_real_escape_string($conexao, $_POST['NOVOsub_Grupo']);
     $observacao = mysqli_real_escape_string($conexao, $_POST['NOVOobservacao']);
 
     // Atualiza os dados do fornecedor com base no ID
-    $stmt = $conexao->prepare("UPDATE fornecedor SET razao_Social = ?, nome_Fornecedor = ?, apelido = ?, grupo = ?, sub_Grupo = ?, observacao = ? WHERE id_Fornecedor = ?");
-    $stmt->bind_param("sssssss", $razao_Social, $nome_Fornecedor, $apelido, $grupo, $sub_Grupo, $observacao, $id_Fornecedor);
+    $stmt = $conexao->prepare("UPDATE fornecedor SET razao_social = ?, apelido = ?, grupo = ?, sub_Grupo = ?, observacao = ? WHERE id_Fornecedor = ?");
+    $stmt->bind_param("sssssss", $razao_Social, $apelido, $grupo, $sub_Grupo, $observacao, $id_Fornecedor);
 
     if ($stmt->execute()) {
         echo "Dados atualizados no estoque.<br><br>";
@@ -33,7 +32,7 @@
     $stmt->close();
 
     // Exibe todos os fornecedores
-    $sql = "SELECT id_Fornecedor, razao_Social, nome_Fornecedor, apelido, grupo, sub_Grupo, observacao FROM fornecedor";
+    $sql = "SELECT id_Fornecedor, razao_social, apelido, grupo, sub_Grupo, observacao FROM fornecedor";
     $resultado = mysqli_query($conexao, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
@@ -55,7 +54,6 @@
             echo "<tr>
                     <td>".$row['id_Fornecedor']."</td>
                     <td>".$row['razao_Social']."</td>
-                    <td>".$row['nome_Fornecedor']."</td>
                     <td>".$row['apelido']."</td>
                     <td>".$row['grupo']."</td>
                     <td>".$row['sub_Grupo']."</td>

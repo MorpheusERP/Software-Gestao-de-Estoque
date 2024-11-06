@@ -12,9 +12,6 @@
         <label for="razao_social">Razão Social do Fornecedor:</label>
         <input type="text" name="razao_social" id="razao_social" required>
         <br>
-        <label for="nome_fornecedor">Nome Fantasia:</label>
-        <input type="text" name="nome_fornecedor" id="nome_fornecedor" required>
-        <br>
         <label for="apelido">Apelido:</label>
         <input type="text" name="apelido" id="apelido" required>
         <br>
@@ -29,14 +26,13 @@
     include('conexao.php');
 
     // Se todos os campos forem preenchidos, realiza a pesquisa
-    if (!empty($_POST['razao_social']) && !empty($_POST['nome_fornecedor']) && !empty($_POST['apelido']) && !empty($_POST['grupo'])) {
+    if (!empty($_POST['razao_social']) && !empty($_POST['apelido']) && !empty($_POST['grupo'])) {
         $razao_social = "%" . $_POST['razao_social'] . "%";
-        $nome_fornecedor = "%" . $_POST['nome_fornecedor'] . "%";
         $apelido = "%" . $_POST['apelido'] . "%";
         $grupo = "%" . $_POST['grupo'] . "%";
 
-        $stmt = $conexao->prepare("SELECT razao_Social, apelido, grupo FROM fornecedor WHERE razao_Social LIKE ? AND nome_Fornecedor LIKE ? AND apelido LIKE ? AND grupo LIKE ?");
-        $stmt->bind_param("ssss", $razao_social, $nome_fornecedor, $apelido, $grupo);
+        $stmt = $conexao->prepare("SELECT razao_Social, apelido, grupo FROM fornecedor WHERE razao_Social LIKE ? AND apelido LIKE ? AND grupo LIKE ?");
+        $stmt->bind_param("ssss", $razao_social, $apelido, $grupo);
 
         $stmt->execute();
         $resultado = $stmt->get_result();

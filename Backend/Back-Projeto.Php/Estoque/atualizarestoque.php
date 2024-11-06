@@ -14,7 +14,7 @@
     include("conexao.php");
 
     // Consulta para exibir todos os produtos cadastrados na tabela `estoque`
-    $sql = "SELECT id_Entrada, cod_Produto, qtd_Estoque FROM estoque";
+    $sql = "SELECT id_Estoque, cod_Produto, qtd_Estoque FROM estoque";
     $resultado = mysqli_query($conexao, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
@@ -31,7 +31,7 @@
         // Exibe cada linha da tabela
         while ($row = mysqli_fetch_assoc($resultado)) {
             echo "<tr>
-                    <td>".$row['id_Entrada']."</td>
+                    <td>".$row['id_Estoque']."</td>
                     <td>".$row['cod_Produto']."</td>
                     <td>".$row['qtd_Estoque']."</td>
                   </tr>";
@@ -48,8 +48,8 @@
 
     <h2>Atualizar Produto</h2>
     <form action="atualizar_produto.php" method="POST" class="center-form">
-        <label for="id_Entrada">ID Entrada:</label>
-        <input type="number" name="id_Entrada" id="id_Entrada" class="form-control" required>
+        <label for="id_Estoque">ID Estoque:</label>
+        <input type="number" name="id_Estoque" id="id_Estoque" class="form-control" required>
         <br>
         
         <label for="NOVOcod_Produto">Novo Código do Produto:</label>

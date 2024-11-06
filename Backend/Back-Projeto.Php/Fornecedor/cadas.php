@@ -14,10 +14,6 @@
     <input type="text" name="razao_Social" class="form-control" required>
     <br>
 
-    <label for="nome_fornecedor">Nome Fantasia: </label>
-    <input type="text" name="nome_Fornecedor" class="form-control" required>
-    <br>
-
     <label for="apelido">Apelido: </label>
     <input type="text" name="apelido" class="form-control" required>
     <br>
@@ -56,7 +52,7 @@
 include("conexao.php");
 
 // Consulta atualizada, sem o campo sub_Grupo
-$sql = "SELECT razao_Social, nome_Fornecedor, apelido, grupo, observacao FROM fornecedor";
+$sql = "SELECT razao_Social, apelido, grupo, observacao FROM fornecedor";
 $resultado = mysqli_query($conexao, $sql);
 
 if (mysqli_num_rows($resultado) > 0) {
@@ -75,7 +71,6 @@ if (mysqli_num_rows($resultado) > 0) {
     while ($row = mysqli_fetch_assoc($resultado)) {
         echo "<tr>
                 <td>".htmlspecialchars($row['razao_Social'])."</td>
-                <td>".htmlspecialchars($row['nome_Fornecedor'])."</td>
                 <td>".htmlspecialchars($row['apelido'])."</td>
                 <td>".htmlspecialchars($row['grupo'])."</td>
                 <td>".htmlspecialchars($row['observacao'])."</td>

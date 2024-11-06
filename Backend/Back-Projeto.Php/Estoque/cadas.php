@@ -12,8 +12,8 @@
 <body>
 <h1>Cadastro de Entrada de Produto</h1>
 <form action="cadastro.php" method="POST" class="center-form">
-    <label for="id_Entrada">ID Entrada: </label>
-    <input type="number" name="id_Entrada" id="id_Entrada" class="form-control" required>
+    <label for="id_Estoque">ID Entrada: </label>
+    <input type="number" name="id_Estoque" id="id_Estoque" class="form-control" required>
     <br>
     
     <label for="cod_Produto">Código do Produto: </label>
@@ -29,8 +29,8 @@
 
 <h2>Excluir Entrada</h2>
 <form action="delet.php" method="post" class="delete-form">
-    <label for="id_Entrada">Digite o ID de Entrada que deseja excluir:</label>
-    <input type="text" name="id_Entrada" id="id_Entrada" placeholder="Excluir" required>
+    <label for="id_Estoque">Digite o ID de Entrada que deseja excluir:</label>
+    <input type="text" name="id_Estoque" id="id_Estoque" placeholder="Excluir" required>
     <input type="submit" value="Excluir ID" onclick="return confirm('Deseja realmente excluir a entrada?');">
 </form>
 
@@ -45,7 +45,7 @@
 include ("conexao.php");
 
 // Consulta ajustada com a nova tabela 'entrada_produto'
-$sql = "SELECT id_Entrada, cod_Produto, qtd_Estoque FROM estoque";
+$sql = "SELECT id_Estoque, cod_Produto, qtd_Estoque FROM estoque";
 
 $resultado = mysqli_query($conexao, $sql);
 
@@ -63,7 +63,7 @@ if (mysqli_num_rows($resultado)){
       // Exibe cada linha da tabela
       while ($row = mysqli_fetch_assoc($resultado)){
         echo "<tr>
-                <td>".$row['id_Entrada']."</td>
+                <td>".$row['id_Estoque']."</td>
                 <td>".$row['cod_Produto']."</td>
                 <td>".$row['qtd_Estoque']."</td>
               </tr>";

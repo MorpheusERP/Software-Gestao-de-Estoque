@@ -30,7 +30,7 @@
                 <br>
 
                 <label for="imagem">Imagem:</label>
-                <input type="file" name="imagem" id="imagem" required class="form-control">
+                <input type="file" name="imagem" id="imagem" class="form-control">
                 <br>
 
                 <label for="nome_produto">Nome do Produto:</label>
@@ -38,11 +38,11 @@
                 <br>
 
                 <label for="tipo_produto">Tipo do Produto:</label>
-                <input type="text" name="tipo_produto" id="tipo_produto" required class="form-control">
+                <input type="text" name="tipo_produto" id="tipo_produto" class="form-control">
                 <br>
 
                 <label for="cod_barras">Código de Barras:</label>
-                <input type="number" name="cod_barras" id="cod_barras" required class="form-control">
+                <input type="number" name="cod_barras" id="cod_barras" class="form-control">
                 <br>
 
                 <label for="preco_custo">Preço de Custo:</label>
@@ -50,15 +50,15 @@
                 <br>
 
                 <label for="preco_venda">Preço de Venda:</label>
-                <input type="number" name="preco_venda" id="preco_venda" step="0.01" required class="form-control">
+                <input type="number" name="preco_venda" id="preco_venda" step="0.01" class="form-control">
                 <br>
 
                 <label for="grupo">Grupo:</label>
-                <input type="text" name="grupo" id="grupo" required class="form-control">
+                <input type="text" name="grupo" id="grupo"  class="form-control">
                 <br>
 
                 <label for="sub_grupo">Subgrupo:</label>
-                <input type="text" name="sub_grupo" id="sub_grupo" required class="form-control">
+                <input type="text" name="sub_grupo" id="sub_grupo" class="form-control">
                 <br>
 
                 <label for="observacao">Observação:</label>

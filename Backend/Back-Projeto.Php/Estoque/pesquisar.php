@@ -25,7 +25,7 @@
         $pesquisar = $_POST['pesquisar'];
 
         // Consulta para buscar dados específicos na tabela `estoque`
-        $stmt = $conexao->prepare("SELECT id_Entrada, cod_Produto, qtd_Estoque FROM estoque WHERE cod_Produto LIKE ?");
+        $stmt = $conexao->prepare("SELECT id_Estoque, cod_Produto, qtd_Estoque FROM estoque WHERE cod_Produto LIKE ?");
         $pesquisar = "%$pesquisar%";
         $stmt->bind_param("s", $pesquisar);
 
@@ -37,7 +37,7 @@
             echo "<table class='table'><thead><tr><th>ID Entrada</th><th>Código do Produto</th><th>Quantidade em Estoque</th></tr></thead><tbody>";
             
             while ($row = $resultado->fetch_assoc()) {
-                echo "<tr><td>".$row['id_Entrada']."</td>
+                echo "<tr><td>".$row['id_Estoque']."</td>
                 <td>".$row['cod_Produto']."</td>
                 <td>".$row['qtd_Estoque']."</td></tr>";
             }
@@ -50,7 +50,7 @@
         $stmt->close();
     } else {
         // Consulta para exibir todos os dados inicialmente, apenas se não houver pesquisa
-        $sql = "SELECT id_Entrada, cod_Produto, qtd_Estoque FROM estoque";
+        $sql = "SELECT id_Estoque, cod_Produto, qtd_Estoque FROM estoque";
         $resultado = mysqli_query($conexao, $sql);
 
         if (mysqli_num_rows($resultado) > 0) {
@@ -58,7 +58,7 @@
             echo "<table class='table'><thead><tr><th>ID Entrada</th><th>Código do Produto</th><th>Quantidade em Estoque</th></tr></thead><tbody>";
             
             while ($row = mysqli_fetch_assoc($resultado)) {
-                echo "<tr><td>".$row['id_Entrada']."</td>
+                echo "<tr><td>".$row['id_Estoque']."</td>
                 <td>".$row['cod_Produto']."</td>
                 <td>".$row['qtd_Estoque']."</td></tr>";
             }
