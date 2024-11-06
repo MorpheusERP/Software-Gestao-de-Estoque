@@ -86,11 +86,11 @@
       .then(response => response.json())
       .then(data => {
           console.log(data);
-          document.getElementById('nivel').value = data.nivel_Usuario || 'Nivel não encontrado';
-          document.getElementById('nome').value = data.nome_Usuario || 'Nome não encontrado';
-          document.getElementById('sobrenome').value = data.sobrenome || 'Sobrenome não encontrado';
-          document.getElementById('funcao').value = data.funcao || 'Função não encontrado';
-          document.getElementById('login').value = data.login || 'Login não encontrado';
+          document.getElementById('nivel').value = data.nivel_Usuario;
+          document.getElementById('nome').value = data.nome_Usuario;
+          document.getElementById('sobrenome').value = data.sobrenome;
+          document.getElementById('funcao').value = data.funcao;
+          document.getElementById('login').value = data.login;
       })
       .catch(error => console.error('Erro ao carregar dados do usuário:', error));
 

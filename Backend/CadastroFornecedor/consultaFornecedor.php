@@ -78,7 +78,7 @@ $result = $stmt->get_result();
       }
       echo json_encode(["status" => "sucesso", "resultados" => $fornecedor]);
   } else {
-      echo json_encode(["status" => "erro", "mensagem" => "Usuário não encontrado."]);
+      echo json_encode(["status" => "erro", "mensagem" => "Fornecedor não encontrado."]);
   }
 
   $stmt->close();

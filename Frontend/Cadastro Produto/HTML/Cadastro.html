@@ -8,12 +8,12 @@
     <script>
         //Função para verificar se o usuário está logado
     function verificarLogin() {
-        fetch('../../Backend/verificalogin.php')
+        fetch('../../../Backend/verificalogin.php')
             .then(response => response.json())
             .then(data => {
                 if (!data.logado) {
                     // Redireciona para a página de login se não estiver logado
-                    window.location.href = '../../index.html';
+                    window.location.href = '../../../index.html';
                 }
             })
             .catch(error => {
@@ -42,7 +42,7 @@
                         </div>
                 </div>
             
-            <form id="produtoForm" enctype="multipart/form-data">
+            <form id="produtoForm"  enctype="multipart/form-data">
                 <!--Aqui a imagem é inserida-->
                 <div class="image-placeholder">
                         <input type="file" id="imagem" accept="image/*" style="display: none;" onchange="exibirImagem(this)" disabled>
@@ -60,7 +60,7 @@
                     <input type="text" id="produto" class="input-field" maxlength="50" placeholder="Nome do Produto" required disabled>
                 </div>
                     <div class="container2">
-                        <div class="coluna1">
+                        <div class="coluna1" >
                             <select id="tipoQuantidade" required disabled>
                             <option value="" disabled selected>Selecione o tipo</option>
                             <option value="Quilo">Quilos(KG)</option>
@@ -69,12 +69,12 @@
                             <option value="Saco">Sacos(SC)</option>
                             </select>
             
-                            <input type="number" id="pcusto" maxlength="4" placeholder="Preço de Custo" required disabled>
+                            <input type="number" id="pcusto" step="0.01" maxlength="4" placeholder="Preço de Custo" required disabled>
                             <input type="text" id="grupo" maxlength="15" placeholder="Grupo" required disabled>
                         </div>
                         <div class="coluna2">
                             <input type="number" id="barras" maxlength="15" placeholder="Cod. de Barras" disabled>
-                            <input type="number" id="pvenda" maxlength="4" placeholder="Preço de Venda" disabled>
+                            <input type="number" id="pvenda" step="0.01" maxlength="4" placeholder="Preço de Venda" disabled>
                             <input type="text" id="subgrupo" maxlength="15" placeholder="Sub. Grupo" disabled>
                         </div>
                     </div>
@@ -82,8 +82,8 @@
                         <textarea id="observacao" maxlength="150" placeholder="Observações" disabled></textarea>
                     </div>
                 
-                    <div class="buttons-edit" id="edit-buttons" style="display: none;">
-                        <button type="button" onclick="cadastrarProduto()"class="edit">Salvar</button>
+                    <div class="buttons" id="edit-buttons" style="display: none;">
+                        <button type="submit" class="edit">Salvar</button>
                     </div>
             </form>
                 <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
@@ -110,7 +110,7 @@
             function novo() {
                 document.getElementById('default-buttons').style.display = 'none';
                 document.getElementById('new-button').style.display = 'flex'; // Usa flex para manter o layout
-                document.getElementById('edit-buttons').style.display = 'flex';
+                document.getElementById('edit-buttons').style.display = 'inline';
                 habilitarCampos(); // Função existente para habilitar campos do formulário
             }
         
@@ -121,6 +121,7 @@
                     desabilitarCampos(); // Função existente para desabilitar campos do formulário
                 }
                 function habilitarCampos() {
+                    document.getElementById('preview').classList.toggle('image-enabled');
                     document.getElementById("imagem").disabled = false;
                     document.getElementById("codigo").disabled = false;
                     document.getElementById("produto").disabled = false;
@@ -159,8 +160,6 @@
                   const preview = document.getElementById('preview');
                   preview.src = e.target.result;
                   preview.style.display = 'block';
-
-                  document.getElementById('preview').classList.toggle('image-enabled');
                 };
           
                 leitor.readAsDataURL(arquivo); // Lê o arquivo como uma URL de dados
@@ -177,10 +176,16 @@
     
         <!--Script para enviar os dados do produto para o servidor-->
         <script>
-            async function cadastrarProduto() {
-                const formData = new FormData(document.getElementById('produtoForm'));
-    
-                // Obtem os campos e adiciona ao formData
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('produtoForm');
+
+                // Adiciona o evento de envio ao formulário
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita o envio padrão do formulário
+            
+                // Cria um FormData para enviar os dados do formulário e a imagem
+                const formData = new FormData();
+                // Adiciona cada campo manualmente
                 formData.append('codigo', document.getElementById('codigo').value);
                 formData.append('nome', document.getElementById('produto').value);
                 formData.append('tipo', document.getElementById('tipoQuantidade').value);
@@ -192,24 +197,26 @@
                 formData.append('observacoes', document.getElementById('observacao').value);
                 formData.append('imagem', document.getElementById('imagem').files[0]);
     
-                try {
-                    const response = await fetch('../../../Backend/CadastroProdutos/novoProduto.php', {
-                        method: 'POST',
-                        body: formData
-                    });
-    
-                    const data = await response.json();
-                    
+                fetch('../../../Backend/CadastroProdutos/novoProduto.php', {
+                    method: 'POST',
+                    body: formData
+                })
+        
+                .then(response => response.json())
+                .then(data => {   
                     if (data.status === 'sucesso') {
-                        document.getElementById('mensagemSucesso').innerText = data.mensagem;
+                    document.getElementById('mensagemSucesso').innerText = data.mensagem;
+                    form.reset(); // Limpa o formulário após o sucesso
                     } else if (data.status === 'erro') {
                         document.getElementById('mensagemErro').innerText = data.mensagem;
                     }
-                } catch (error) {
+                })
+                .catch (error => {
                     console.error('Erro na requisição:', error);
                     document.getElementById('mensagemErro').innerText = "Erro ao comunicar com o servidor.";
-                }
-            }
+                });
+            })
+        })
         </script>
     
 </body>

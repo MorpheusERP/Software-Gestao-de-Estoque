@@ -1,6 +1,6 @@
 <?php
 
-//Este arquivo serve para consultas de Produto com cod fornecido pelo arquivo alterarProduto.html
+//Este arquivo serve para consultas de Produto com cod_Produtos fornecido pelo arquivo alterarProduto.html
 
 // Inclui o arquivo de conexão com o banco de dados
 include '../conexao.php';

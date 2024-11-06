@@ -1,4 +1,5 @@
 <?php
+//Este arquivo serve para adicionar um Produto, com base na requisição do arquivo Cadastro.html
 
 include '../conexao.php'; 
 
@@ -12,12 +13,12 @@ try {
     $cod_Produto = $_POST['codigo'];
     $nome_Produto = $_POST['nome'];
     $tipo_Produto = $_POST['tipo'];
-    $cod_Barras = $_POST['codigoBarras'];
+    $cod_Barras = $_POST['codigoBarras'] ?? null;
     $preco_Custo = $_POST['precoCusto'];
-    $preco_Venda = $_POST['precoVenda'];
+    $preco_Venda = $_POST['precoVenda'] ?? null;
     $grupo = $_POST['grupo'];
-    $sub_grupo = $_POST['subgrupo'];
-    $observacao = $_POST['observacoes'];
+    $sub_grupo = $_POST['subgrupo'] ?? null;
+    $observacao = $_POST['observacoes'] ?? null;
 
     // Processamento da imagem
     $imagem = $_FILES['imagem'];
@@ -30,7 +31,7 @@ try {
         throw new Exception("Erro ao salvar imagem.");
     }
 
-    // Verifica se o fornecedor já existe
+    // Verifica se o Produto já existe
     $sqlCheck = "SELECT * FROM produto WHERE cod_Produto = ?";
     $stmtCheck = $mysqli->prepare($sqlCheck);
     $stmtCheck->bind_param("i", $cod_Produto);

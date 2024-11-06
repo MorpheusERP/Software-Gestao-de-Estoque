@@ -75,7 +75,7 @@ body {
     background-color: #ffcc00;
 }
 
-  .botao-upload {
+.botao-upload {
     display: inline-block;
     padding: 10px 10px;
     color: black;
@@ -88,9 +88,21 @@ body {
     margin-top: 10px;
   }
   
-  .botao-upload:hover {
+.botao-upload:hover {
     background-color: #ffcc00;
   }
+
+.change-button button{
+    padding: 15px 40px;
+    color: black;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+}
 
 
 .image-placeholder{
@@ -98,9 +110,19 @@ body {
     margin-bottom: 20px;
 }
 
+/* Estilo default com borda */
+.image-default {
+    width: 100%;
+    max-width: 300px; /* Limita o tamanho máximo a 300px */
+    height: auto; /* Mantém a proporção da imagem */
+    flex-shrink: 0;
+    border: 5px solid #333; /* Adiciona uma borda de 2px com cor cinza escura */
+    opacity: 0.7; /* Visualmente diferente para indicar desabilitado */
+}
+
 /* Estilo padrão sem borda */
 .image-disabled {
-    width: 100%;
+    width: 50%;
     max-width: 300px; /* Limita o tamanho máximo a 300px */
     height: auto; /* Mantém a proporção da imagem */
     flex-shrink: 0;
@@ -217,6 +239,7 @@ select:focus, input:focus, textarea:focus {
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
+    text-align: center;
     flex-grow: 1; /* Faz com que os botões ocupem a mesma largura */
     margin: 0 5px;
     height: 42px;
