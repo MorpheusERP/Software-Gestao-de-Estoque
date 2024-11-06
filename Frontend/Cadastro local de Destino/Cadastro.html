@@ -8,12 +8,12 @@
     <script>
             //Função para verificar se o usuário está logado
         function verificarLogin() {
-            fetch('../../Backend/verificalogin.php')
+            fetch('../../../Backend/verificalogin.php')
                 .then(response => response.json())
                 .then(data => {
                     if (!data.logado) {
                         // Redireciona para a página de login se não estiver logado
-                        window.location.href = '../../index.html';
+                        window.location.href = '../../../index.html';
                     }
                 })
                 .catch(error => {
