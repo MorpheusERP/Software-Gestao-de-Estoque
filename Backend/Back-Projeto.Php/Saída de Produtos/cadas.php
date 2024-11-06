@@ -6,14 +6,13 @@
     <title>Saída de Produtos</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
+    </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Saída de Produtos</h1>
         </div>
 
-        <!-- Formulário para enviar dados para cadastro.php -->
         <form action="cadastro.php" method="post" enctype="multipart/form-data">
             <div class="form-container">
                 <div class="image-placeholder">
@@ -21,27 +20,36 @@
                 </div>
                 <div class="form">
 
-                    <!-- Campo Código com ícone de pesquisa -->
+                    <!-- ID do Usuário -->
+                    <label for="id_usuario">ID do Usuário:</label>
+                    <input type="number" name="id_usuario" id="id_usuario" class="input-field" placeholder="ID do Usuário" required>
+
+                    <!-- Campo Código -->
                     <label for="codigo">Código:</label>
                     <div class="input-container">
                         <input type="number" name="cod_produto" id="codigo" class="input-field" placeholder="Código" required>
                         <button class="search-icon" type="button" onclick="searchCodigo()">🔍</button>
                     </div>
 
-                    <!-- Campo Produto com ícone de pesquisa -->
+                    <!-- Campo Produto -->
                     <label for="produto">Produto:</label>
                     <div class="input-container">
                         <input type="text" name="nome_produto" id="produto" class="input-field" placeholder="Produto" required>
                         <button class="search-icon" type="button" onclick="searchProduto()">🔍</button>
                     </div>
 
-                    <!-- Campo Local de Destino com ícone de pesquisa -->
-                    <label for="local">Local de Destino:</label>
-                    <div class="input-container">
-                        <input type="text" name="nome_local" id="local" class="input-field" placeholder="Local de destino" required>
-                        <button class="search-icon" type="button" onclick="searchLocal()">🔍</button>
-                    </div>
+                    <!-- Preço de Custo -->
+                    <label for="preco_custo">Preço de Custo:</label>
+                    <input type="number" step="0.01" name="preco_custo" id="preco_custo" class="input-field" placeholder="Preço de Custo" required>
 
+                    <!-- Campo Local de Destino -->
+                    <label for="local">Local de Destino (ID):</label>
+                    <input type="number" name="id_local" id="id_local" class="input-field" placeholder="ID do Local" required>
+
+                    <label for="nome_local">Nome do Local:</label>
+                    <input type="text" name="nome_local" id="nome_local" class="input-field" placeholder="Nome do Local" required>
+
+                    <!-- Quantidade -->
                     <label for="quantidade">Quantidade:</label>
                     <div class="quantidade-container">
                         <input type="number" name="qtd_saida" id="quantidade" placeholder="Quantidade" required>
@@ -54,22 +62,18 @@
                         </select>
                     </div>
 
+                    <!-- Observações -->
                     <label for="observacoes">Observações:</label>
                     <textarea name="observacao" id="observacoes" placeholder="Observações"></textarea>
 
-                    <!-- Novo campo para upload de imagem -->
+                    <!-- Imagem -->
                     <label for="imagem">Selecionar Imagem:</label>
-                    <input type="file" name="imagem" id="imagem" accept="image/*" class="input-field" required>
-        
+                    <input type="file" name="imagem" id="imagem" accept="image/*" class="input-field">
+
+                    <!-- Botões -->
                     <div class="buttons">
                         <button class="new" type="button" onclick="habilitarCampos()">Novo</button>
-                        <button class="save" type="cadastro.php">Salvar</button> <!-- Botão de envio do formulário -->
-                        <a href="pesquisar.php" class="search-link">
-                            <button type="button" class="search">Buscar</button>
-                        </a>
-                        <a href="atualizarcaodesaidas.php" class="edit-link">
-                            <button type="button" class="edit">Alterar</button>
-                        </a>
+                        <button class="save" type="submit">Salvar</button>
                     </div>
 
                     <div>
