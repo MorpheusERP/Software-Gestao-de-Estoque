@@ -44,6 +44,12 @@ body {
     border-radius: 8px;
 }
 
+.form {
+    width: 95%; /* Faz com que o formulário ocupe 100% da largura do container */
+    display: flex;
+    flex-direction: column; /* Para empilhar os elementos verticalmente */
+}
+
 button {
     background-color: #ffcc00;
     color: black;

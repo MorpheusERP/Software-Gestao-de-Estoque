@@ -70,11 +70,11 @@
     </div>
 
     <script>
-  // Obtem o ID do usuário da URL
+  // Obtem o ID do fornecedor da URL
   const params = new URLSearchParams(window.location.search);
   const id_Fornecedor = params.get('id_Fornecedor');
 
-  // Preenche o formulário com os dados do usuário
+  // Preenche o formulário com os dados do fornecedor
   fetch(`../../../Backend/CadastroFornecedor/buscarfornecedor.php?id_Fornecedor=${id_Fornecedor}`)
       .then(response => response.json())
       .then(data => {

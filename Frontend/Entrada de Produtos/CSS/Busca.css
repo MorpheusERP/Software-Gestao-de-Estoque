@@ -120,17 +120,28 @@ label {
     margin-top: 15px;
 }
 
-.buttons button {
+#add {
     background-color: #ffcc00;
     color: black;
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
     flex-grow: 1;
     margin: 0 5px;
+    display: flex; /* Usando flexbox para alinhar o conteúdo */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
 }
+
+#add img {
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+
 
 .buttons button:hover {
     background-color: #e6b800;
@@ -142,53 +153,47 @@ label {
     overflow-x: auto; /* Permite rolar horizontalmente se a tabela for grande */
 }
 
-
+/* Faz a tabela ocupar 100% da largura */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-    
-}
+    font-size: 12px;
+    color:black;
+  }
 
-table th, table td {
-    border: 3px solid #ccc;
+td{
+    border: 1px solid black; 
     padding: 10px;
     text-align: center;
-    background-color: #ccc;
-    border-color: black;
-    border-radius: 5px;
+}
+  th {
+    border: 2px solid black; 
+    padding: 10px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #D9D9D9;
+    font-weight: bold;
+  }
+tr {
+    background-color:#D9D9D9; 
 }
 
 /* Rodapé */
 .footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 10px;
-    margin-top: 5px;
-}
-
-.footer .exit {
-    background-color: #ffcc00;
-    color: black;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-right: 75px;
-}
-
-.footer .exit:hover {
-    background-color: #e6b800;
+    margin-top: 20px;
 }
 
 .footer .logo img {
-    width: 156px;
-    height: 126px;
+    max-width: 100px;
+    margin-right: 15px;
+    margin-left: 25px;
     flex-shrink: 0;
-    margin-top: -20px;
-    margin-left: auto; /* Move o logo para a direita */
 }
 
 /* Estilizando os campos de input com a lupa dentro */
@@ -200,8 +205,45 @@ table th, table td {
 .input-container input {
     width: 100%;
     height: 50px;
+    padding-left: 35px;
     padding-right: 35px; /* Espaço suficiente para o ícone */
     box-sizing: border-box;
+    align-items: center;
+}
+
+input:disabled {
+    background-color: white;
+    color: black;
+    border: 2px solid #000; 
+    opacity: 1; 
+    cursor: not-allowed;
+}
+        
+input:disabled:focus {
+    outline: none; 
+    border-color: #4A90E2;
+}
+
+#back{
+    height: 40px;
+    width: 90px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    display: flex; /* Usando flexbox para alinhar o conteúdo */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+}
+
+#back img {
+    width: 110px; /* Tamanho da seta */
+    height: 25px;
+    margin-right: 5px; /* Espaçamento entre o texto e a seta */
 }
 
 .search-icon {
@@ -220,6 +262,23 @@ table th, table td {
     color: #000; /* Mudança de cor ao passar o mouse */
 }
 
+.buttons-clear{
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    background-color: #ffffff00;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-clear img {
+    height: 20px;
+    margin-right: px;
+}
 /* Ajustes para telas pequenas */
 @media (max-width: 600px) {
     body {

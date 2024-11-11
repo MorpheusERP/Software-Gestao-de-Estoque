@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrada de Produtos</title>
     <link rel="stylesheet" href="../CSS/Entrada.css">
+    <script>
+        //Função para verificar se o usuário está logado
+        function verificarLogin() {
+            fetch('../../../Backend/verificalogin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.logado) {
+                        // Redireciona para a página de login se não estiver logado
+                        window.location.href = '../../../index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar autenticação:", error);
+                });
+            }
+    
+    // Executa a função quando a página é carregada
+    document.addEventListener("DOMContentLoaded", verificarLogin);
+</script>
+</head>
 <body>
     <div class="container">
         <div class="header">
@@ -14,98 +34,67 @@
         <div class="form-container">
             <div class="form">
 
-                <!-- Campo Fornecedor com ícone de pesquisa -->
-                <label for="fornecedor"></label>
-                <div class="input-container">
-                    <input type="text" id="fornecedor" class="input-field" placeholder="Fornecedor" required>
-                    <button class="plus-icon" onclick="add()">&#43;</button>
-            </div>
-
                 <!-- Campo Produto com ícone de pesquisa -->
-                <label for="produto"></label>
                 <div class="input-container">
-                    <input type="text" id="produto" class="input-field" placeholder="Produto" required>
-                    <button class="plus-icon" onclick="add()">&#43;</button>
+                    <input type="text" id="produto" class="input-field" placeholder="Produto" disabled>
                 </div>
 
-                <!-- Campo Local de Destino com ícone de pesquisa -->
-                <label for="local"></label>
+                <!-- Campo Fornecedor com ícone de pesquisa -->
                 <div class="input-container">
-                    <input type="text" id="local" class="input-field" placeholder="Local de destino" required>
-                    <button class="plus-icon" onclick="add()">&#43;</button>
+                    <input type="text" id="fornecedor" class="input-field" placeholder="Fornecedor"  disabled>
                 </div>
 
                 <!-- Campo Quantidade -->
-                <label for="quantidade"></label>
                 <input type="number" id="quantidade" placeholder="Quantidade" required disabled>
 
                 <!-- Campos Preço de Custo e Preço de Venda -->
                 <div class="CustoeVenda">
                     <div class="input-group">
-                        <label for="custo"></label>
                         <input type="number" id="custo" name="custo" placeholder="Preço de Custo" required disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="venda"></label>
-                        <input type="number" id="venda" name="venda" placeholder="Preço de Venda" required disabled>
                     </div>
                 </div>
             </div>
 
             <!-- Botões -->
-            <div class="buttons">
-                <button class="new" onclick="habilitarCampos()">Novo</button>
-                <a href="Busca.html" class="search-link">
-                    <button class="search">Buscar</button>
-                </a>
-                <button class="edit">Alterar</button>
+            <div class="search-buttons">
+                <button class="new" onclick="window.location.href='NovaEntrada.html'">
+                    <img src="../Fotos/plus.png">Novo
+                </button>
+                    <button class="search" onclick="window.location.href='Busca.html'">
+                        <img src="../Fotos/magnifying-glass-8-svgrepo-com.png">Buscar
+                    </button>
             </div>
         </div>
 
-        <!-- Tabela -->
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>COD</th>
-                        <th>QTD</th>
-                        <th>Produto</th>
-                        <th>Fornecedor</th>
-                        <th>P.Custo</th>
-                        <th>P.Venda</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> 
-    </div>
-
     <!-- Rodapé -->
     <div class="footer">
-        <a href="../../Home Page/HTML/home.html" class="search-link">
-            <button class="exit">Sair</button>
-        </a>
+        <div class="search-link">
+            <button id="exit" onclick="back()">
+                <img src="../Fotos/arrow-right-svgrepo-com.png">Sair
+            </button>
+        </div>
         <div class="logo">
             <img src="../Fotos/Emporio maxx s-fundo.png" alt="Empório Maxx Logo">
         </div>
     </div>
 
-    <!-- Script JavaScript -->
+<!--Script para verificar o nivel do usuario logado ao clicar no botao sair-->
     <script>
-        // Função para habilitar os campos bloqueados
-        function habilitarCampos() {
-            document.getElementById('quantidade').disabled = false;
-            document.getElementById('custo').disabled = false;
-            document.getElementById('venda').disabled = false;
+        // Função para verificar o nivel do usuario logado
+        async function back() {
+            try {
+                // Envia uma requisição GET para o arquivo PHP
+                const response = await fetch('../../../Backend/verificalogin.php');
+                const data = await response.json();
+
+                if (data.nivel === 'admin') {
+                    window.location.href= '../../../home.html';
+                } else {
+                    window.location.href= '../../../homepadrao.html';
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+            }
         }
     </script>
 </body>

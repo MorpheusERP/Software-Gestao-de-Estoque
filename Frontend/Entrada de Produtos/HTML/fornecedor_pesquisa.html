@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca por Fornecedor</title>
-    <link rel="stylesheet" href="../CSS/Busca.css">
+    <link rel="stylesheet" href="../CSS/Fornecedor.css">
     <script>
         //Função para verificar se o usuário está logado
     function verificarLogin() {
@@ -69,7 +69,7 @@
         const grupo = document.getElementById('grupo').value;
         const subgrupo = document.getElementById('subgrupo').value;
 
-        // Cria um objeto com os dados do fornecedor
+        // Cria um objeto com os dados do usuário
         const dados = {
             razao_Social: razao,
             nome_Fantasia: fantasia,
@@ -108,10 +108,16 @@
         // Adiciona as novas linhas com os resultados
         resultados.forEach(fornecedor => {
             const linha = document.createElement('tr');
+
+            const previousURL = document.referrer;
+            const params = new URLSearchParams({
+                razao_Social: fornecedor.razao_Social,
+                id_Fornecedor: fornecedor.id_Fornecedor
+            }).toString();
             
             // Configura a linha para redirecionar ao clicar
             linha.onclick = function() {
-                window.location.href = `alterarFornecedor.html?id_Fornecedor=${fornecedor.id_Fornecedor}`;
+                window.location.href = `${previousURL}?${params}`;
             };
             
             linha.innerHTML = `
@@ -130,9 +136,7 @@
     </script>
 
     <div class="buttons-footer">
-        <a href="../HTML/Cadastro.html" class="search-link">
-            <button class="exit">Voltar</button>
-        </a>
+        <button class="exit" onclick="window.history.back()">Voltar</button>
     </div>
 
     <div class="logo">

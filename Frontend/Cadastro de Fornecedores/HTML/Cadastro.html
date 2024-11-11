@@ -46,17 +46,15 @@
                         <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: " disabled>
                         <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: " disabled>
                         <input type="text" id="observacao" class="input-field" maxlength="150" placeholder="Observações: " disabled>
-
                         <div class="buttons-edit" id="edit-buttons" style="display: none;">
                             <button class="edit" type="submit">Salvar</button>
-                        </div>
-                    </form>
-                        <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
-                        <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>
+                        </div>                
+                    </form>  
                 </div>
+                <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
+                <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>  
             </div>
         </div>
-
     <!-- Script para enviar os dados para o servidor e exibir a resposta-->
     <script>
         document.getElementById('cadastroForm').addEventListener('submit', function(event) {

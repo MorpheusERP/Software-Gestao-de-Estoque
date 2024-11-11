@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca por Fornecedor</title>
-    <link rel="stylesheet" href="../CSS/Busca.css">
+    <link rel="stylesheet" href="../CSS/Fornecedor.css">
     <script>
         //Função para verificar se o usuário está logado
     function verificarLogin() {
@@ -32,14 +32,11 @@
     <div class="container">
         <div class="form">
             <form id="consultaForm">
-                <input type="text" id="razao" class="input-field" maxlength="150" placeholder="* Razão Social:">
-                <input type="text" id="fantasia" class="input-field" maxlength="50" placeholder="Nome Fantasia: ">
-                <input type="text" id="apelido" class="input-field" maxlength="50" placeholder="Apelido: ">
                 <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: ">
                 <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: ">
 
                 <div class="buttons">
-                    <button type="button" class="buttons" onclick="consultarUsuario()">Buscar</button>
+                    <button type="button" class="buttons" onclick="consultarGrupoSubgrupo()">Buscar</button>
                 </div>
                 <div class="table-container"></div>
             </form>
@@ -51,8 +48,6 @@
 <table id="resultadoTabela" border="1" style="display:none; font-size: 11px;">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Razao Social</th>
             <th>Grupo</th>
             <th>Sub Grupo</th>
         </tr>
@@ -61,25 +56,19 @@
 </table>
 
 <script>
-    // Função para consultar o Fornecedor
-    function consultarUsuario() {
-        const razao = document.getElementById('razao').value;
-        const fantasia = document.getElementById('fantasia').value;
-        const apelido = document.getElementById('apelido').value;
+    // Função para consultar o grupo/subgrupo
+    function consultarGrupoSubgrupo() {
         const grupo = document.getElementById('grupo').value;
         const subgrupo = document.getElementById('subgrupo').value;
 
-        // Cria um objeto com os dados do fornecedor
+        // Cria um objeto com os dados do grupo/subgrupo
         const dados = {
-            razao_Social: razao,
-            nome_Fantasia: fantasia,
-            apelido: apelido,
             grupo: grupo,
             sub_Grupo: subgrupo,
         };
 
         // Envia os dados para o arquivo PHP usando fetch
-        fetch('../../../Backend/CadastroFornecedor/consultafornecedor.php', {
+        fetch('../../../Backend/CadastroProdutos/consultagrupo.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -106,19 +95,23 @@
         corpoTabela.innerHTML = '';
     
         // Adiciona as novas linhas com os resultados
-        resultados.forEach(fornecedor => {
+        resultados.forEach(produtos => {
             const linha = document.createElement('tr');
+
+            const previousURL = document.referrer;
+            const params = new URLSearchParams({
+                grupo: produtos.grupo,
+                sub_Grupo: produtos.sub_Grupo
+            }).toString();
             
             // Configura a linha para redirecionar ao clicar
             linha.onclick = function() {
-                window.location.href = `alterarFornecedor.html?id_Fornecedor=${fornecedor.id_Fornecedor}`;
+                window.location.href = `${previousURL}?${params}`;
             };
             
             linha.innerHTML = `
-                <td>${fornecedor.id_Fornecedor}</td>
-                <td>${fornecedor.razao_Social}</td>
-                <td>${fornecedor.grupo}</td>
-                <td>${fornecedor.sub_Grupo}</td>
+                <td>${produtos.grupo}</td>
+                <td>${produtos.sub_Grupo}</td>
             `;
             
             corpoTabela.appendChild(linha);
@@ -130,9 +123,7 @@
     </script>
 
     <div class="buttons-footer">
-        <a href="../HTML/Cadastro.html" class="search-link">
-            <button class="exit">Voltar</button>
-        </a>
+        <button class="exit" onclick="window.history.back()">Voltar</button>
     </div>
 
     <div class="logo">

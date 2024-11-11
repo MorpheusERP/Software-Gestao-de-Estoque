@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca por Fornecedor</title>
-    <link rel="stylesheet" href="../CSS/Busca.css">
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" href="../CSS/Produto.css">
     <script>
         //Função para verificar se o usuário está logado
-    function verificarLogin() {
+        function verificarLogin() {
             fetch('../../../Backend/verificalogin.php')
                 .then(response => response.json())
                 .then(data => {
@@ -20,66 +20,66 @@
                     console.error("Erro ao verificar autenticação:", error);
                 });
             }
-
-        // Executa a função quando a página é carregada
-        document.addEventListener("DOMContentLoaded", verificarLogin);
-    </script>
+    
+    // Executa a função quando a página é carregada
+    document.addEventListener("DOMContentLoaded", verificarLogin);
+</script>
 </head>
 <body>
     <div class="header">
-        <h1>Busca Fornecedor</h1>
+        <h1>Busca Produto</h1>
     </div>
     <div class="container">
         <div class="form">
             <form id="consultaForm">
-                <input type="text" id="razao" class="input-field" maxlength="150" placeholder="* Razão Social:">
-                <input type="text" id="fantasia" class="input-field" maxlength="50" placeholder="Nome Fantasia: ">
-                <input type="text" id="apelido" class="input-field" maxlength="50" placeholder="Apelido: ">
-                <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: ">
-                <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: ">
+                <input type="number" id="codigo" placeholder="Código do Produto">
 
+                <input type="text" id="produto" placeholder="Nome">
+
+                <input type="text" id="grupo" placeholder="Grupo">
+
+                <input type="text" id="subgrupo" placeholder="Sub Grupo">
+                
                 <div class="buttons">
-                    <button type="button" class="buttons" onclick="consultarUsuario()">Buscar</button>
+                    <button type="button" class="search" onclick="consultarProdutos()">Buscar</button>
                 </div>
                 <div class="table-container"></div>
             </form>
-            <p id="mensagemErro" style="font-size: 18px0; background-color: red;color: whitesmoke"></p>
+            <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>
         </div>
     </div>
 
-<!-- Tabela para exibir os resultados -->
-<table id="resultadoTabela" border="1" style="display:none; font-size: 11px;">
+ <!-- Tabela para exibir os resultados -->
+<table id="resultadoTabela" border="1" style="display:none;">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Razao Social</th>
+            <th>COD</th>
+            <th>Nome</th>
+            <th>P.Custo</th>
             <th>Grupo</th>
-            <th>Sub Grupo</th>
         </tr>
     </thead>
     <tbody id="resultadoCorpo"></tbody>
 </table>
 
 <script>
-    // Função para consultar o Fornecedor
-    function consultarUsuario() {
-        const razao = document.getElementById('razao').value;
-        const fantasia = document.getElementById('fantasia').value;
-        const apelido = document.getElementById('apelido').value;
+    // Função para consultar o Produto
+    function consultarProdutos() {
+        const cod = document.getElementById('codigo').value;
+        const produto = document.getElementById('produto').value;
         const grupo = document.getElementById('grupo').value;
         const subgrupo = document.getElementById('subgrupo').value;
 
-        // Cria um objeto com os dados do fornecedor
+        // Cria um objeto com os dados do Produto
         const dados = {
-            razao_Social: razao,
-            nome_Fantasia: fantasia,
-            apelido: apelido,
+            cod_Produto: cod,
+            nome_Produto: produto,
             grupo: grupo,
-            sub_Grupo: subgrupo,
+            sub_Grupo: subgrupo
         };
 
         // Envia os dados para o arquivo PHP usando fetch
-        fetch('../../../Backend/CadastroFornecedor/consultafornecedor.php', {
+        fetch('../../../Backend/CadastroProdutos/consultaprodutos.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -89,12 +89,15 @@
 
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Exibe a resposta no console para verificar seu conteúdo
+
             if (data.status === "sucesso") {
                 exibirTabela(data.resultados);
             } else if (data.status === 'erro'){
                 document.getElementById('mensagemErro').innerText = data.mensagem;
             }
         })
+        .catch(error => console.error(error));
     }
     
     // Função para exibir a tabela com os resultados
@@ -106,19 +109,26 @@
         corpoTabela.innerHTML = '';
     
         // Adiciona as novas linhas com os resultados
-        resultados.forEach(fornecedor => {
+        resultados.forEach(produtos => {
             const linha = document.createElement('tr');
+            
+            const previousURL = document.referrer;
+            const params = new URLSearchParams({
+                cod_Produto: produtos.cod_Produto,
+                nome_Produto: produtos.nome_Produto
+            }).toString();
             
             // Configura a linha para redirecionar ao clicar
             linha.onclick = function() {
-                window.location.href = `alterarFornecedor.html?id_Fornecedor=${fornecedor.id_Fornecedor}`;
+                window.location.href = `${previousURL}?${params}`;
             };
             
+            
             linha.innerHTML = `
-                <td>${fornecedor.id_Fornecedor}</td>
-                <td>${fornecedor.razao_Social}</td>
-                <td>${fornecedor.grupo}</td>
-                <td>${fornecedor.sub_Grupo}</td>
+                <td>${produtos.cod_Produto}</td>
+                <td>${produtos.nome_Produto}</td>
+                <td>${produtos.preco_Custo}</td>
+                <td>${produtos.grupo}</td>
             `;
             
             corpoTabela.appendChild(linha);
@@ -130,9 +140,7 @@
     </script>
 
     <div class="buttons-footer">
-        <a href="../HTML/Cadastro.html" class="search-link">
-            <button class="exit">Voltar</button>
-        </a>
+        <button class="exit" onclick="window.history.back()">Voltar</button>
     </div>
 
     <div class="logo">
