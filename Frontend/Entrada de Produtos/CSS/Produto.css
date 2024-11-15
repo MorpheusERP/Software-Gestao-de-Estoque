@@ -128,4 +128,15 @@ table th, table td {
     background-color: #e6b800;
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+}
+.logo img {
+    width: 156px;
+    height: 126px;
+    flex-shrink: 0;
+    margin-top: -20px;
+}
+
 

@@ -22,11 +22,11 @@ body {
   padding: 20px;
 }
   .avatar {
-    width: 125px;
+    width: 150px;
     height: 130px;
     border-radius: 50%;
     margin: 0 auto 10px;
-    background-image: url('Imagens/Usuario.png');
+    background-image: url('Imagens/usuario.png');
     background-size: cover;
     background-position: center;
   }
@@ -46,48 +46,131 @@ body {
   }
   
   .edit-button img {
-    width: 12px;
+    width: 20px;
     margin-right: 5px;
   }
   
-  .input-field {
+  .inputfield {
     background-color: #e0e0e0;
     border: none;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 15px;
+    padding: 15px;
     margin-bottom: 15px;
-    width: 100%;
+    width: 280px;
     font-size: 14px;
     text-align: center;
   }
   
-  .input-field[disabled] {
+  .inputfield[disabled] {
     opacity: 0.7;
   }
-  
-  .logout-button {
-    background-color: #ffeb3b;
+  .buttons-search {
+    margin-top: 15px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.buttons-search button {
+    background-color: #ffcc00;
+    color: black;
     border: none;
     padding: 10px;
-    border-radius: 20px;
-    color: black;
-    font-weight: bold;
+    border-radius: 30px;
     cursor: pointer;
-    width: 30%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+    font-weight: bold;
+    flex-grow: 1; /* Faz com que os botões ocupem a mesma largura */
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+}
+
+.buttons-search button:hover {
+    background-color: #e6b800;
+}
+
+.buttons-edit {
+  margin-top: 15px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.buttons-logout {
+    margin-top: 15px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.buttons-edit button {
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  flex-grow: 1; /* Faz com que os botões ocupem a mesma largura */
+  margin: 0 5px;
+  height: 40px;
+  width: 100px;
+}
+
+.buttons-logout button {
+    background-color: #FF0D0D;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1; /* Faz com que os botões ocupem a mesma largura */
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+}
+
+#save {
+    margin-top: 15px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+#save button {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1; /* Faz com que os botões ocupem a mesma largura */
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+}
+
+#save button:hover {
+    background-color: #e6b800;
+}
+
+  .BotoesFooter{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+  .buttons-logout img {
+    width: 15px;
+  margin-right: 8px;
   }
-  
-  .logout-button img {
-    width: 12px;
-    margin-right: 5px;
-  }
-  
+
+.buttons-search img{
+  width: 13px;
+  margin-right: 8px;
+}
+
   .label {
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
   }
   
@@ -106,4 +189,40 @@ body {
     font-weight: bold;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }
-  
+.input-container {
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
+}
+
+  .input-field {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 280px;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 40px; /* Adiciona espaço para o ícone à direita */
+}
+
+  .input-field[disabled] {
+    opacity: 0.7;
+  }
+
+.toggle-visibility {
+    position: absolute;
+    top: 10px;
+    right: 15px; /* Posiciona o ícone à direita dentro do input */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 23px;
+    color: #000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

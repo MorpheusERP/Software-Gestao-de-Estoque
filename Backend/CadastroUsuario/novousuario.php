@@ -1,22 +1,13 @@
 <?php
-//Para executar esse arquivo é necessário alterar as credencais de conexão com o banco de dados
+
+//Este arquivo serve para inserir novos usuarios com base nos dados informados pelo arquivo Cadastro.html
+
+include '../conexao.php';
+
 header('Content-Type: application/json'); // Define o cabeçalho para JSON
 
 error_reporting(E_ALL); // Relatar todos os erros
 ini_set('display_errors', 1); // Exibir erros
-
-// Configurações de conexão
-$host = '127.0.0.1';
-$user = 'root';
-$password = '#$61@0Aljk';
-$database = 'teste_autenticacao';
-
-$mysqli = new mysqli($host, $user, $password, $database);
-
-// Verifica a conexão
-if ($mysqli->connect_error) {
-    echo json_encode(["status" => "erro", "mensagem" => "Erro de conexão: ".$mysqli->connect_error]);
-}
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -26,8 +17,6 @@ $sobrenome = $data['sobrenome'];
 $funcao = $data['funcao'];
 $login = $data['login'];
 $senha = $data['senha'];
-
-$mysqli = new mysqli($host, $user, $password, $database);
 
 // Criptografa a senha usando password_hash
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);

@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuario</title>
     <link rel="stylesheet" href="../CSS/Cadastro.css">
+    <script>
+        //Função para verificar se o usuário está logado
+    function verificarLogin() {
+            fetch('../../../Backend/verificalogin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.logado) {
+                        // Redireciona para a página de login se não estiver logado
+                        window.location.href = '../../../index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar autenticação:", error);
+                });
+            }
+
+        // Executa a função quando a página é carregada
+        document.addEventListener("DOMContentLoaded", verificarLogin);
+    </script>
 </head>
 <body>
     <div class="header">
-        <h1>Cadastro</h1>
+        <h1>Cadastro de Usuários</h1>
     </div>
         <div class="container">
             <div class="form">
                 <div class="buttons" id="default-buttons">
                     <button class="new" onclick="novo()">Novo</button>
                     <button class="search" onclick="window.location.href='Busca.html'">Buscar</button>
-                    <button class="edit" onclick="alter">Alterar</button>
                 </div>
                 <div class="Conteudo">
                     <div class="buttons" id="new-button" style="display: none;">
@@ -28,7 +46,7 @@
                             <option value="admin">Administrador</option>
                         </select>
                         <input type="text" id="nome" class="input-field" maxlength="20" placeholder="* Nome" required disabled>
-                        <input type="text" id="sobrenome" class="input-field" maxlength="20" placeholder="Sobrenome" required disabled>
+                        <input type="text" id="sobrenome" class="input-field" maxlength="20" placeholder="Sobrenome" disabled>
                         <input type="text" id="funcao" class="input-field" maxlength="20" placeholder="* Função" required disabled>
                         <input type="text" id="login" class="input-field" maxlength="10" placeholder="* Login" required disabled>
                         <div class="input-container" id="show-password" style="display: none;">
@@ -86,7 +104,7 @@
                             document.getElementById('mensagemSucesso').innerText = data.mensagem;
                             setTimeout(() => {
                                 location.reload();  // Atualiza a página após o delay
-                            }, 3000); // Delay de 5000 ms (5 segundos)
+                            }, 3000); // Delay de 3000 ms (3 segundos)
                         } else if (data.status === 'erro'){
                             // Exibe mensagem de erro se houver falha
                             document.getElementById('mensagemErro').innerText = data.mensagem;
