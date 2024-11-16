@@ -7,23 +7,36 @@ include '../conexao.php';// Conexão com o banco de dados
 // Recebe os dados JSON do corpo da requisição
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['id_Local'])) {
+$id_Local = $data['id_Local'];
+$tipo_Local = $data['tipo_Local'];
+$nome_Local = $data['nome_Local'];
+$observacao = $data['observacao'] ?? null;
+
+if ($id_Local && $tipo_Local && $nome_Local) {
+    try {
     // Prepara a consulta de atualização
-    $stmt = $mysqli->prepare("UPDATE local_destino SET tipo_Local = ?, nome_Local = ?, observcao = ? WHERE id_Local = ?");
-
-    // Vincula os parâmetros
+    $sql = "UPDATE local_destino SET tipo_Local = ?, nome_Local = ?, observacao = ? WHERE id_Local = ?";
+    $stmt = $mysqli->prepare($sql );
     $stmt->bind_param("sssi", $data['tipo_Local'], $data['nome_Local'], $data['observacao'], $data['id_Local']);
-
-    // Executa a consulta
     if ($stmt->execute()) {
-        echo json_encode(["status" => "sucesso", "mensagem" => "Local atualizado com sucesso."]);
+        echo json_encode(["status" => "sucesso", "mensagem" => "Local de destino atualizado com sucesso."]);
     } else {
         echo json_encode(["status" => "erro", "mensagem" => "Erro ao atualizar Local: " . $stmt->error]);
     }
+} catch (mysqli_sql_exception $e) {
+    // Verifica se a mensagem de erro contém 'foreign key constraint fails'
+    if (str_contains($e->getMessage(), 'foreign key constraint fails')) {
+        echo json_encode([
+            "status" => "erro",
+            "mensagem" => "Não é possível excluir, ou atualizar o local de destino porque há registros vinculados a ele."
+        ]);
+    } else {
+        echo json_encode(["status" => "erro", "mensagem" => "Erro ao atualizar fornecedor: " . $e->getMessage()]);
+    }
+}
 } else {
     echo json_encode(["status" => "erro", "mensagem" => "Dados incompletos."]);
-}
+}   
 
-$stmt->close();
 $mysqli->close();
 ?>

@@ -17,7 +17,7 @@ try {
     $preco_Custo = $_POST['precoCusto'];
     $preco_Venda = $_POST['precoVenda'] ?? null;
     $grupo = $_POST['grupo'];
-    $sub_grupo = $_POST['subgrupo'] ?? null;
+    $sub_Grupo = $_POST['subgrupo'] ?? null;
     $observacao = $_POST['observacoes'] ?? null;
 
     // Processamento da imagem

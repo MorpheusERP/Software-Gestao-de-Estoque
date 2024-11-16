@@ -43,7 +43,7 @@
                         <input type="text" id="razao" class="input-field" maxlength="150" placeholder="* Razão Social:" required disabled>
                         <input type="text" id="fantasia" class="input-field" maxlength="50" placeholder="Nome Fantasia" disabled>
                         <input type="text" id="apelido" class="input-field" maxlength="50" placeholder="Apelido: " disabled>
-                        <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="Grupo: " disabled>
+                        <input type="text" id="grupo" class="input-field" maxlength="50" placeholder="* Grupo: " required disabled>
                         <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: " disabled>
                         <input type="text" id="observacao" class="input-field" maxlength="150" placeholder="Observações: " disabled>
                         <div class="buttons-edit" id="edit-buttons" style="display: none;">
@@ -51,6 +51,8 @@
                         </div>                
                     </form>  
                 </div>
+
+                <br><br>
                 <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
                 <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>  
             </div>
@@ -67,6 +69,13 @@
                 const grupo = document.getElementById('grupo').value;
                 const subgrupo = document.getElementById('subgrupo').value;
                 const observacao = document.getElementById('observacao').value;
+
+                // Verifica se todos os campos estão preenchidos
+                if (!razao || !grupo) {
+                    document.getElementById("mensagemErro").innerText = "Preencha todos os campos com * antes de adicionar um produto.";
+                    return; // Impede que o produto seja adicionado se algum campo estiver vazio
+                }
+    
     
                 // Cria um objeto com os dados do Fornecedor
                 const dados = {

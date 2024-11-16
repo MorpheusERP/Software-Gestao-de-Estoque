@@ -118,6 +118,8 @@
                 row.insertCell(2).textContent = produto.razao_Social;
                 row.insertCell(3).textContent = produto.preco_Custo;
                 row.insertCell(4).textContent = produto.qtd_Entrada;
+
+                row.addEventListener('click', () => abrirModal(produto));
             });
         }
 
@@ -163,8 +165,57 @@
                 document.getElementById('mensagemErro').innerText = 'Erro ao salvar produtos.';
             });
         }
+        let produtoIdSelecionado;
+        //Função para abrir o modal e mostrar os dados do produto
+        function abrirModal(produto){
+            produtoIdSelecionado = produto.id;
+
+            document.getElementById("modalCodProduto").value = produto.cod_Produto;
+            document.getElementById("modalProduto").value = produto.nome_Produto;
+            document.getElementById("modalCodFornecedor").value = produto.id_Fornecedor;
+            document.getElementById("modalRazaoSocial").value = produto.razao_Social;
+            document.getElementById("modalQuantidade").value = produto.qtd_Entrada;
+            document.getElementById("modalPrecoCusto").value = produto.preco_Custo;
+            
+            // Exibe o modal
+            document.getElementById("produtoModal").style.display = "block";
+        }
+
+        function excluirProduto() {
+            // Obtém o código do produto do modal para encontrar o produto correto
+            const codProduto = document.getElementById("modalCodProduto").value;
+        
+            // Encontra o índice do produto no array `produtos`
+            const index = produtos.findIndex(prod => prod.cod_Produto === codProduto);
+            
+            if (index !== -1) {
+                const produtoId = produtos[index].id; // Armazena o ID do produto para exclusão do IndexedDB
+        
+                // Remove o produto do array
+                produtos.splice(index, 1);
+        
+                 // Remove o produto do localStorage
+                localStorage.removeItem(produtoId); // Remove o item do localStorage com a chave sendo o ID do produto
+        
+                // Atualiza a tabela
+                atualizarTabela();
+        
+                // Fecha o modal
+                fecharModal();
+        
+                // Mensagem de sucesso
+                document.getElementById("mensagemSucesso").innerText = "Produto excluído com sucesso!";
+                setTimeout(() => {
+                    document.getElementById("mensagemSucesso").innerText = "";
+                }, 3000);
+            } else {
+                document.getElementById("mensagemErro").innerText = "Produto não encontrado!";
+            }
+        }
 
         function limparTabela() {
+            limparCamposDoFormulario();
+            localStorage.clear();
             produtos = []; // Limpa o array de produtos
             localStorage.removeItem("produtosTabela"); // Remove os produtos do localStorage
             atualizarTabela(); // Atualiza a tabela (vai ficar vazia)
@@ -206,13 +257,13 @@
 
                 <label>*Quantidade:</label>
                 <div class="input-container">
-                    <input type="number" step="0.01" maxlength="4" id="quantidade" required>
+                    <input type="text" maxlength="6" id="quantidade" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
                 </div>
 
                 <label>*Preço de Custo:</label>
                 <div class="input-container">
                     <div class="input-group">
-                        <input type="number" step="0.01" maxlength="4" id="custo" name="custo" required>
+                        <input type="text"  maxlength="7" id="custo" name="custo" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
                     </div>
                 </div>
             </div>
@@ -228,7 +279,7 @@
         </form>
     </div>
 
-     <table id="resultadoTabela" cellspacing="0" style="display: none;">
+    <table id="resultadoTabela" cellspacing="0" style="display: none;">
         <thead>
              <tr>
                 <th>COD</th>
@@ -242,12 +293,49 @@
     </table>
     </div>
 
+ <!--Modal para exibir os dados do produto e a opção de remover da tabela-->
+ <div id="produtoModal" class="modal-Produto">
+    <div class="modal-content-Produto">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <h2>Detalhes do Produto</h2>
+        <br><br>
+        <div>
+            <label>Código do Produto:</label>
+                <input id="modalCodProduto" disabled>
+            <br>
+
+            <label>Produto:</label>
+            <br>
+                <input id="modalProduto" disabled>
+            <br>
+
+            <label>Código do Fornecedor:</label>
+                <input id="modalCodFornecedor" disabled>
+            <br>
+
+            <label>Fornecedor:</label>
+                <input id="modalRazaoSocial" disabled>
+            <br>
+
+            <label>Quantidade: </label> 
+                <input id="modalQuantidade" disabled>
+            <br>
+            
+            <label>Observações:</label>
+                <input id="modalObservacao" disabled>
+
+            <button onclick="excluirProduto()" class="excluirModal">
+                <img src="../Fotos/delete-svgrepo-com(2).png">Excluir Produto
+            </button>
+        </div>
+    </div>
+</div>
     <p id="mensagemSucesso" style="font-size: 18px; background-color: green; color: whitesmoke;"></p>
     <p id="mensagemErro" style="font-size: 18px; background-color: red; color: whitesmoke;"></p>
 
     <div class="footer">
         <div class="search-link">
-            <button id="back" onclick="window.location.href='Entrada.html'">
+            <button id="back" onclick="confirmarSaida()">
                 <img src="../Fotos/corner-down-left-svgrepo-com.png">Voltar
             </button>
         </div>
@@ -260,5 +348,50 @@
             </button>
         </div>
     </div>
+
+    <div id="confirmacaoModal" class="modal">
+        <div class="modal-content">
+            <p>Existem itens não salvos na tabela. Deseja salvar ou sair sem salvar?</p>
+            <div class="buttonModalContainer">
+                <button id="cancelarmodal">
+                    <img src="../Fotos/keyboard-return-solid-svgrepo-com(1).png">Sair
+                </button>
+                <button id="salvarmodal">
+                    <img src="../Fotos/check-svgrepo-com.png">Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Função para verificar se há itens na tabela e exibir uma mensagem de confirmação ou sair
+        function confirmarSaida(){ //Verifica se há itens no array 'produtos' (tabela)
+            if (produtos.length > 0){
+                //Exibe o modal de confirmação de saida
+                document.getElementById("confirmacaoModal").style.display = "block";
+
+                // Botão de Salvar
+                document.getElementById("salvarmodal").onclick = function(){
+                    salvarProdutos();
+                    fecharModal();
+                };
+                
+                //Botão de "cancelar" (Sair sem Salvar)
+                document.getElementById("cancelarmodal").onclick = function(){
+                    window.location.href='Entrada.html';
+                    setTimeout(() => limparTabela(), 100); // Limpa a tabela após a navegação
+                    fecharModal();
+                };
+            } else {
+                //Se não tiver itens na tabela, volta para pagina de saída normalmente
+                window.location.href='Entrada.html';
+              }
+        }
+
+        function fecharModal(){
+            document.getElementById("confirmacaoModal").style.display = "none";
+            document.getElementById("produtoModal").style.display = "none";
+        }
+    </script>
 </body>
 </html>

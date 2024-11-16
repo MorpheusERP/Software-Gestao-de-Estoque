@@ -9,22 +9,17 @@ header('Content-Type: application/json');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$cod_Produto = $_POST['codigo'] ?? null;
+$nome_Produto = $_POST['nome'] ?? null;
+$tipo_Produto = $_POST['tipo'] ?? null;
+$cod_Barras = $_POST['codigoBarras'] ?? null;
+$preco_Custo = $_POST['precoCusto'] ?? null;
+$preco_Venda = $_POST['precoVenda'] ?? null;
+$grupo = $_POST['grupo'] ?? null;
+$sub_grupo = $_POST['subgrupo'] ?? null;
+$observacao = $_POST['observacoes'] ?? null;
+
 try {
-    // Verifique a conexão com o banco de dados
-    if ($mysqli->connect_error) {
-        throw new Exception("Falha na conexão com o banco de dados: " . $mysqli->connect_error);
-    }
-
-    $cod_Produto = $_POST['codigo'] ?? null;
-    $nome_Produto = $_POST['nome'] ?? null;
-    $tipo_Produto = $_POST['tipo'] ?? null;
-    $cod_Barras = $_POST['codigoBarras'] ?? null;
-    $preco_Custo = $_POST['precoCusto'] ?? null;
-    $preco_Venda = $_POST['precoVenda'] ?? null;
-    $grupo = $_POST['grupo'] ?? null;
-    $sub_grupo = $_POST['subgrupo'] ?? null;
-    $observacao = $_POST['observacoes'] ?? null;
-
     // Verifica se a imagem foi enviada
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         // Obter imagem antiga
@@ -70,7 +65,15 @@ try {
         echo json_encode(["status" => "sucesso", "mensagem" => "Produto atualizado com sucesso."]);
     }
 } catch (Exception $e) {
-    echo json_encode(["status" => "erro", "mensagem" => $e->getMessage()]);
+    // Verifica se a mensagem de erro contém 'foreign key constraint fails'
+    if (str_contains($e->getMessage(), 'foreign key constraint fails')) {
+        echo json_encode([
+            "status" => "erro",
+            "mensagem" => "Não é possível excluir, ou atualizar este produto porque há registros vinculados a ele."
+        ]);
+    } else {
+        echo json_encode(["status" => "erro", "mensagem" => "Erro ao atualizar Produto: " . $e->getMessage()]);
+    }
 }
 
 if (isset($stmt)) $stmt->close();

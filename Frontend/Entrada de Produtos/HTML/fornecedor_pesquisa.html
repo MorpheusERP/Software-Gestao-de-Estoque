@@ -39,7 +39,7 @@
                 <input type="text" id="subgrupo" class="input-field" maxlength="50" placeholder="Sub.Grupo: ">
 
                 <div class="buttons">
-                    <button type="button" class="buttons" onclick="consultarUsuario()">Buscar</button>
+                    <button type="button" class="buttons" onclick="consultarFornecedor()">Buscar</button>
                 </div>
                 <div class="table-container"></div>
             </form>
@@ -62,14 +62,14 @@
 
 <script>
     // Função para consultar o Fornecedor
-    function consultarUsuario() {
+    function consultarFornecedor() {
         const razao = document.getElementById('razao').value;
         const fantasia = document.getElementById('fantasia').value;
         const apelido = document.getElementById('apelido').value;
         const grupo = document.getElementById('grupo').value;
         const subgrupo = document.getElementById('subgrupo').value;
 
-        // Cria um objeto com os dados do usuário
+        // Cria um objeto com os dados do Fornecedor
         const dados = {
             razao_Social: razao,
             nome_Fantasia: fantasia,

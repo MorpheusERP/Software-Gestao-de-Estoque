@@ -50,6 +50,8 @@
                             <button class="edit" type="submit">Salvar</button>
                         </div>
                     </form>
+
+                    <br><br>
                         <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
                         <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>
                 </div>
@@ -85,40 +87,71 @@
           document.getElementById('grupo').value = data.grupo;
           document.getElementById('subgrupo').value = data.sub_Grupo;
           document.getElementById('observacao').value = data.observacao;
+
+          salvarAlterações(data, id_Fornecedor);
       })
       .catch(error => console.error('Erro ao carregar dados do Fornecedor:', error));
 
   // Evento para enviar as alterações
+  function salvarAlterações(data, id_Fornecedor){
     document.getElementById('cadastroForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o envio padrão do formulário
-      const formData = {
-          id_Fornecedor,
-          razao_Social: document.getElementById('razao').value,
-          nome_Fantasia: document.getElementById('fantasia').value,
-          apelido: document.getElementById('apelido').value,
-          grupo: document.getElementById('grupo').value,
-          sub_Grupo: document.getElementById('subgrupo').value,
-          observacao: document.getElementById('observacao').value,
-      };
 
-      fetch('../../../Backend/CadastroFornecedor/atualizarfornecedor.php', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.status === 'sucesso') {
-            document.getElementById('mensagemSucesso').innerText = data.mensagem;
-          }
-          else if (data.status === 'erro'){
-            // Exibe mensagem de erro se houver falha
-            document.getElementById('mensagemErro').innerText = data.mensagem;
-        }
-      });
+    const razao_Social = document.getElementById('razao').value;
+    const nome_Fantasia = document.getElementById('fantasia').value;
+    const apelido = document.getElementById('apelido').value;
+    const grupo = document.getElementById('grupo').value;
+    const sub_Grupo = document.getElementById('subgrupo').value;
+    const observacao = document.getElementById('observacao').value;
+
+   // Verifica se algum campo foi alterado
+    if (
+        razao_Social === data.razao_Social &&
+        nome_Fantasia === data.nome_Fantasia &&
+        apelido === data.apelido &&
+        grupo === data.grupo &&
+        sub_Grupo === data.sub_Grupo &&
+        observacao === data.observacao
+    ) {
+        // Exibe mensagem de erro se não houve alterações
+        document.getElementById("mensagemErro").innerText = "Nenhuma alteração realizada.";
+        setTimeout(() => {
+            document.getElementById("mensagemErro").innerText = "";
+        }, 4000); // Delay de 4000 ms (4 segundos)
+    } else {
+        const formData = {
+            id_Fornecedor: id_Fornecedor,
+            razao_Social: razao_Social,
+            nome_Fantasia: nome_Fantasia,
+            apelido: apelido,
+            grupo: grupo,
+            sub_Grupo: sub_Grupo,
+            observacao: observacao,
+        };
+
+        fetch('../../../Backend/CadastroFornecedor/atualizarfornecedor.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'sucesso') {
+                document.getElementById('mensagemSucesso').innerText = data.mensagem;
+                setTimeout(() => {
+                    window.location.href='Cadastro.html'; 
+                }, 2000); // Delay de 2000 ms (2 segundos)
+            }
+            else if (data.status === 'erro'){
+                // Exibe mensagem de erro se houver falha
+                document.getElementById('mensagemErro').innerText = data.mensagem;
+            }
+        });
+    }
     })
+  }
     </script>
 
 </body>

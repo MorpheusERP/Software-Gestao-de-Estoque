@@ -12,11 +12,11 @@ ini_set('display_errors', 1); // Exibir erros
 $data = json_decode(file_get_contents("php://input"), true);
 
 $razao_Social = $data['razao_Social'];
-$nome_Fantasia = $data['nome_Fantasia'];
-$apelido = $data['apelido'];
+$nome_Fantasia = $data['nome_Fantasia'] ?? null;
+$apelido = $data['apelido'] ?? null;
 $grupo = $data['grupo'];
-$sub_Grupo = $data['sub_Grupo'];
-$observacao = $data['observacao'];
+$sub_Grupo = $data['sub_Grupo'] ?? null;
+$observacao = $data['observacao'] ?? null;
 
 // Verifica se o fornecedor já existe
 $sqlCheck = "SELECT * FROM fornecedor WHERE razao_Social = ?";
