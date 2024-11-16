@@ -19,11 +19,11 @@ if (isset($_GET['cod_Produto'])) {
 
     // Verifica se encontrou o Produto
     if ($result->num_rows > 0) {
-        // Retorna o local de destino como JSON
+        // Retorna o Produto como JSON
         $produto = $result->fetch_assoc();
         echo json_encode($produto);
     } else {
-        // Retorna mensagem de erro se o local de destino não foi encontrado
+        // Retorna mensagem de erro se o Produto não foi encontrado
         echo json_encode(["status" => "erro", "mensagem" => "Produto não encontrado"]);
     }
 
@@ -31,7 +31,7 @@ if (isset($_GET['cod_Produto'])) {
     $stmt->close();
     $mysqli->close();
 } else {
-    // Retorna mensagem de erro se o ID do local de destino não foi fornecido
+    // Retorna mensagem de erro se o ID do Produto não foi fornecido
     echo json_encode(["status" => "erro", "mensagem" => "COD do Produto não fornecido"]);
 }
 ?>

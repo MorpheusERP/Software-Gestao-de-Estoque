@@ -7,23 +7,46 @@ include '../conexao.php';// Conexão com o banco de dados
 // Recebe os dados JSON do corpo da requisição
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['id_Fornecedor'])) {
-    // Prepara a consulta de atualização
-    $stmt = $mysqli->prepare("UPDATE fornecedor SET razao_Social = ?, nome_Fantasia = ?, apelido = ?, grupo = ?, sub_Grupo = ?, observacao = ? WHERE id_Fornecedor = ?");
+$id_Fornecedor = $data['id_Fornecedor'];
+$razao_Social = $data['razao_Social'];
+$nome_Fantasia = $data['nome_Fantasia'] ?? null;
+$apelido = $data['apelido'] ?? null;
+$grupo = $data['grupo'];
+$sub_Grupo = $data['sub_Grupo'] ?? null;
+$observacao = $data['observacao'] ?? null;
 
-    // Vincula os parâmetros
-    $stmt->bind_param("ssssssi", $data['razao_Social'], $data['nome_Fantasia'], $data['apelido'], $data['grupo'], $data['sub_Grupo'], $data['observacao'], $data['id_Fornecedor']);
+if ($id_Fornecedor && $razao_Social && $grupo) {
+    try {
+        // Prepara a consulta de atualização
+        $sql = "UPDATE fornecedor SET razao_Social = ?, nome_Fantasia = ?, apelido = ?, grupo = ?, sub_Grupo = ?, observacao = ? WHERE id_Fornecedor = ?";
+        $stmt = $mysqli->prepare($sql);
 
-    // Executa a consulta
-    if ($stmt->execute()) {
-        echo json_encode(["status" => "sucesso", "mensagem" => "Fornecedor atualizado com sucesso."]);
-    } else {
-        echo json_encode(["status" => "erro", "mensagem" => "Erro ao atualizar Fornecedor: " . $stmt->error]);
+        if ($stmt) {
+            // Vincula os parâmetros
+            $stmt->bind_param("ssssssi", $razao_Social, $nome_Fantasia, $apelido, $grupo, $sub_Grupo, $observacao, $id_Fornecedor);
+
+            // Executa a consulta
+            $stmt->execute();
+            echo json_encode(["status" => "sucesso", "mensagem" => "Fornecedor atualizado com sucesso."]);
+
+            $stmt->close();
+        } else {
+            echo json_encode(["status" => "erro", "mensagem" => "Erro na preparação da consulta."]);
+        }
+    } catch (mysqli_sql_exception $e) {
+        // Verifica se a mensagem de erro contém 'foreign key constraint fails'
+        if (str_contains($e->getMessage(), 'foreign key constraint fails')) {
+            echo json_encode([
+                "status" => "erro",
+                "mensagem" => "Não é possível excluir, ou atualizar a razão social deste fornecedor porque há registros vinculados a ele."
+            ]);
+        } else {
+            echo json_encode(["status" => "erro", "mensagem" => "Erro ao atualizar fornecedor: " . $e->getMessage()]);
+        }
     }
 } else {
     echo json_encode(["status" => "erro", "mensagem" => "Dados incompletos."]);
 }
 
-$stmt->close();
 $mysqli->close();
 ?>

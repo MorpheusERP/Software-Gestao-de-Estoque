@@ -57,8 +57,9 @@
                             <button class="edit" type="submit">Salvar</button>
                         </div>
                     </form>
+                    <br><br>
                         <p id="mensagemSucesso" style="font-size: 18px; background-color:green; color: whitesmoke;"></p>
-                        <p id="mensagemErro" style="font-size: 18px0; background-color: red;color: whitesmoke"></p>
+                        <p id="mensagemErro" style="font-size: 18px; background-color: red;color: whitesmoke"></p>
                 </div>
             </div>
         </div>
@@ -91,20 +92,46 @@
           document.getElementById('sobrenome').value = data.sobrenome;
           document.getElementById('funcao').value = data.funcao;
           document.getElementById('login').value = data.login;
+
+          salvarAlterações(data, id_Usuario);
       })
       .catch(error => console.error('Erro ao carregar dados do usuário:', error));
 
-  // Evento para enviar as alterações
+    function salvarAlterações(data, id_Fornecedor){
+     // Evento para enviar as alterações
     document.getElementById('cadastroForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o envio padrão do formulário
+    
+    const nivel = document.getElementById('nivel').value;
+    const nome = document.getElementById('nome').value;
+    const sobrenome = document.getElementById('sobrenome').value;
+    const funcao = document.getElementById('funcao').value;
+    const login = document.getElementById('login').value;
+    const senha = document.getElementById('senha').value;
+
+    // Verifica se algum campo foi alterado
+    if (
+        nivel === data.nivel_Usuario &&
+        nome === data.nome_Usuario &&
+        sobrenome === data.sobrenome &&
+        funcao === data.funcao &&
+        login === data.login &&
+        senha === ""
+    ) {
+        // Exibe mensagem de erro se não houve alterações
+        document.getElementById("mensagemErro").innerText = "Nenhuma alteração realizada.";
+        setTimeout(() => {
+            document.getElementById("mensagemErro").innerText = "";
+        }, 2000); // Delay de 4000 ms (4 segundos)
+    } else {
       const formData = {
-          id_Usuario,
-          nivel: document.getElementById('nivel').value,
-          nome: document.getElementById('nome').value,
-          sobrenome: document.getElementById('sobrenome').value,
-          funcao: document.getElementById('funcao').value,
-          login: document.getElementById('login').value,
-          senha: document.getElementById('senha').value,
+            id_Usuario: id_Usuario,
+            nivel: nivel,
+            nome: nome,
+            sobrenome: sobrenome,
+            funcao: funcao,
+            login: login,
+            senha: senha,
       };
 
       fetch('../../../Backend/CadastroUsuario/atualizarusuario.php', {
@@ -118,13 +145,18 @@
       .then(data => {
           if (data.status === 'sucesso') {
             document.getElementById('mensagemSucesso').innerText = data.mensagem;
+            setTimeout(() =>{
+                document.getElementById('mensagemSucesso').innerText = "";
+            }, 2000);
           }
           else if (data.status === 'erro'){
             // Exibe mensagem de erro se houver falha
             document.getElementById('mensagemErro').innerText = data.mensagem;
         }
       });
+    }
     })
+    }
     </script>
 
     <!--Script para exibir e ocultar a senha-->
