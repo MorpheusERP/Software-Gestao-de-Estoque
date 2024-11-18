@@ -44,13 +44,6 @@ body {
     border-radius: 8px;
 }
 
-.form {
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 70px;
-}
-
 button {
     background-color: #ffcc00;
     color: black;
@@ -65,15 +58,18 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #e6b800;
+
+.input-container{
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
 }
 
 .buttons, .buttons-search, .buttons-edit {
     display: flex;
     justify-content: center;
     gap: 6px;
-    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -124,4 +120,41 @@ select:focus, input:focus {
     .buttons button {
         width: 95%;
     }
+}
+.input-containe {
+    position: relative;
+    width: 100%; /* Define a largura do container do input */
+    display: flex;
+    align-items: center;
+}
+
+.input-fiel {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+    margin-bottom: 18px;
+    padding-right: 40px; /* Adiciona espaço para o ícone à direita */
+}
+
+  .input-fiel[disabled] {
+    opacity: 0.7;
+  }
+
+.toggle-visibility {
+    position: absolute;
+    top: 7px;
+    left: 165px; /* Posiciona o ícone à direita dentro do input */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 23px;
+    color: #000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

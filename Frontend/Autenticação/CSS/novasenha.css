@@ -44,12 +44,25 @@ body, html {
     overflow: hidden;
 }
 
-.perfil img{
-    width: 150px;
-    margin-bottom: 10px;
 
+.perfil img {
+    width: 100%;
+    max-width: 150px; /* Define uma largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-top: 50px; /* Margem menor para telas pequenas */
 }
 
+@media (min-width: 600px) {
+    .perfil img {
+        margin-top: 75px;
+    }
+}
+
+@media (min-width: 768px) {
+    .perfil img {
+        margin-top: 100px; /* Define o valor original em telas maiores */
+    }
+}
 .Redefinir{
     display: flex;
     width: 284px;
@@ -74,7 +87,7 @@ body, html {
 
   .label {
     text-align: left;
-    margin-bottom: -15px;
+    margin-bottom: 5px;
     font-weight: bold;
     color: #FFF;
     margin-top: 2px;
@@ -83,7 +96,7 @@ body, html {
 
 .ConfirmaSenha{
     margin-right: 66px;
-    margin-bottom: -11px;
+    margin-bottom: 30px;
     font-size: 18px;
     width: 205px;
     color: whitesmoke;
@@ -117,6 +130,7 @@ body, html {
 
 }
 
+
 .botao:focus {
     outline: none; /* Remove a borda de foco ao clicar */
 }
@@ -138,8 +152,8 @@ body, html {
     border-radius: 100px;
     background: #FFF;
     margin-bottom: 100px;
-    margin-top: -160px;
-    margin-left: 185px;
+    margin-top: -141px;
+    margin-left: 180px;
 }
 
 .botao2 {
@@ -163,10 +177,23 @@ body, html {
     opacity: 0.8; /* Efeito de hover para mudar a opacidade */
 }
 
-.Emporio img{
-    width: 238px;
-    height: 175px;
-    flex-shrink: 0;
+.Emporio img {
+    width: 100%; /* A imagem ocupa 100% da largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 238px; /* Limita a largura máxima */
+    margin-bottom: 50px; /* Espaço menor para telas pequenas */
+}
+
+@media (min-width: 600px) {
+    .Emporio img {
+        margin-bottom: 75px; /* Ajusta o espaçamento para telas médias */
+    }
+}
+
+@media (min-width: 1024px) {
+    .Emporio img {
+        margin-bottom: 100px; /* Mantém o espaçamento original em telas grandes */
+    }
 }
 
 .input-container {
@@ -177,7 +204,8 @@ body, html {
 }
 
 .input-field {
-    background-color: #e0e0e0;
+    display: block;
+    margin-bottom: 5px;
     border: none;
     border-radius: 10px;
     padding: 13px;
@@ -189,6 +217,7 @@ body, html {
 
 .toggle-visibility {
     position: absolute;
+    top: 10px;
     right: 10px; /* Posiciona o ícone à direita dentro do input */
     background: none;
     border: none;

@@ -1,7 +1,7 @@
 <!-- <?php include 'sql/db_connect.php'; ?> -->
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,46 +9,12 @@
     <link rel="shortcut icon" href="Frontend/Imagens/logo.png" />
     <link rel="stylesheet" href="Frontend/Autenticação/CSS/login.css">
     <script>
-        async function fazerLogin(event) {
-            event.preventDefault(); // Evita o envio do formulário padrão
-
-            // Obtém os valores de login e senha
-            const login = document.getElementById('login').value;
-            const senha = document.getElementById('senha').value;
-
-            // Cria um objeto com os dados do login
-            const dadosLogin = {
-                login: login,
-                senha: senha
-            };
-
-            try {
-                // Faz uma requisição POST ao servidor PHP
-                const response = await fetch('login.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(dadosLogin) // Envia os dados como JSON
-                });
-
-                // Aguarda a resposta do servidor
-                const result = await response.json();
-
-                // Verifica o status da resposta
-                if (result.success) {
-                    if (result.userType === 'administrador') {
-                        // Redireciona para a página de administrador
-                        window.location.href = "home.html";
-                    } else if (result.userType === 'padrao') {
-                        // Redireciona para a página de usuário padrão
-                        window.location.href = "homepadrao.html";
-                    }
-                } else {
-                    alert("Login ou senha incorretos!");
-                }
-            } catch (error) {
-                console.error("Erro ao fazer login:", error);
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
             }
         }
     </script>
@@ -60,12 +26,17 @@
                 <img src="Frontend/Autenticação/Imagens/Usuario.png" alt="perfil">
             </div>
             
-            <form onsubmit="fazerLogin(event)">
+            <form id="loginForm">
                 <div class="label"></div>
-                <input type="text" id="login" name="nome" class="input-field" placeholder="Nome" required />
+                <div class="bordalogin">
+                    <input type="text" id="login" placeholder="Login" class="inputField">
+                </div> 
+                <br>
+                <div class="input-container">
+                    <input type="password" maxlength="4" pattern="[0-9]*" id="senha" placeholder="Senha" class="inputField" required>
+                    <button type="button" class="toggle-visibility" onclick="togglePasswordVisibility('senha')">👁</button>
+                </div>
                 
-                <div class="label"></div>
-                <input type="password" id="senha" name="senha" class="input-field" placeholder="Senha" required />
 
                 <div class="EsqueciSenha">
                     <div class="Cadeado">
@@ -79,17 +50,51 @@
                 <div class="botaoDiv">
                         <!--envia o formulario de login -->
                         <button type="submit" class="botao">Entrar</button>
-                    <a href="module/Home Page/HTML/home.html">
-                        <button type="button" class="botao">Entrar</button>
 
                     </a>
                 </div>
             </form>
-
+            <p id="mensagemErro" style="font-size: 18px0; background-color: red;color: whitesmoke"></p>
+            
             <div class="Emporio">
                 <img src="Frontend/Autenticação/Imagens/Emporio maxx s-fundo.png" alt="Emporio">
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const login = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+
+            // Envia os dados de login e senha para o arquivo PHP
+            fetch('Backend/Autenticação/autenticar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login: login, senha: senha })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Veja o que está sendo retornado
+                const jsonData = JSON.stringify(data); // Tente converter para JSON
+
+                if (data.status === 'sucesso') {
+                    // Redireciona com base no nível do usuário
+                    if (data.nivelUsuario === 'admin') {
+                        window.location.href = 'home.html';
+                    } else {
+                        window.location.href = 'homepadrao.html';
+                    }
+                } else {
+                    // Exibe mensagem de erro se houver falha
+                    document.getElementById('mensagemErro').innerText = data.mensagem;
+                }
+            })
+            .catch(error => console.error('Erro:', error));
+        });
+    </script>
 </body>
 </html>
